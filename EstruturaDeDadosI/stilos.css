@@ -1,0 +1,131 @@
+.btn-questao{
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-questao:hover{
+    -fx-background-color: rgb(255, 131, 131);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+
+.btn-questao-DM{
+    -fx-background-color: rgb(255, 100, 100);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-questao-DM:hover{
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+
+
+
+.btn-voltar{
+    -fx-background-image: url("VisualElements/arrow.png");
+    -fx-background-size: 40px;
+    -fx-background-color: transparent;
+    -fx-background-position: left;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0,0,0,20;
+
+}
+.btn-voltar:hover{
+    -fx-background-image: url("VisualElements/arrow.png");
+    -fx-background-size: 40px;
+    -fx-background-color: rgba(255, 120, 120, 0.5);
+    -fx-background-position: left;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0,0,0,20;
+    -fx-border-radius: 4px;
+}
+
+
+.btn-voltar-DM{
+    -fx-background-image: url("VisualElements/arrow.png");
+    -fx-background-size: 40px;
+    -fx-background-color: transparent;
+    -fx-background-position: left;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0,0,0,20;
+    -fx-text-fill:white;
+}
+.btn-voltar-DM:hover{
+    -fx-background-image: url("VisualElements/arrow.png");
+    -fx-background-size: 40px;
+    -fx-background-color: rgba(255, 120, 120, 0.5);
+    -fx-background-position: left;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0,0,0,20;
+    -fx-border-radius: 4px;
+}
+
+
+
+
+.btn-LightMode{
+    -fx-background-image: url("VisualElements/LightMode.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 70px;
+}
+.btn-DarkMode{
+    -fx-background-image: url("VisualElements/DarkMode.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 70px;
+}
+
+
+.btn-GitHub{
+    -fx-background-image: url("VisualElements/github-mark.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50px;
+}
+.btn-GitHub-DM{
+    -fx-background-image: url("VisualElements/github-mark-white.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50px;
+}
+
+
+
+.btn-Twitter{
+    -fx-background-image: url("VisualElements/X-logo-black.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 45px;
+}
+.btn-Twitter-DM{
+    -fx-background-image: url("VisualElements/X-logo-white.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 45px;
+}
+
+
+.btn-LinkedIn{
+    -fx-background-image: url("VisualElements/In-Black-128.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50px;
+}
+.btn-LinkedIn-DM{
+    -fx-background-image: url("VisualElements/In-White-128.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50px;
+}
