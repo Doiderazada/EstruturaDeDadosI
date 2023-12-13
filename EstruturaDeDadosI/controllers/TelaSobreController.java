@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import source.App;
 
 public class TelaSobreController {
@@ -63,9 +64,24 @@ public class TelaSobreController {
 
 
     private void acaoDosBotoes() {
-        buttonGitHub.setTooltip(new Tooltip("Link do repositório do programa"));
-        buttonLinkedIn.setTooltip(new Tooltip("Link do perfil do LinkedIn"));
-        buttonTwitter.setTooltip(new Tooltip("Link do perfil do Twitter"));
+        Tooltip tGitHub = new Tooltip("Link do repositório do programa");
+        tGitHub.setShowDelay(Duration.millis(300));
+
+        Tooltip tLinkedIn = new Tooltip("Link do perfil do LinkedIn");
+        tLinkedIn.setShowDelay(Duration.millis(300));
+
+        Tooltip tTwitter = new Tooltip("Link do perfil do Twitter");
+        tTwitter.setShowDelay(Duration.millis(300));
+
+        Tooltip tmensagemSubliminar = new Tooltip("Deus de abençoe");
+        tmensagemSubliminar.setShowDelay(Duration.millis(200));
+        tmensagemSubliminar.setShowDuration(Duration.millis(500));
+        Tooltip.install(copyRight, tmensagemSubliminar);
+
+        buttonGitHub.setTooltip(tGitHub);
+        buttonLinkedIn.setTooltip(tLinkedIn);
+        buttonTwitter.setTooltip(tTwitter);
+        
 
         buttonVoltar.setOnMouseClicked(new EventHandler<MouseEvent>() {
 

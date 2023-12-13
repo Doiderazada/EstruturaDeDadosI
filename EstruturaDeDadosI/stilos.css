@@ -36,6 +36,7 @@
 .btn-voltar:hover{
     -fx-background-image: url("VisualElements/arrow.png");
     -fx-background-size: 40px;
+    -fx-background-radius: 5px;
     -fx-background-color: rgba(255, 120, 120, 0.5);
     -fx-background-position: left;
     -fx-background-repeat: no-repeat;

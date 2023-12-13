@@ -29,22 +29,7 @@ public class TelaInicialController {
     }
 
 
-    private void setStilo() {
-        if (App.darkMode) {
-            telaInicial.setStyle("-fx-background-color: #282828");
-            buttonLista.getStyleClass().setAll("btn-questao-DM");
-            buttonPDF.getStyleClass().setAll("btn-questao-DM");
-            buttonSobre.getStyleClass().setAll("btn-questao-DM");
-            buttonDM.getStyleClass().setAll("btn-DarkMode");
-        } else {
-            telaInicial.setStyle(null);
-            buttonLista.getStyleClass().setAll("btn-questao");
-            buttonPDF.getStyleClass().setAll("btn-questao");
-            buttonSobre.getStyleClass().setAll("btn-questao");
-            buttonDM.getStyleClass().setAll("btn-LightMode");
-        }
-        
-    }
+    
 
 
     private void acaoDosBotoes() {
@@ -97,5 +82,24 @@ public class TelaInicialController {
             }
             
         });
+    }
+
+
+
+    private void setStilo() {
+        if (App.darkMode) {
+            telaInicial.setStyle("-fx-background-color: #282828");
+            buttonLista.getStyleClass().setAll("btn-questao-DM");
+            buttonPDF.getStyleClass().setAll("btn-questao-DM");
+            buttonSobre.getStyleClass().setAll("btn-questao-DM");
+            buttonDM.getStyleClass().setAll("btn-DarkMode");
+        } else {
+            telaInicial.setStyle(null);
+            buttonLista.getStyleClass().setAll("btn-questao");
+            buttonPDF.getStyleClass().setAll("btn-questao");
+            buttonSobre.getStyleClass().setAll("btn-questao");
+            buttonDM.getStyleClass().setAll("btn-LightMode");
+        }
+        
     }
 }

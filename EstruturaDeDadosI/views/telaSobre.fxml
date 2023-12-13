@@ -54,7 +54,7 @@
                               <Insets bottom="15.0" />
                            </VBox.margin>
                         </Text>
-                        <Text fx:id="textPara1" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Programa desenvolvido por Doidera (João Emanoel), para a prática das atividades da primeira unidade da disciplina de Estrutura de Dados I lecionada por Bruno Monteiro na Universidade Federal Rural do Semi-Árido (UFERSA)." textAlignment="JUSTIFY" wrappingWidth="600.0">
+                        <Text fx:id="textPara1" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Programa desenvolvido por João Emanoel (Doidera), para a prática das atividades da primeira unidade da disciplina de Estrutura de Dados I lecionada por Bruno Monteiro na Universidade Federal Rural do Semi-Árido (UFERSA)." textAlignment="JUSTIFY" wrappingWidth="600.0">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
