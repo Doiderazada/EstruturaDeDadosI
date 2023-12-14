@@ -22,7 +22,7 @@ import source.App;
 
 public class Questao5Controller {
 
-    @FXML private BorderPane telaQuestao4;
+    @FXML private BorderPane telaQuestao5;
     @FXML private Button buttonConfirmar;
     @FXML private Button buttonHome;
     @FXML private Button buttonVoltar;
@@ -119,7 +119,7 @@ public class Questao5Controller {
                 texto.setAutoHide(true);
                 texto.fireEvent(arg0);
                 texto.centerOnScreen();
-                texto.show(telaQuestao4.getScene().getWindow());
+                texto.show(telaQuestao5.getScene().getWindow());
             }
         });
         textResultado.setOnMouseExited(new EventHandler<MouseEvent>() {
@@ -134,6 +134,7 @@ public class Questao5Controller {
     
 
     private void exibirConteudo() {
+        questao.setText(questao.getText() + "\t");
         textEnunciado.setText(EnunciadoDasQuestoes.questao5.substring(3));
     }
 
@@ -144,7 +145,7 @@ public class Questao5Controller {
             buttonVoltar.getStyleClass().setAll("btn-voltar-DM");
             buttonHome.getStyleClass().setAll("btn-questao-DM");
             buttonConfirmar.getStyleClass().setAll("btn-questao-DM");
-            telaQuestao4.setStyle("-fx-background-color: #282828");
+            telaQuestao5.setStyle("-fx-background-color: #282828");
 
             plusSign1.setFill(Paint.valueOf("WHITE"));
             plusSign2.setFill(Paint.valueOf("WHITE"));
@@ -166,7 +167,7 @@ public class Questao5Controller {
             buttonVoltar.getStyleClass().setAll("btn-voltar");
             buttonHome.getStyleClass().setAll("btn-questao");
             buttonConfirmar.getStyleClass().setAll("btn-questao");
-            telaQuestao4.setStyle(null);
+            telaQuestao5.setStyle(null);
 
             plusSign1.setFill(Paint.valueOf("BLACK"));
             plusSign2.setFill(Paint.valueOf("BLACK"));

@@ -94,6 +94,7 @@ public class Questao1Controller {
 
 
     private void exibirConteudo() {
+        questao.setText(questao.getText() + "\t");
         textEnunciado.setText(EnunciadoDasQuestoes.questao1.substring(3));
         textNome.setText(Questao1.getNome());
         textInicial.setText(String.valueOf(Questao1.getInicial()));

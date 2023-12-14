@@ -10,7 +10,7 @@
             "request": "launch",
             "mainClass": "source.App",
             "projectName": "EstruturaDeDadosI_d33f649f",
-            "vmArgs": "--module-path C:/Users/jeman/Códigos/Projects/javafx-sdk-21/lib --add-modules javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path ../EstruturaDeDadosI/EstruturaDeDadosI/javafx-files/lib --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",

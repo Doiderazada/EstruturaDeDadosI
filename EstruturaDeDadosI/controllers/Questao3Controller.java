@@ -230,6 +230,7 @@ public class Questao3Controller {
     
 
     private void exibirConteudo() {
+        questao.setText(questao.getText() + "\t");
         textEnunciado.setText(EnunciadoDasQuestoes.questao3.substring(3));
     }
 

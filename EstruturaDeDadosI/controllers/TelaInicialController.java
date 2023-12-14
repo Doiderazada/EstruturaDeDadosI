@@ -47,7 +47,7 @@ public class TelaInicialController {
             @Override
             public void handle(MouseEvent arg0) {
                 try{
-                    File pdf = new File("..\\EstruturaDeDadosI\\EstruturaDeDadosI\\Lista1.pdf");
+                    File pdf = new File("../EstruturaDeDadosI/EstruturaDeDadosI/Lista1.pdf");
                     if (Desktop.isDesktopSupported()) {
                         Desktop.getDesktop().open(pdf);
                     }

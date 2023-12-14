@@ -134,6 +134,7 @@ public class Questao4Controller {
     
 
     private void exibirConteudo() {
+        questao.setText(questao.getText() + "\t");
         textEnunciado.setText(EnunciadoDasQuestoes.questao4.substring(3));
     }
 

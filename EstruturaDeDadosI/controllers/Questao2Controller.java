@@ -98,6 +98,7 @@ public class Questao2Controller {
     
 
     private void exibirConteudo() {
+        questao.setText(questao.getText() + "\t");
         textEnunciado.setText(EnunciadoDasQuestoes.questao2.substring(3));
     }
 
