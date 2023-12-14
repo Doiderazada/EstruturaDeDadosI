@@ -73,7 +73,7 @@ public class TelaSobreController {
         Tooltip tTwitter = new Tooltip("Link do perfil do Twitter");
         tTwitter.setShowDelay(Duration.millis(300));
 
-        Tooltip tmensagemSubliminar = new Tooltip("Deus de abençoe");
+        Tooltip tmensagemSubliminar = new Tooltip("Deus te abençoe");
         tmensagemSubliminar.setShowDelay(Duration.millis(200));
         tmensagemSubliminar.setShowDuration(Duration.millis(500));
         Tooltip.install(copyRight, tmensagemSubliminar);

@@ -167,6 +167,7 @@ public class TelaQuestoesController {
 
 
 
+    
     private void acaoDosBotoes() {
         buttonVoltar.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -176,6 +177,7 @@ public class TelaQuestoesController {
             }
             
         });
+
 
 
         questao_1.setOnMouseEntered(new EventHandler<MouseEvent>() {
@@ -423,33 +425,246 @@ public class TelaQuestoesController {
         
 
 
-        questao_1.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
+        questao_1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
                 App.trocarDeTela("questao1");
             }
-            
         });
-        
         questao_2.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 App.trocarDeTela("questao2");
             }
-            
         });
-        
         questao_3.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 App.trocarDeTela("questao3");
             }
-            
         });
-
-
+        questao_4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao4");
+            }
+        });
+        questao_5.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao5");
+            }
+        });
+        questao_6.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao6");
+            }
+        });
+        questao_7.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao7");
+            }
+        });
+        questao_8.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao8");
+            }
+        });
+        questao_9.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao9");
+            }
+        });
+        questao_10.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao10");
+            }
+        });
+        questao_11.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao11");
+            }
+        });
+        questao_12.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao12");
+            }
+        });
+        questao_13.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao13");
+            }
+        });
+        questao_14.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao14");
+            }
+        });
+        questao_15.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao15");
+            }
+        });
+        questao_16.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao16");
+            }
+        });
+        questao_17.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao17");
+            }
+        });
+        questao_18.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao18");
+            }
+        });
+        questao_19.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao19");
+            }
+        });
+        questao_20.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao20");
+            }
+        });
+        questao_21.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao21");
+            }
+        });
+        questao_22.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao22");
+            }
+        });
+        questao_23.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao23");
+            }
+        });
+        questao_24.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao24");
+            }
+        });
+        questao_25.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao25");
+            }
+        });
+        questao_26.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao26");
+            }
+        });
+        questao_27.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao27");
+            }
+        });
+        questao_28.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao28");
+            }
+        });
+        questao_29.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao29");
+            }
+        });
+        questao_30.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao30");
+            }
+        });
+        questao_31.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao31");
+            }
+        });
+        questao_32.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao32");
+            }
+        });
+        questao_33.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao33");
+            }
+        });
+        questao_34.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao34");
+            }
+        });
+        questao_35.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao35");
+            }
+        });
+        questao_36.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao36");
+            }
+        });
+        questao_37.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao37");
+            }
+        });
+        questao_38.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao38");
+            }
+        });
+        questao_39.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao39");
+            }
+        });
+        questao_40.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("questao40");
+            }
+        });
     }
 }
