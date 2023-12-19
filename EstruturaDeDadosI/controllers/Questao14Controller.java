@@ -9,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -74,10 +73,6 @@ public class Questao14Controller {
 
 
     private void acaoDosBotoes() {
-        Tooltip mensagemSubliminar = new Tooltip("Agora sim, essa é melhor");
-        mensagemSubliminar.setShowDelay(Duration.millis(100));
-        mensagemSubliminar.setShowDuration(Duration.millis(800));
-        Tooltip.install(copyRight, mensagemSubliminar);
 
         buttonVoltar.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
