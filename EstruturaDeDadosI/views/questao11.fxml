@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<BorderPane fx:id="telaQuestao11" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Questao11Controller">
+   <top>
+      <AnchorPane prefHeight="150.0" prefWidth="1200.0" style="-fx-background-color: #F23C13; -fx-border-radius: 5;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="129.0" layoutY="57.0" text="Lista de questões da primeira unidade de Estrutura de Dados I">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <Pane BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="10.0" right="10.0" top="15.0" />
+         </BorderPane.margin>
+         <children>
+            <HBox spacing="20.0">
+               <children>
+                  <Button fx:id="buttonVoltar" alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" stylesheets="@../stilos.css" text="Voltar    ">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="buttonHome" alignment="CENTER" layoutX="25.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@../stilos.css" text="Voltar à tela inicial">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <VBox layoutX="120.0" layoutY="95.0" prefHeight="300.0" prefWidth="900.0" spacing="25.0">
+               <children>
+                  <HBox alignment="BASELINE_LEFT" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="900.0" spacing="60.0">
+                     <children>
+                        <TextFlow lineSpacing="5.0" textAlignment="JUSTIFY">
+                           <children>
+                              <Text fx:id="questao" strokeType="OUTSIDE" strokeWidth="0.0" text="Questão 11.">
+                                 <font>
+                                    <Font name="System Bold" size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="textEnunciado" strokeType="OUTSIDE" strokeWidth="0.0" text="Enunciado da questão">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </TextFlow>
+                     </children>
+                  </HBox>
+                  <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" spacing="150.0">
+                     <children>
+                        <VBox fx:id="buttonsVBox" alignment="TOP_CENTER" spacing="20.0">
+                           <children>
+                              <Button fx:id="buttonAbrirConta" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="150.0" stylesheets="@../stilos.css" text="Abrir conta">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="buttonDadosConta" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="150.0" stylesheets="@../stilos.css" text="Dados da conta">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="buttonTransferir" alignment="CENTER" layoutX="10.0" layoutY="80.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="150.0" stylesheets="@../stilos.css" text="Transferir">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="buttonDepositar" alignment="CENTER" layoutX="10.0" layoutY="150.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="150.0" stylesheets="@../stilos.css" text="Depositar">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <Group fx:id="groupOutput">
+                           <children>
+                              <VBox fx:id="vBoxDeposito" alignment="CENTER_LEFT" spacing="30.0">
+                                 <children>
+                                    <Label fx:id="textInfoDeposito" text="Forneça as informações para o depósito" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <VBox spacing="15.0">
+                                             <children>
+                                                <VBox>
+                                                   <children>
+                                                      <Label fx:id="labelDeposito" text="Valor do depósito">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfDeposito" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox spacing="10.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox spacing="20.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <Button fx:id="buttonDeposito" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" stylesheets="@../stilos.css" text="Confirmar">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="vBoxTransferencia" alignment="CENTER_LEFT" layoutX="337.0" spacing="30.0">
+                                 <children>
+                                    <Label fx:id="textInfoTransf" text="Forneça as informações para a transferência">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox spacing="70.0">
+                                       <children>
+                                          <VBox spacing="15.0">
+                                             <children>
+                                                <VBox>
+                                                   <children>
+                                                      <Label fx:id="labelTransferencia" text="Valor da tranferência">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfTransf" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox spacing="10.0">
+                                                   <children>
+                                                      <Text fx:id="textConfirmarTransf" layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmação da transferência">
+                                                         <font>
+                                                            <Font name="System Bold" size="18.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" />
+                                                         </VBox.margin>
+                                                      </Text>
+                                                      <Text fx:id="textValTransf" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor a transferir: " wrappingWidth="320.0">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fx:id="textDestTransf" strokeType="OUTSIDE" strokeWidth="0.0" text="Destinatário:" wrappingWidth="320.0">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox spacing="20.0">
+                                             <children>
+                                                <Label fx:id="labelDest" text="Destinatário">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button fx:id="buttonJoao" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" stylesheets="@../stilos.css" text="João Maria">
+                                                   <font>
+                                                      <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="buttonMaria" alignment="CENTER" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" stylesheets="@../stilos.css" text="Maria José">
+                                                   <font>
+                                                      <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <Button fx:id="buttonTransferencia" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" stylesheets="@../stilos.css" text="Confirmar">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="vBoxCadastro" alignment="TOP_CENTER" layoutX="847.0" spacing="40.0">
+                                 <children>
+                                    <VBox>
+                                       <children>
+                                          <Text fx:id="textInfoConta" strokeType="OUTSIDE" strokeWidth="0.0" text="Entre com as informações necessárias para abrir a conta">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="15.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Label fx:id="labelProp" text="Digite o nome do proprietário da conta">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="tfProp" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" />
+                                       </children>
+                                    </VBox>
+                                    <Button fx:id="buttonConta" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" stylesheets="@../stilos.css" text="Confirmar">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                              <HBox fx:id="hBoxDados" layoutX="1319.0" spacing="25.0">
+                                 <children>
+                                    <VBox spacing="15.0">
+                                       <children>
+                                          <Text fx:id="textProp" strokeType="OUTSIDE" strokeWidth="0.0" text="Proprietário: ">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text fx:id="textNumConta" layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número da conta:">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="textSaldoConta" layoutX="10.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saldo: ">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="textAcesso" layoutX="10.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Última movimentação:">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" spacing="15.0">
+                                       <children>
+                                          <Text fx:id="textNome" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text fx:id="textNumero" layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="textValor" layoutX="10.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="textData" layoutX="10.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </Group>
+                     </children>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </center>
+   <bottom>
+      <Label fx:id="copyRight" alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="50.0" text="Feito por Doidera, 2023" textFill="DIMGRAY" BorderPane.alignment="TOP_CENTER">
+         <font>
+            <Font name="Leelawadee UI" size="15.0" />
+         </font>
+      </Label>
+   </bottom>
+</BorderPane>

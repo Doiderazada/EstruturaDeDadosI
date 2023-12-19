@@ -65,13 +65,13 @@ public class TelaSobreController {
 
     private void acaoDosBotoes() {
         Tooltip tGitHub = new Tooltip("Link do repositório do programa");
-        tGitHub.setShowDelay(Duration.millis(300));
+        tGitHub.setShowDelay(Duration.millis(200));
 
         Tooltip tLinkedIn = new Tooltip("Link do perfil do LinkedIn");
-        tLinkedIn.setShowDelay(Duration.millis(300));
+        tLinkedIn.setShowDelay(Duration.millis(200));
 
         Tooltip tTwitter = new Tooltip("Link do perfil do Twitter");
-        tTwitter.setShowDelay(Duration.millis(300));
+        tTwitter.setShowDelay(Duration.millis(200));
 
         Tooltip tmensagemSubliminar = new Tooltip("Deus te abençoe");
         tmensagemSubliminar.setShowDelay(Duration.millis(200));

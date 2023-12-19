@@ -182,7 +182,7 @@ public class Questao10Controller {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/telaPopup.fxml"));
             Parent root = loader.load();
 
-            TelaPopupController controller = loader.getController();
+            TelaPopupErroController controller = loader.getController();
             controller.initialize(texto);
             Popup popup = new Popup();
 

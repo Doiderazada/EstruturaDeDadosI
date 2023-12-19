@@ -22,6 +22,7 @@ public class TelasDisponiveis {
         this.TelasDisponiveis.put("questao8", "questao8.fxml");
         this.TelasDisponiveis.put("questao9", "questao9.fxml");
         this.TelasDisponiveis.put("questao10", "questao10.fxml");
+        this.TelasDisponiveis.put("questao11", "questao11.fxml");
         this.TelasDisponiveis.put("questao12", "questao12.fxml");
         this.TelasDisponiveis.put("questao13", "questao13.fxml");
         this.TelasDisponiveis.put("questao14", "questao14.fxml");

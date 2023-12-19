@@ -7,6 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 
+
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: white; -fx-border-color: #EE4141; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TelaPopupController">
    <children>
       <Text fx:id="errorText" layoutX="50.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="texto" textAlignment="CENTER" wrappingWidth="400.0">

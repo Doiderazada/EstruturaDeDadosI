@@ -165,10 +165,10 @@ public class Questao7Controller {
 
     private void showPopup(String texto) {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/telaPopup.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/telaPopupErro.fxml"));
             Parent root = loader.load();
 
-            TelaPopupController controller = loader.getController();
+            TelaPopupErroController controller = loader.getController();
             controller.initialize(texto);
             Popup popup = new Popup();
 
