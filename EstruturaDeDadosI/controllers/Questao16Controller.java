@@ -8,11 +8,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
@@ -30,7 +31,8 @@ public class Questao16Controller {
     @FXML private Label copyRight;
     @FXML private Label labelNumeroFinal;
     @FXML private Label labelNumeroInicial;
-    @FXML private HBox hBoxOutput;
+    @FXML private Pane paneTeste;
+    @FXML private ScrollPane sPaneOutput;
     @FXML private Text questao;
     @FXML private Text textDoWhile;
     @FXML private Text textEnunciado;
@@ -47,7 +49,7 @@ public class Questao16Controller {
         acaoDosBotoes();
         setStilo();
         exibirConteudo();
-        hBoxOutput.setVisible(false);
+        sPaneOutput.setVisible(false);
     }
 
 
@@ -88,7 +90,7 @@ public class Questao16Controller {
                     textRespostaWhile.setText(Questao16.contarWhile());
                     
 
-                    hBoxOutput.setVisible(true);
+                    sPaneOutput.setVisible(true);
 
                 }
             }
@@ -100,7 +102,7 @@ public class Questao16Controller {
 
             @Override
             public void handle(KeyEvent arg0) {
-                hBoxOutput.setVisible(false);
+                sPaneOutput.setVisible(false);
             }
             
         });
@@ -109,7 +111,7 @@ public class Questao16Controller {
 
             @Override
             public void handle(KeyEvent arg0) {
-                hBoxOutput.setVisible(false);
+                sPaneOutput.setVisible(false);
             }
             
         });
@@ -200,6 +202,7 @@ public class Questao16Controller {
             buttonHome.getStyleClass().setAll("btn-questao-DM");
             buttonConfirmar.getStyleClass().setAll("btn-questao-DM");
             telaQuestao16.setStyle("-fx-background-color: #282828");
+            paneTeste.setStyle("-fx-background-color: #282828");
 
             labelNumeroFinal.setTextFill(Paint.valueOf("WHITE"));
             labelNumeroInicial.setTextFill(Paint.valueOf("WHITE"));
@@ -219,6 +222,7 @@ public class Questao16Controller {
             buttonHome.getStyleClass().setAll("btn-questao");
             buttonConfirmar.getStyleClass().setAll("btn-questao");
             telaQuestao16.setStyle(null);
+            paneTeste.setStyle(null);
 
 
             labelNumeroFinal.setTextFill(Paint.valueOf("BLACK"));

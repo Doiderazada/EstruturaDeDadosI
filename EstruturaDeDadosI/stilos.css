@@ -4,7 +4,7 @@
     -fx-text-fill: white;
 }
 .btn-questao:hover{
-    -fx-background-color: rgb(255, 131, 131);
+    -fx-background-color: rgb(255, 105, 105);
     -fx-background-radius: 5px;
     -fx-text-fill: white;
 }
@@ -16,7 +16,7 @@
 
 
 .btn-questao-DM{
-    -fx-background-color: rgb(255, 100, 100);
+    -fx-background-color: rgb(255, 105, 105);
     -fx-background-radius: 5px;
     -fx-text-fill: white;
 }
@@ -139,4 +139,34 @@
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: 50px;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+
+.scroll-bar:vertical .decrement-button,
+.scroll-bar:vertical .increment-button {
+    -fx-background-color: transparent;
+}/*
+.scroll-bar:vertical .decrement-button .decrement-arrow,
+.scroll-bar:vertical .increment-button .increment-arrow {
+    -fx-background-color: red;
+}*/
+
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: red;
+    -fx-background-radius: 25px;
+}
+.scroll-bar:vertical .thumb:active, .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 25px;
 }

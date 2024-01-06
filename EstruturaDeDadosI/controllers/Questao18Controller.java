@@ -74,7 +74,7 @@ public class Questao18Controller {
                     String senha = tfSenha.getText();
                     System.out.println(senha);
                     if (Questao18.validarSenha(senha)) {
-                        showPopup("Senha correta!", true);
+                        showPopup("Senha correta! \nFim do programa", true);
                         App.trocarDeTela("telaQuestoes");
                         
                     } else showPopup("Senha incorreta, tente novamente", false);
@@ -87,7 +87,7 @@ public class Questao18Controller {
 
         Tooltip mensagemSubliminar = new Tooltip("senhaDeDoidera123");
         mensagemSubliminar.setShowDelay(Duration.millis(100));
-        mensagemSubliminar.setShowDuration(Duration.millis(500));
+        mensagemSubliminar.setShowDuration(Duration.millis(800));
         Tooltip.install(copyRight, mensagemSubliminar);
         
     }

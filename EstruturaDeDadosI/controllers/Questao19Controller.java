@@ -99,7 +99,7 @@ public class Questao19Controller {
     private boolean verificarInput() {
         
         if (tfNumero.getText().isEmpty()) {
-            showPopup("O campo vazio, tente novamente");
+            showPopup("O campo não pode ser vazio, tente novamente");
             return false;
         } else if (tfNumero.getText().matches("\\D")) {
             showPopup("O campo não pode conter letras");

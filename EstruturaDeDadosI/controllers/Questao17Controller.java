@@ -8,11 +8,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
@@ -23,66 +24,32 @@ import source.App;
 
 public class Questao17Controller {
 
-    @FXML
-    private Button buttonConfirmar;
-
-    @FXML
-    private Button buttonHome;
-
-    @FXML
-    private Button buttonVoltar;
-
-    @FXML
-    private Label copyRight;
-
-    @FXML
-    private HBox hBoxOutput;
-
-    @FXML
-    private Label labelNumeroFinal;
-
-    @FXML
-    private Label labelNumeroInicial;
-
-    @FXML
-    private Text questao;
-
-    @FXML
-    private BorderPane telaQuestao17;
-
-    @FXML
-    private Text textDoWhile;
-
-    @FXML
-    private Text textEnunciado;
-
-    @FXML
-    private Text textFor;
-
-    @FXML
-    private Text textRespostaDoWhile;
-
-    @FXML
-    private Text textRespostaFor;
-
-    @FXML
-    private Text textRespostaWhile;
-
-    @FXML
-    private Text textWhile;
-
-    @FXML
-    private TextField tfNumero1;
-
-    @FXML
-    private TextField tfNumero2;
+    @FXML private BorderPane telaQuestao17;
+    @FXML private Button buttonConfirmar;
+    @FXML private Button buttonHome;
+    @FXML private Button buttonVoltar;
+    @FXML private Label copyRight;
+    @FXML private Label labelNumeroFinal;
+    @FXML private Label labelNumeroInicial;
+    @FXML private Pane paneTeste;
+    @FXML private ScrollPane sPaneOutput;
+    @FXML private Text questao;
+    @FXML private Text textDoWhile;
+    @FXML private Text textEnunciado;
+    @FXML private Text textFor;
+    @FXML private Text textRespostaDoWhile;
+    @FXML private Text textRespostaFor;
+    @FXML private Text textRespostaWhile;
+    @FXML private Text textWhile;
+    @FXML private TextField tfNumero1;
+    @FXML private TextField tfNumero2;
 
 
     public void initialize() {
         acaoDosBotoes();
         setStilo();
         exibirConteudo();
-        hBoxOutput.setVisible(false);
+        sPaneOutput.setVisible(false);
     }
 
 
@@ -122,7 +89,7 @@ public class Questao17Controller {
                     textRespostaDoWhile.setText(Questao17.contarDoWhile());
                     textRespostaWhile.setText(Questao17.contarWhile());
 
-                    hBoxOutput.setVisible(true);
+                    sPaneOutput.setVisible(true);
 
                 }
             }
@@ -134,7 +101,7 @@ public class Questao17Controller {
 
             @Override
             public void handle(KeyEvent arg0) {
-                hBoxOutput.setVisible(false);
+                sPaneOutput.setVisible(false);
             }
             
         });
@@ -143,7 +110,7 @@ public class Questao17Controller {
 
             @Override
             public void handle(KeyEvent arg0) {
-                hBoxOutput.setVisible(false);
+                sPaneOutput.setVisible(false);
             }
             
         });
@@ -234,6 +201,7 @@ public class Questao17Controller {
             buttonHome.getStyleClass().setAll("btn-questao-DM");
             buttonConfirmar.getStyleClass().setAll("btn-questao-DM");
             telaQuestao17.setStyle("-fx-background-color: #282828");
+            paneTeste.setStyle("-fx-background-color: #282828");
 
             labelNumeroFinal.setTextFill(Paint.valueOf("WHITE"));
             labelNumeroInicial.setTextFill(Paint.valueOf("WHITE"));
@@ -253,6 +221,7 @@ public class Questao17Controller {
             buttonHome.getStyleClass().setAll("btn-questao");
             buttonConfirmar.getStyleClass().setAll("btn-questao");
             telaQuestao17.setStyle(null);
+            paneTeste.setStyle(null);
 
 
             labelNumeroFinal.setTextFill(Paint.valueOf("BLACK"));
