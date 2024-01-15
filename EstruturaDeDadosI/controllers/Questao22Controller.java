@@ -1,0 +1,223 @@
+package controllers;
+
+import javafx.animation.PauseTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
+import javafx.stage.Popup;
+import javafx.util.Duration;
+import questoes.EnunciadoDasQuestoes;
+import questoes.Questao22;
+import source.App;
+
+public class Questao22Controller {
+    
+    @FXML private Button buttonConfirmar;
+    @FXML private Button buttonHome;
+    @FXML private Button buttonNovamente;
+    @FXML private Button buttonVoltar;
+    @FXML private Label copyRight;
+    @FXML private Label labelNumFin;
+    @FXML private Label labelNumIni;
+    @FXML private Text questao;
+    @FXML private BorderPane telaQuestao22;
+    @FXML private Text textEnunciado;
+    @FXML private Text textResposta;
+    @FXML private TextField tfNumFin;
+    @FXML private TextField tfNumIni;
+    @FXML private VBox vBoxInput;
+    @FXML private VBox vBoxOutput;
+
+    public void initialize() {
+        acaoDosBotoes();
+        setStilo();
+        exibirConteudo();
+
+        vBoxOutput.setVisible(false);
+    }
+
+    private void acaoDosBotoes() {
+
+        buttonVoltar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("telaQuestoes");
+            }
+            
+        });
+        
+        buttonHome.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent arg0) {
+                App.trocarDeTela("telaInicial");
+            }
+            
+        });
+
+
+        buttonConfirmar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent arg0) {
+                if (verificarInput()) {
+                    int numIni = Integer.parseInt(tfNumIni.getText());
+                    int numFin = Integer.parseInt(tfNumFin.getText());
+
+                    int soma = Questao22.fazerSomatorio(numIni, numFin);
+
+                    textResposta.setText("O resultado do somatório dos números percententes " + 
+                    "ao intervalo de " + numIni + " a " + numFin + " é: " + soma);
+                    
+                    vBoxInput.setVisible(false);
+                    vBoxOutput.setVisible(true);
+
+                }
+            }
+            
+        });
+
+        buttonNovamente.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent arg0) {
+                tfNumIni.clear();
+                tfNumFin.clear();
+                vBoxOutput.setVisible(false);
+                vBoxInput.setVisible(true);
+            }
+            
+        });
+
+        
+    }
+
+
+    private boolean verificarInput() {
+        
+        if (tfNumIni.getText().isEmpty()) {
+            showPopup("O campo não pode ser vazio, tente novamente");
+            return false;
+        } else if (tfNumIni.getText().matches("\\D")) {
+            showPopup("O campo não pode conter letras");
+            return false;
+        } 
+        
+        if (tfNumFin.getText().isEmpty()) {
+            showPopup("O campo não pode ser vazio, tente novamente");
+            return false;
+        } else if (tfNumFin.getText().matches("\\D")) {
+            showPopup("O campo não pode conter letras");
+            return false;
+        } 
+        
+
+        return true;
+    }
+
+
+
+
+
+    private void showPopup(String texto) {
+        try{
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/telaPopupErro.fxml"));
+            Parent root = loader.load();
+            
+            TelaPopupErroController controller = loader.getController();
+            controller.initialize(texto);
+            
+            
+            Popup popup = new Popup();
+
+            popup.getContent().add(root);
+            popup.setAutoHide(true);
+            popup.setHideOnEscape(true);
+            
+            double winX = buttonHome.getScene().getWindow().getX();
+            double winY = buttonHome.getScene().getWindow().getY();
+            double halfX = buttonHome.getScene().getWindow().getWidth()/2;
+            double halfY = buttonHome.getScene().getWindow().getHeight()/2;
+
+            double newX = (winX + halfX) - (popup.getWidth()/2);
+            double newY = (winY + halfY) - (popup.getHeight()/2);
+
+            popup.setX(newX);
+            popup.setY(newY);
+            
+            
+            popup.show(buttonHome.getScene().getWindow());
+
+            
+
+            PauseTransition closeDelay = new PauseTransition(Duration.seconds(3));
+            closeDelay.setOnFinished(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent arg0) {
+                    popup.hide();
+                }
+            });
+            closeDelay.play();
+
+            
+        }catch(Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+    private void exibirConteudo() { 
+        questao.setText(questao.getText() + "\t");
+        textEnunciado.setText(EnunciadoDasQuestoes.questao21.substring(3));
+    }
+
+
+    
+    private void setStilo() {
+        if (App.darkMode) {
+            buttonVoltar.getStyleClass().setAll("btn-voltar-DM");
+            buttonHome.getStyleClass().setAll("btn-questao-DM");
+            buttonConfirmar.getStyleClass().setAll("btn-questao-DM");
+            buttonNovamente.getStyleClass().setAll("btn-questao-DM");
+            telaQuestao22.setStyle("-fx-background-color: #282828");
+            
+            labelNumIni.setTextFill(Paint.valueOf("WHITE"));
+            labelNumFin.setTextFill(Paint.valueOf("WHITE"));
+
+            questao.setFill(Paint.valueOf("WHITE"));
+            textEnunciado.setFill(Paint.valueOf("WHITE"));
+            textResposta.setFill(Paint.valueOf("WHITE"));
+            
+        } else {
+            buttonVoltar.getStyleClass().setAll("btn-voltar");
+            buttonHome.getStyleClass().setAll("btn-questao");
+            buttonConfirmar.getStyleClass().setAll("btn-questao");
+            buttonNovamente.getStyleClass().setAll("btn-questao");
+            telaQuestao22.setStyle(null);
+
+            labelNumIni.setTextFill(Paint.valueOf("BLACK"));
+            labelNumFin.setTextFill(Paint.valueOf("BLACK"));
+
+            questao.setFill(Paint.valueOf("BLACK"));
+            textEnunciado.setFill(Paint.valueOf("BLACK"));
+            textResposta.setFill(Paint.valueOf("BLACK"));
+        }
+    }
+}
