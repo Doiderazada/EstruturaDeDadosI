@@ -14,7 +14,6 @@
     -fx-text-fill: white;
 }
 
-
 .btn-questao-DM{
     -fx-background-color: rgb(255, 105, 105);
     -fx-background-radius: 5px;
@@ -26,6 +25,180 @@
     -fx-text-fill: white;
 }
 .btn-questao-DM:disabled{
+    -fx-background-color: rgba(255, 116, 116, 0.5);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+
+
+.btn-factor{
+    -fx-background-image: url("VisualElements/fatorial-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-factor:hover{
+    -fx-background-image: url("VisualElements/fatorial-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-factor:disabled{
+    -fx-background-image: url("VisualElements/fatorial-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgba(253, 0, 0, 0.5);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+.btn-factor-DM{
+    -fx-background-image: url("VisualElements/fatorial-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-factor-DM:hover{
+    -fx-background-image: url("VisualElements/fatorial-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-factor-DM:disabled{
+    -fx-background-image: url("VisualElements/fatorial-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgba(255, 116, 116, 0.5);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+
+
+.btn-power{
+    -fx-background-image: url("VisualElements/potencia-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-power:hover{
+    -fx-background-image: url("VisualElements/potencia-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-power:disabled{
+    -fx-background-image: url("VisualElements/potencia-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgba(253, 0, 0, 0.5);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+.btn-power-DM{
+    -fx-background-image: url("VisualElements/potencia-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-power-DM:hover{
+    -fx-background-image: url("VisualElements/potencia-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-power-DM:disabled{
+    -fx-background-image: url("VisualElements/potencia-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgba(255, 116, 116, 0.5);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+
+
+.btn-root{
+    -fx-background-image: url("VisualElements/raiz-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-root:hover{
+    -fx-background-image: url("VisualElements/raiz-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-root:disabled{
+    -fx-background-image: url("VisualElements/raiz-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgba(253, 0, 0, 0.5);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+.btn-root-DM{
+    -fx-background-image: url("VisualElements/raiz-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-root-DM:hover{
+    -fx-background-image: url("VisualElements/raiz-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-root-DM:disabled{
+    -fx-background-image: url("VisualElements/raiz-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
     -fx-background-color: rgba(255, 116, 116, 0.5);
     -fx-background-radius: 5px;
     -fx-text-fill: white;
@@ -152,6 +325,10 @@
 }
 
 
+.scroll-bar:horizontal .decrement-button,
+.scroll-bar:horizontal .increment-button {
+    -fx-background-color: transparent;
+}
 .scroll-bar:vertical .decrement-button,
 .scroll-bar:vertical .increment-button {
     -fx-background-color: transparent;
@@ -162,6 +339,14 @@
 }*/
 
 
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: red;
+    -fx-background-radius: 25px;
+}
+.scroll-bar:horizontal .thumb:active, .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 25px;
+}
 .scroll-bar:vertical .thumb {
     -fx-background-color: red;
     -fx-background-radius: 25px;
