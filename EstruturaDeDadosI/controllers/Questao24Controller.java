@@ -9,8 +9,12 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
@@ -32,6 +36,7 @@ public class Questao24Controller {
     @FXML private Button buttonPotencia;
     @FXML private Button buttonRaiz;
     @FXML private Button buttonVoltar;
+    @FXML private HBox hBoxParent;
     @FXML private Label copyRight;
     @FXML private Label labelBase;
     @FXML private Label labelExpoente;
@@ -50,6 +55,10 @@ public class Questao24Controller {
     @FXML private VBox vBoxRaiz;
 
 
+    private int resultadoFatorial;
+    private double resultadoPotencia;
+    private double resultadoRaiz;
+    private boolean fatorial = false, potencia = false, raiz = false;
 
     public void initialize() {
         acaoDosBotoes();
@@ -64,11 +73,7 @@ public class Questao24Controller {
 
 
     private void estadoInicial() {
-        vBoxFatorial.setVisible(false);
-        vBoxPotencia.setVisible(false);
-        vBoxRaiz.setVisible(false);
-
-        textResposta.setVisible(false);
+        hBoxParent.getChildren().removeAll(vBoxFatorial, vBoxPotencia, vBoxRaiz, textResposta);
 
         tfBase.clear();
         tfExpoente.clear();
@@ -105,7 +110,7 @@ public class Questao24Controller {
             @Override
             public void handle(MouseEvent arg0) {
                 estadoInicial();
-                vBoxFatorial.setVisible(true);
+                hBoxParent.getChildren().add(vBoxFatorial);
             }
             
         });
@@ -114,7 +119,7 @@ public class Questao24Controller {
             @Override
             public void handle(MouseEvent arg0) {
                 estadoInicial();
-                vBoxPotencia.setVisible(true);
+                hBoxParent.getChildren().add(vBoxPotencia);
             }
             
         });
@@ -123,7 +128,7 @@ public class Questao24Controller {
             @Override
             public void handle(MouseEvent arg0) {
                 estadoInicial();
-                vBoxRaiz.setVisible(true);
+                hBoxParent.getChildren().add(vBoxRaiz);
             }
             
         });
@@ -135,10 +140,13 @@ public class Questao24Controller {
             public void handle(MouseEvent arg0) {
                 if (verificarFator()) {
                     int fator = Integer.parseInt(tfFatorial.getText());
-                    int resultado = Questao24.calcFactor(fator);
+                    resultadoFatorial = Questao24.calcFactor(fator);
 
-                    textResposta.setText("O resultado é: " + resultado);
-                    textResposta.setVisible(true);
+                    textResposta.setText("O resultado é: " + resultadoFatorial);
+                    fatorial = true; potencia = false; raiz = false;
+
+                    hBoxParent.getChildren().remove(vBoxFatorial);
+                    hBoxParent.getChildren().add(textResposta);
                 }
             }
             
@@ -150,10 +158,13 @@ public class Questao24Controller {
                 if (verificarPotencia()) {
                     int base = Integer.parseInt(tfBase.getText());
                     int expoente = Integer.parseInt(tfExpoente.getText());
-                    double resultado = Questao24.calcPower(base, expoente);
+                    resultadoPotencia = Questao24.calcPower(base, expoente);
 
-                    textResposta.setText("O resultado é: " + resultado);
-                    textResposta.setVisible(true);
+                    textResposta.setText("O resultado é: " + resultadoPotencia);
+                    fatorial = false; potencia = true; raiz = false;
+                    
+                    hBoxParent.getChildren().remove(vBoxPotencia);
+                    hBoxParent.getChildren().add(textResposta);
                 }
             }
             
@@ -164,13 +175,59 @@ public class Questao24Controller {
             public void handle(MouseEvent arg0) {
                 if (verificarRaiz()) {
                     int radical = Integer.parseInt(tfRaiz.getText());
-                    double resultado = Questao24.calcRoot(radical);
+                    resultadoRaiz = Questao24.calcRoot(radical);
 
-                    textResposta.setText("O resultado é: " + resultado);
-                    textResposta.setVisible(true);
+                    textResposta.setText("O resultado é: " + resultadoRaiz);
+                    fatorial = false; potencia = false; raiz = true;
+                    
+                    hBoxParent.getChildren().remove(vBoxRaiz);
+                    hBoxParent.getChildren().add(textResposta);
                 }
             }
             
+        });
+
+
+
+        Tooltip texto = new Tooltip("Texto copiado com sucesso");
+        
+
+        textResposta.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                
+                Tooltip.install(textResposta, texto);
+                
+                Clipboard clipboard = Clipboard.getSystemClipboard();
+                ClipboardContent content = new ClipboardContent();
+
+                if (fatorial) {
+                    content.putString(String.valueOf(resultadoFatorial));
+                    clipboard.setContent(content);
+                }
+                if (potencia) {
+                    content.putString(String.valueOf(resultadoPotencia));
+                    clipboard.setContent(content);
+                }
+                if (raiz) {
+                    content.putString(String.valueOf(resultadoRaiz));
+                    clipboard.setContent(content);
+                }
+                
+
+                texto.setAutoHide(true);
+                texto.fireEvent(arg0);
+                texto.centerOnScreen();
+
+                texto.show(telaQuestao24.getScene().getWindow());
+            }
+        });
+        textResposta.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent arg0) {
+                texto.hide();
+                Tooltip.uninstall(textResposta, texto);
+            }
         });
         
     }

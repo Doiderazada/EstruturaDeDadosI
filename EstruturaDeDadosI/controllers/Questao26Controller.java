@@ -10,9 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
@@ -20,46 +20,46 @@ import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.util.Duration;
 import questoes.EnunciadoDasQuestoes;
-import questoes.Questao25;
+import questoes.Questao26;
 import source.App;
 
-public class Questao25Controller {
+public class Questao26Controller {
 
-    
-    @FXML private BorderPane telaQuestao25;
-    @FXML private Button buttonConfirmCreate;
-    @FXML private Button buttonConfirmEdit;
+
+    @FXML private BorderPane telaQuestao26;
+    @FXML private Button buttonVoltar;
+    @FXML private Button buttonHome;
     @FXML private Button buttonCriar;
     @FXML private Button buttonEditar;
-    @FXML private Button buttonHome;
-    @FXML private Button buttonQuestao27;
-    @FXML private Button buttonQuestao28;
-    @FXML private Button buttonQuestao29;
     @FXML private Button buttonVisualizar;
-    @FXML private Button buttonVoltar;
+    @FXML private Button buttonConfirmCreate;
+    @FXML private Button buttonConfirmEdit;
+    @FXML private HBox hBoxMatriz;
     @FXML private Label copyRight;
-    @FXML private Label labelPosicao;
+    @FXML private Label labelMatriz;
+    @FXML private Label labelLinhaCreate;
+    @FXML private Label labelColunaCreate;
+    @FXML private Label labelLinhaEdit;
+    @FXML private Label labelColunaEdit;
     @FXML private Label labelValor;
-    @FXML private Label labelVetor;
     @FXML private Pane paneView;
     @FXML private ScrollPane sPaneView;
     @FXML private Text questao;
     @FXML private Text textEnunciado;
     @FXML private Text textResposta;
-    @FXML private Text textView;
-    @FXML private TextField tfPosicao;
+    @FXML private TextField tfLinhaCreate;
+    @FXML private TextField tfColunaCreate;
+    @FXML private TextField tfMatriz;
+    @FXML private TextField tfLinhaEdit;
+    @FXML private TextField tfColunaEdit;
     @FXML private TextField tfValor;
-    @FXML private TextField tfVetor;
-    @FXML private VBox vBoxButtons;
     @FXML private VBox vBoxCreate;
     @FXML private VBox vBoxEdit;
+    @FXML private VBox vBoxMatriz;
 
-    private int cont;
-    private int tamanho;
-    private Questao25 vetor;
-    public static boolean questao27, questao28, questao29;
-
-    
+    private int cont, contL, contC;
+    private int linhas, colunas;
+    private Questao26 matriz;
 
     public void initialize() {
         acaoDosBotoes();
@@ -67,24 +67,23 @@ public class Questao25Controller {
         exibirConteudo();
         estadoInicial();
 
-
         cont = -1;
+        contL = 0;
+        contC = 0;
     }
 
 
     private void estadoInicial(){
 
-        labelVetor.setText("Tamanho do vetor");
         
         buttonEditar.setDisable(true);
         buttonVisualizar.setDisable(true);
-        vBoxButtons.getChildren().removeAll(buttonQuestao27, buttonQuestao28, buttonQuestao29);
 
         vBoxCreate.setVisible(false);
+        vBoxCreate.getChildren().removeAll(vBoxMatriz);
+
         vBoxEdit.setVisible(false);
         sPaneView.setVisible(false);
-
-        textResposta.setVisible(false);
     }
 
 
@@ -108,6 +107,7 @@ public class Questao25Controller {
             
         });
 
+
         buttonCriar.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
@@ -120,10 +120,8 @@ public class Questao25Controller {
 
             @Override
             public void handle(MouseEvent arg0) {
-                if (textResposta.isVisible()) textResposta.setVisible(false);
                 if (sPaneView.isVisible()) sPaneView.setVisible(false);
 
-                textResposta.setVisible(false);
                 vBoxEdit.setVisible(true);
             }
             
@@ -132,15 +130,14 @@ public class Questao25Controller {
 
             @Override
             public void handle(MouseEvent arg0) {
-                if (textResposta.isVisible()) textResposta.setVisible(false);
+                if (sPaneView.isVisible()) sPaneView.setVisible(false);;
                 if (vBoxEdit.isVisible()) vBoxEdit.setVisible(false);
 
-                textView.setText(vetor.exibirVetor());
+                textResposta.setText(matriz.exibirMatriz());
                 sPaneView.setVisible(true);
             }
             
         });
-
 
 
         buttonConfirmCreate.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -149,41 +146,46 @@ public class Questao25Controller {
             public void handle(MouseEvent arg0) {
                 if (cont == -1) {
                     if (validarCreate()) {
-                        tamanho = Integer.parseInt(tfVetor.getText());
-                        vetor = new Questao25(tamanho);
+                        linhas = Integer.parseInt(tfLinhaCreate.getText());
+                        colunas = Integer.parseInt(tfColunaCreate.getText());
+                        matriz = new Questao26(linhas, colunas);
                     }
 
                     cont++;
 
-                    labelVetor.setText((cont+1) + "º elemento do vetor");
-                    tfVetor.clear();
+                    vBoxCreate.getChildren().removeAll(hBoxMatriz, buttonConfirmCreate);
+                    vBoxCreate.getChildren().addAll(vBoxMatriz, buttonConfirmCreate);
+                    labelMatriz.setText((cont+1) + "º elemento da matriz");
+                    tfMatriz.clear();
                     buttonConfirmCreate.setText("Próximo");
                 } else {
-                    int valor = Integer.parseInt(tfVetor.getText());
-                    vetor.setValor(cont, valor);
-
+                    int valor = Integer.parseInt(tfMatriz.getText());
+                    matriz.setValor(contL, contC, valor);
+                    
+                    contC++;
+                    if (contC == colunas) {
+                        contC = 0;
+                        contL++;
+                    }
                     cont++;
 
-                    labelVetor.setText((cont+1) + "º elemento do vetor");
-                    tfVetor.clear();
+                    labelMatriz.setText((cont+1) + "º elemento do matriz");
+                    tfMatriz.clear();
                 }
 
-                if (cont+1 == tamanho) {
+                if (cont+1 == linhas*colunas) {
                     buttonConfirmCreate.setText("Concluir");
                 }
 
-                if (cont == tamanho) {
+                if (cont == linhas*colunas) {
                     vBoxCreate.setVisible(false);
-                    textResposta.setText("Vetor criado e preenchido com sucesso!");
-                    textResposta.setVisible(true);
                     buttonCriar.setDisable(true);
 
                     buttonEditar.setDisable(false);
                     buttonVisualizar.setDisable(false);
 
-                    if (questao27) vBoxButtons.getChildren().add(buttonQuestao27);
-                    if (questao28) vBoxButtons.getChildren().add(buttonQuestao28);
-                    if (questao29) vBoxButtons.getChildren().add(buttonQuestao29);
+                    textResposta.setText("Matriz criada e preenchida com sucesso!");
+                    sPaneView.setVisible(true);
                 }
             }
             
@@ -193,57 +195,23 @@ public class Questao25Controller {
             @Override
             public void handle(MouseEvent arg0) {
                 if (validarEdit()) {
-                    int posicao = Integer.parseInt(tfPosicao.getText());
+                    int linEdit = Integer.parseInt(tfLinhaEdit.getText());
+                    int colEdit = Integer.parseInt(tfColunaEdit.getText());
                     int valor = Integer.parseInt(tfValor.getText());
 
-                    vetor.setValor(posicao, valor);
+                    matriz.setValor(linEdit, colEdit, valor);
 
                     vBoxEdit.setVisible(false);
-                    tfPosicao.clear();
+                    tfLinhaEdit.clear();
+                    tfColunaEdit.clear();
                     tfValor.clear();
-                    textResposta.setText("Vetor editado com sucesso!");
-                    textResposta.setVisible(true);
+                    
+                    textResposta.setText("Matriz editado com sucesso!");
+                    sPaneView.setVisible(true);
                 }
             }
             
         });
-
-
-        buttonQuestao27.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                irQuestao27();
-            }
-
-            
-        });
-        buttonQuestao28.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                irQuestao28();
-            }
-
-        });
-        buttonQuestao29.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                irQuestao29();
-            }
-
-        });
-
-        Tooltip mensagem = new Tooltip("Você ainda vai voltar nessa questão...");
-        
-        if (questao27 || questao28 || questao29) {
-            mensagem.setText("Eu avisei.");
-        }
-        mensagem.setShowDelay(Duration.millis(200));
-        mensagem.setShowDuration(Duration.millis(800));
-        mensagem.setAutoHide(true);
-        copyRight.setTooltip(mensagem);
     }
 
     
@@ -253,16 +221,29 @@ public class Questao25Controller {
 
     private boolean validarCreate() {
         
-        if (tfVetor.getText().isEmpty()) {
+        if (tfLinhaCreate.getText().isEmpty()) {
             showPopup("O campo não pode ser vazio, tente novamente");
             return false;
-        } else if (tfVetor.getText().matches("\\D")) {
+        } else if (tfLinhaCreate.getText().matches("\\D")) {
             showPopup("O campo não pode conter letras");
             return false;
-        } else if (tfVetor.getText().matches("[0-9]+")) {
-            int num =  Integer.parseInt(tfVetor.getText());
+        } else if (tfLinhaCreate.getText().matches("[0-9]+")) {
+            int num =  Integer.parseInt(tfColunaCreate.getText());
             if (num < 1 ) {
-                showPopup("O vetor não pode ter tamanho menor que 1");
+                showPopup("A matriz não pode ter tamanho menor que 1");
+                return false;
+            }
+        }
+        if (tfColunaCreate.getText().isEmpty()) {
+            showPopup("O campo não pode ser vazio, tente novamente");
+            return false;
+        } else if (tfColunaCreate.getText().matches("\\D")) {
+            showPopup("O campo não pode conter letras");
+            return false;
+        } else if (tfColunaCreate.getText().matches("[0-9]+")) {
+            int num =  Integer.parseInt(tfColunaCreate.getText());
+            if (num < 1 ) {
+                showPopup("A matriz não pode ter tamanho menor que 1");
                 return false;
             }
         }
@@ -272,16 +253,29 @@ public class Questao25Controller {
     
     private boolean validarEdit() {
         
-        if (tfPosicao.getText().isEmpty()) {
+        if (tfLinhaEdit.getText().isEmpty()) {
             showPopup("O campo não pode ser vazio, tente novamente");
             return false;
-        } else if (tfPosicao.getText().matches("\\D")) {
+        } else if (tfLinhaEdit.getText().matches("\\D")) {
             showPopup("O campo não pode conter letras");
             return false;
-        } else if (tfPosicao.getText().matches("[0-9]+")) {
-            int num =  Integer.parseInt(tfPosicao.getText());
-            if (num < 0 || num > tamanho-1) {
-                showPopup("O valor não é um número válido para a posição");
+        } else if (tfLinhaEdit.getText().matches("[0-9]+")) {
+            int num =  Integer.parseInt(tfLinhaEdit.getText());
+            if (num < 0 || num > linhas-1) {
+                showPopup("O valor não é um número válido para a linha");
+                return false;
+            }
+        }
+        if (tfColunaEdit.getText().isEmpty()) {
+            showPopup("O campo não pode ser vazio, tente novamente");
+            return false;
+        } else if (tfColunaEdit.getText().matches("\\D")) {
+            showPopup("O campo não pode conter letras");
+            return false;
+        } else if (tfColunaEdit.getText().matches("[0-9]+")) {
+            int num =  Integer.parseInt(tfColunaEdit.getText());
+            if (num < 0 || num > colunas-1) {
+                showPopup("O valor não é um número válido para a coluna");
                 return false;
             }
         }
@@ -350,29 +344,9 @@ public class Questao25Controller {
 
 
 
-    private void irQuestao27() {
-        Questao27Controller.questao25 = true;
-        Questao27Controller.vetorQ25 = vetor;
-        App.trocarDeTela("questao27");
-    }
-
-    private void irQuestao28() {
-        Questao28Controller.questao25 = true;
-        Questao28Controller.vetorQ25 = vetor;
-        App.trocarDeTela("questao28");
-    }
-    
-    private void irQuestao29() {
-        Questao29Controller.questao25 = true;
-        Questao29Controller.vetorQ25 = vetor;
-        App.trocarDeTela("questao29");
-    }
-
-
-
     private void exibirConteudo() { 
         questao.setText(questao.getText() + "\t");
-        textEnunciado.setText(EnunciadoDasQuestoes.questao25.substring(3));
+        textEnunciado.setText(EnunciadoDasQuestoes.questao26.substring(3));
     }
 
 
@@ -386,20 +360,19 @@ public class Questao25Controller {
             buttonVisualizar.getStyleClass().setAll("btn-questao-DM");
             buttonConfirmCreate.getStyleClass().setAll("btn-questao-DM");
             buttonConfirmEdit.getStyleClass().setAll("btn-questao-DM");
-            buttonQuestao27.getStyleClass().setAll("btn-questao-DM");
-            buttonQuestao28.getStyleClass().setAll("btn-questao-DM");
-            buttonQuestao29.getStyleClass().setAll("btn-questao-DM");
-            telaQuestao25.setStyle("-fx-background-color: #282828");
+            telaQuestao26.setStyle("-fx-background-color: #282828");
             paneView.setStyle("-fx-background-color: #282828");
 
-            labelPosicao.setTextFill(Paint.valueOf("WHITE"));
+            labelColunaCreate.setTextFill(Paint.valueOf("WHITE"));
+            labelColunaEdit.setTextFill(Paint.valueOf("WHITE"));
+            labelLinhaCreate.setTextFill(Paint.valueOf("WHITE"));
+            labelLinhaEdit.setTextFill(Paint.valueOf("WHITE"));
             labelValor.setTextFill(Paint.valueOf("WHITE"));
-            labelVetor.setTextFill(Paint.valueOf("WHITE"));
+            labelMatriz.setTextFill(Paint.valueOf("WHITE"));
             
             questao.setFill(Paint.valueOf("WHITE"));
             textEnunciado.setFill(Paint.valueOf("WHITE"));
             textResposta.setFill(Paint.valueOf("WHITE"));
-            textView.setFill(Paint.valueOf("WHITE"));
             
         } else {
             buttonVoltar.getStyleClass().setAll("btn-voltar");
@@ -409,20 +382,19 @@ public class Questao25Controller {
             buttonVisualizar.getStyleClass().setAll("btn-questao");
             buttonConfirmCreate.getStyleClass().setAll("btn-questao");
             buttonConfirmEdit.getStyleClass().setAll("btn-questao");
-            buttonQuestao27.getStyleClass().setAll("btn-questao");
-            buttonQuestao28.getStyleClass().setAll("btn-questao");
-            buttonQuestao29.getStyleClass().setAll("btn-questao");
-            telaQuestao25.setStyle(null);
+            telaQuestao26.setStyle(null);
             paneView.setStyle(null);
 
-            labelPosicao.setTextFill(Paint.valueOf("BLACK"));
+            labelColunaCreate.setTextFill(Paint.valueOf("BLACK"));
+            labelColunaEdit.setTextFill(Paint.valueOf("BLACK"));
+            labelLinhaCreate.setTextFill(Paint.valueOf("BLACK"));
+            labelLinhaEdit.setTextFill(Paint.valueOf("BLACK"));
             labelValor.setTextFill(Paint.valueOf("BLACK"));
-            labelVetor.setTextFill(Paint.valueOf("BLACK"));
+            labelMatriz.setTextFill(Paint.valueOf("BLACK"));
             
             questao.setFill(Paint.valueOf("BLACK"));
             textEnunciado.setFill(Paint.valueOf("BLACK"));
             textResposta.setFill(Paint.valueOf("BLACK"));
-            textView.setFill(Paint.valueOf("BLACK"));
         }
     }
 }

@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<BorderPane fx:id="telaQuestao24" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Questao24Controller">
+<BorderPane fx:id="telaQuestao30" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Questao30Controller">
    <top>
       <AnchorPane prefHeight="150.0" prefWidth="1200.0" style="-fx-background-color: #F23C13; -fx-border-radius: 5;" BorderPane.alignment="CENTER">
          <children>
@@ -54,7 +55,7 @@
                      <children>
                         <TextFlow lineSpacing="5.0" textAlignment="JUSTIFY">
                            <children>
-                              <Text fx:id="questao" strokeType="OUTSIDE" strokeWidth="0.0" text="Questão 24.">
+                              <Text fx:id="questao" strokeType="OUTSIDE" strokeWidth="0.0" text="Questão 30.">
                                  <font>
                                     <Font name="System Bold" size="25.0" />
                                  </font>
@@ -68,21 +69,21 @@
                         </TextFlow>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" spacing="250.0">
+                  <HBox spacing="200.0">
                      <children>
-                        <VBox fx:id="vBoxButtons" alignment="TOP_CENTER" spacing="25.0">
+                        <VBox spacing="20.0">
                            <children>
-                              <Button fx:id="buttonPotencia" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" stylesheets="@../stilos.css">
+                              <Button fx:id="buttonCriarFrase" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Criar frase">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="buttonRaiz" alignment="CENTER" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" stylesheets="@../stilos.css">
+                              <Button fx:id="buttonNovaFrase" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Nova frase">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="buttonFatorial" alignment="CENTER" layoutX="10.0" layoutY="75.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" stylesheets="@../stilos.css">
+                              <Button fx:id="buttonVisualizar" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Visualizar">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -91,82 +92,57 @@
                         </VBox>
                         <HBox fx:id="hBoxParent" alignment="CENTER" spacing="30.0">
                            <children>
-                              <VBox fx:id="vBoxFatorial" alignment="CENTER" minWidth="-Infinity" spacing="20.0">
+                              <VBox fx:id="vBoxCreate" alignment="CENTER" spacing="25.0">
                                  <children>
-                                    <VBox spacing="5.0">
+                                    <VBox minWidth="-Infinity" prefWidth="160.0">
                                        <children>
-                                          <Label fx:id="labelFatorial" text="Fator">
+                                          <Label fx:id="labelCreate" text="Digite a frase desejada">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="tfFatorial" prefHeight="30.0" prefWidth="120.0" />
+                                          <TextField fx:id="tfCreate" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="80.0" />
                                        </children>
                                     </VBox>
-                                    <Button fx:id="buttonCalcFatorial" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Calcular">
+                                    <Button fx:id="buttonConfirmCreate" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Confirmar">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Button>
                                  </children>
                               </VBox>
-                              <VBox fx:id="vBoxRaiz" alignment="CENTER" minWidth="-Infinity" spacing="20.0">
+                              <VBox fx:id="vBoxEdit" alignment="CENTER" spacing="25.0">
                                  <children>
-                                    <VBox spacing="5.0">
+                                    <VBox minWidth="-Infinity" prefWidth="160.0">
                                        <children>
-                                          <Label fx:id="labelRaiz" text="Base">
+                                          <Label fx:id="labelEdit" text="Edite sua frase">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="tfRaiz" prefHeight="30.0" prefWidth="120.0" />
+                                          <TextField fx:id="tfEdit" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="80.0" />
                                        </children>
                                     </VBox>
-                                    <Button fx:id="buttonCalcRaiz" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Calcular">
+                                    <Button fx:id="buttonConfirmEdit" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Confirmar">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Button>
                                  </children>
                               </VBox>
-                              <VBox fx:id="vBoxPotencia" alignment="CENTER" minWidth="-Infinity" prefWidth="250.0" spacing="20.0">
-                                 <children>
-                                    <HBox spacing="15.0">
+                              <ScrollPane fx:id="sPaneView" fitToHeight="true" fitToWidth="true" stylesheets="@../stilos.css">
+                                 <content>
+                                    <Pane fx:id="paneView" stylesheets="@../stilos.css">
                                        <children>
-                                          <VBox spacing="5.0">
-                                             <children>
-                                                <Label fx:id="labelBase" text="Base">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                </Label>
-                                                <TextField fx:id="tfBase" prefHeight="30.0" prefWidth="120.0" />
-                                             </children>
-                                          </VBox>
-                                          <VBox spacing="5.0">
-                                             <children>
-                                                <Label fx:id="labelExpoente" text="Expoente">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                </Label>
-                                                <TextField fx:id="tfExpoente" prefHeight="30.0" prefWidth="120.0" />
-                                             </children>
-                                          </VBox>
+                                          <Text fx:id="textResposta" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto resposta">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Text>
                                        </children>
-                                    </HBox>
-                                    <Button fx:id="buttonCalcPotencia" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Calcular">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </VBox>
-                              <Text fx:id="textResposta" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto resposta">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Text>
+                                    </Pane>
+                                 </content>
+                              </ScrollPane>
                            </children>
                         </HBox>
                      </children>

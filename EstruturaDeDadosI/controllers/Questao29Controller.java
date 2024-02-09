@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -21,70 +20,59 @@ import javafx.stage.Popup;
 import javafx.util.Duration;
 import questoes.EnunciadoDasQuestoes;
 import questoes.Questao25;
+import questoes.Questao29;
 import source.App;
 
-public class Questao25Controller {
+public class Questao29Controller {
 
-    
-    @FXML private BorderPane telaQuestao25;
-    @FXML private Button buttonConfirmCreate;
+
+    @FXML private BorderPane telaQuestao29;
     @FXML private Button buttonConfirmEdit;
     @FXML private Button buttonCriar;
     @FXML private Button buttonEditar;
     @FXML private Button buttonHome;
-    @FXML private Button buttonQuestao27;
-    @FXML private Button buttonQuestao28;
-    @FXML private Button buttonQuestao29;
     @FXML private Button buttonVisualizar;
     @FXML private Button buttonVoltar;
     @FXML private Label copyRight;
     @FXML private Label labelPosicao;
     @FXML private Label labelValor;
-    @FXML private Label labelVetor;
     @FXML private Pane paneView;
     @FXML private ScrollPane sPaneView;
     @FXML private Text questao;
     @FXML private Text textEnunciado;
     @FXML private Text textResposta;
-    @FXML private Text textView;
     @FXML private TextField tfPosicao;
     @FXML private TextField tfValor;
-    @FXML private TextField tfVetor;
-    @FXML private VBox vBoxButtons;
-    @FXML private VBox vBoxCreate;
     @FXML private VBox vBoxEdit;
 
-    private int cont;
-    private int tamanho;
-    private Questao25 vetor;
-    public static boolean questao27, questao28, questao29;
 
-    
+    public static boolean questao25 = false;
+    public static Questao25 vetorQ25;
+    private Questao29 vetorQ29;
+    private String vetorOriginalString;
+    private int[] vetorTemp;
+    private int tamanho;
 
     public void initialize() {
         acaoDosBotoes();
         setStilo();
         exibirConteudo();
-        estadoInicial();
+        estadoInicial(questao25);
 
-
-        cont = -1;
+        if(questao25) {
+            vetorTemp = vetorQ25.getVetor();
+            vetorQ29 = new Questao29(vetorTemp);
+        }
     }
 
 
-    private void estadoInicial(){
+    private void estadoInicial(boolean questao){
+        buttonCriar.setDisable(questao);
+        buttonEditar.setDisable(!questao);
+        buttonVisualizar.setDisable(!questao);
 
-        labelVetor.setText("Tamanho do vetor");
-        
-        buttonEditar.setDisable(true);
-        buttonVisualizar.setDisable(true);
-        vBoxButtons.getChildren().removeAll(buttonQuestao27, buttonQuestao28, buttonQuestao29);
-
-        vBoxCreate.setVisible(false);
         vBoxEdit.setVisible(false);
         sPaneView.setVisible(false);
-
-        textResposta.setVisible(false);
     }
 
 
@@ -108,168 +96,77 @@ public class Questao25Controller {
             
         });
 
+
         buttonCriar.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent arg0) {
-                vBoxCreate.setVisible(true);
+                Questao25Controller.questao29 = true;
+                showPopup("Você foi redirecionado para a questão 25 para a criação do vetor");
+                App.trocarDeTela("questao25");
             }
             
         });
+    
         buttonEditar.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent arg0) {
-                if (textResposta.isVisible()) textResposta.setVisible(false);
-                if (sPaneView.isVisible()) sPaneView.setVisible(false);
-
-                textResposta.setVisible(false);
+                if (sPaneView.isVisible()) sPaneView.setVisible(false); 
                 vBoxEdit.setVisible(true);
             }
             
         });
-        buttonVisualizar.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-            @Override
-            public void handle(MouseEvent arg0) {
-                if (textResposta.isVisible()) textResposta.setVisible(false);
-                if (vBoxEdit.isVisible()) vBoxEdit.setVisible(false);
-
-                textView.setText(vetor.exibirVetor());
-                sPaneView.setVisible(true);
-            }
-            
-        });
-
-
-
-        buttonConfirmCreate.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                if (cont == -1) {
-                    if (validarCreate()) {
-                        tamanho = Integer.parseInt(tfVetor.getText());
-                        vetor = new Questao25(tamanho);
-                    }
-
-                    cont++;
-
-                    labelVetor.setText((cont+1) + "º elemento do vetor");
-                    tfVetor.clear();
-                    buttonConfirmCreate.setText("Próximo");
-                } else {
-                    int valor = Integer.parseInt(tfVetor.getText());
-                    vetor.setValor(cont, valor);
-
-                    cont++;
-
-                    labelVetor.setText((cont+1) + "º elemento do vetor");
-                    tfVetor.clear();
-                }
-
-                if (cont+1 == tamanho) {
-                    buttonConfirmCreate.setText("Concluir");
-                }
-
-                if (cont == tamanho) {
-                    vBoxCreate.setVisible(false);
-                    textResposta.setText("Vetor criado e preenchido com sucesso!");
-                    textResposta.setVisible(true);
-                    buttonCriar.setDisable(true);
-
-                    buttonEditar.setDisable(false);
-                    buttonVisualizar.setDisable(false);
-
-                    if (questao27) vBoxButtons.getChildren().add(buttonQuestao27);
-                    if (questao28) vBoxButtons.getChildren().add(buttonQuestao28);
-                    if (questao29) vBoxButtons.getChildren().add(buttonQuestao29);
-                }
-            }
-            
-        });
         buttonConfirmEdit.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent arg0) {
+
+                tamanho = vetorQ25.getVetor().length;
+                tamanho--;
+
                 if (validarEdit()) {
                     int posicao = Integer.parseInt(tfPosicao.getText());
                     int valor = Integer.parseInt(tfValor.getText());
+                    vetorQ25.setValor(posicao,valor);
 
-                    vetor.setValor(posicao, valor);
+                    vetorTemp = vetorQ25.getVetor();
+                    vetorQ29.setVetorInverso(vetorTemp);
 
-                    vBoxEdit.setVisible(false);
                     tfPosicao.clear();
                     tfValor.clear();
-                    textResposta.setText("Vetor editado com sucesso!");
-                    textResposta.setVisible(true);
+
+                    textResposta.setText("O vetor foi editado com sucesso!");
+                    vBoxEdit.setVisible(false);
+                    sPaneView.setVisible(true);
                 }
             }
             
         });
 
-
-        buttonQuestao27.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        buttonVisualizar.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent arg0) {
-                irQuestao27();
-            }
+                if (vBoxEdit.isVisible()) vBoxEdit.setVisible(false);
+                if (sPaneView.isVisible()) sPaneView.setVisible(false);
 
+                vetorOriginalString = vetorQ25.exibirVetor();
+                vetorQ29.moverElemento();
+
+                textResposta.setText("Vetor original: " + vetorOriginalString + "\n\n" + 
+                "Vetor invertido: \n"+ vetorQ29.getInversoString());
+                sPaneView.setVisible(true);
+            }
             
         });
-        buttonQuestao28.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                irQuestao28();
-            }
-
-        });
-        buttonQuestao29.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                irQuestao29();
-            }
-
-        });
-
-        Tooltip mensagem = new Tooltip("Você ainda vai voltar nessa questão...");
-        
-        if (questao27 || questao28 || questao29) {
-            mensagem.setText("Eu avisei.");
-        }
-        mensagem.setShowDelay(Duration.millis(200));
-        mensagem.setShowDuration(Duration.millis(800));
-        mensagem.setAutoHide(true);
-        copyRight.setTooltip(mensagem);
     }
 
-    
-    
 
 
 
-    private boolean validarCreate() {
-        
-        if (tfVetor.getText().isEmpty()) {
-            showPopup("O campo não pode ser vazio, tente novamente");
-            return false;
-        } else if (tfVetor.getText().matches("\\D")) {
-            showPopup("O campo não pode conter letras");
-            return false;
-        } else if (tfVetor.getText().matches("[0-9]+")) {
-            int num =  Integer.parseInt(tfVetor.getText());
-            if (num < 1 ) {
-                showPopup("O vetor não pode ter tamanho menor que 1");
-                return false;
-            }
-        }
 
-        return true;
-    }
-    
     private boolean validarEdit() {
         
         if (tfPosicao.getText().isEmpty()) {
@@ -280,12 +177,12 @@ public class Questao25Controller {
             return false;
         } else if (tfPosicao.getText().matches("[0-9]+")) {
             int num =  Integer.parseInt(tfPosicao.getText());
-            if (num < 0 || num > tamanho-1) {
-                showPopup("O valor não é um número válido para a posição");
+            if (num < 0 || num > tamanho) {
+                showPopup("O valor é inválido para a posição");
                 return false;
             }
         }
-        
+
         if (tfValor.getText().isEmpty()) {
             showPopup("O campo não pode ser vazio, tente novamente");
             return false;
@@ -296,9 +193,6 @@ public class Questao25Controller {
 
         return true;
     }
-
-
-
 
 
     private void showPopup(String texto) {
@@ -350,29 +244,11 @@ public class Questao25Controller {
 
 
 
-    private void irQuestao27() {
-        Questao27Controller.questao25 = true;
-        Questao27Controller.vetorQ25 = vetor;
-        App.trocarDeTela("questao27");
-    }
-
-    private void irQuestao28() {
-        Questao28Controller.questao25 = true;
-        Questao28Controller.vetorQ25 = vetor;
-        App.trocarDeTela("questao28");
-    }
-    
-    private void irQuestao29() {
-        Questao29Controller.questao25 = true;
-        Questao29Controller.vetorQ25 = vetor;
-        App.trocarDeTela("questao29");
-    }
-
 
 
     private void exibirConteudo() { 
         questao.setText(questao.getText() + "\t");
-        textEnunciado.setText(EnunciadoDasQuestoes.questao25.substring(3));
+        textEnunciado.setText(EnunciadoDasQuestoes.questao29.substring(3));
     }
 
 
@@ -384,22 +260,16 @@ public class Questao25Controller {
             buttonCriar.getStyleClass().setAll("btn-questao-DM");
             buttonEditar.getStyleClass().setAll("btn-questao-DM");
             buttonVisualizar.getStyleClass().setAll("btn-questao-DM");
-            buttonConfirmCreate.getStyleClass().setAll("btn-questao-DM");
             buttonConfirmEdit.getStyleClass().setAll("btn-questao-DM");
-            buttonQuestao27.getStyleClass().setAll("btn-questao-DM");
-            buttonQuestao28.getStyleClass().setAll("btn-questao-DM");
-            buttonQuestao29.getStyleClass().setAll("btn-questao-DM");
-            telaQuestao25.setStyle("-fx-background-color: #282828");
+            telaQuestao29.setStyle("-fx-background-color: #282828");
             paneView.setStyle("-fx-background-color: #282828");
 
             labelPosicao.setTextFill(Paint.valueOf("WHITE"));
             labelValor.setTextFill(Paint.valueOf("WHITE"));
-            labelVetor.setTextFill(Paint.valueOf("WHITE"));
             
             questao.setFill(Paint.valueOf("WHITE"));
             textEnunciado.setFill(Paint.valueOf("WHITE"));
             textResposta.setFill(Paint.valueOf("WHITE"));
-            textView.setFill(Paint.valueOf("WHITE"));
             
         } else {
             buttonVoltar.getStyleClass().setAll("btn-voltar");
@@ -407,22 +277,16 @@ public class Questao25Controller {
             buttonCriar.getStyleClass().setAll("btn-questao");
             buttonEditar.getStyleClass().setAll("btn-questao");
             buttonVisualizar.getStyleClass().setAll("btn-questao");
-            buttonConfirmCreate.getStyleClass().setAll("btn-questao");
             buttonConfirmEdit.getStyleClass().setAll("btn-questao");
-            buttonQuestao27.getStyleClass().setAll("btn-questao");
-            buttonQuestao28.getStyleClass().setAll("btn-questao");
-            buttonQuestao29.getStyleClass().setAll("btn-questao");
-            telaQuestao25.setStyle(null);
+            telaQuestao29.setStyle(null);
             paneView.setStyle(null);
 
             labelPosicao.setTextFill(Paint.valueOf("BLACK"));
             labelValor.setTextFill(Paint.valueOf("BLACK"));
-            labelVetor.setTextFill(Paint.valueOf("BLACK"));
             
             questao.setFill(Paint.valueOf("BLACK"));
             textEnunciado.setFill(Paint.valueOf("BLACK"));
             textResposta.setFill(Paint.valueOf("BLACK"));
-            textView.setFill(Paint.valueOf("BLACK"));
         }
     }
 }
