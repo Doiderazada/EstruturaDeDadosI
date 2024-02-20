@@ -1,4 +1,8 @@
 package questoes;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class EnunciadoDasQuestoes {
 
 
@@ -134,9 +138,60 @@ public abstract class EnunciadoDasQuestoes {
     public static final String questao39 = "39. Utilizando o recurso Generic de Java, construa um programa que tenha "+
     "funcionalidades de CRUD (create, read, update e delete) que se adeque para diferentes classes (ex: String, Pessoa, Produto, etc).";
 
-    public static final String questao40 = "40. Construa um programa CODIFICADOR que receba um arquivo de texto de entrada e codifique ele usando um padrão de troca de letras.\r\n" +
-    "Após esse processamento, gere um arquivo codificado.\r\n" +
-    "Construa outro programa, que funcionará como DECODIFICADOR, que seja capaz de ler o arquivo codificado e produzir um arquivo de\r\n" +
-    "texto decodificado, que deve ser o mesmo texto original.\r\n" +
+    public static final String questao40 = "40. Construa um programa CODIFICADOR que receba um arquivo de " +
+    "texto de entrada e codifique ele usando um padrão de troca de letras." +
+    "Após esse processamento, gere um arquivo codificado." +
+    "Construa outro programa, que funcionará como DECODIFICADOR, que seja capaz de ler o arquivo codificado e produzir um arquivo de" +
+    "texto decodificado, que deve ser o mesmo texto original." +
     "Padrão de troca de letras para codificar um texto: Z ⇔ P E ⇔ O N ⇔ L I ⇔ A T ⇔ R";
+
+    private Map<Integer, String> listaDeQuestoes;
+
+    public EnunciadoDasQuestoes(){
+        this.listaDeQuestoes = new HashMap<Integer, String>();
+        listaDeQuestoes.put(1, questao1);
+        listaDeQuestoes.put(2, questao2);
+        listaDeQuestoes.put(3, questao3);
+        listaDeQuestoes.put(4, questao4);
+        listaDeQuestoes.put(5, questao5);
+        listaDeQuestoes.put(6, questao6);
+        listaDeQuestoes.put(7, questao7);
+        listaDeQuestoes.put(8, questao8);
+        listaDeQuestoes.put(9, questao9);
+        listaDeQuestoes.put(10, questao10);
+        listaDeQuestoes.put(11, questao11);
+        listaDeQuestoes.put(12, questao12);
+        listaDeQuestoes.put(13, questao13);
+        listaDeQuestoes.put(14, questao14);
+        listaDeQuestoes.put(15, questao15);
+        listaDeQuestoes.put(16, questao16);
+        listaDeQuestoes.put(17, questao17);
+        listaDeQuestoes.put(18, questao18);
+        listaDeQuestoes.put(19, questao19);
+        listaDeQuestoes.put(20, questao20);
+        listaDeQuestoes.put(21, questao21);
+        listaDeQuestoes.put(22, questao23);
+        listaDeQuestoes.put(23, questao23);
+        listaDeQuestoes.put(24, questao24);
+        listaDeQuestoes.put(25, questao25);
+        listaDeQuestoes.put(26, questao26);
+        listaDeQuestoes.put(27, questao27);
+        listaDeQuestoes.put(28, questao28);
+        listaDeQuestoes.put(29, questao29);
+        listaDeQuestoes.put(30, questao30);
+        listaDeQuestoes.put(31, questao31);
+        listaDeQuestoes.put(32, questao32);
+        listaDeQuestoes.put(33, questao33);
+        listaDeQuestoes.put(34, questao34);
+        listaDeQuestoes.put(35, questao35);
+        listaDeQuestoes.put(36, questao36);
+        listaDeQuestoes.put(37, questao37);
+        listaDeQuestoes.put(38, questao38);
+        listaDeQuestoes.put(39, questao39);
+        listaDeQuestoes.put(40, questao40);
+    }
+
+    public String pegarQuestao(int questao) {
+        return listaDeQuestoes.get(questao);
+    }
 }

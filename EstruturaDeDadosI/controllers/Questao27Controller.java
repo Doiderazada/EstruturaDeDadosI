@@ -105,7 +105,7 @@ public class Questao27Controller {
 
                 buttonVisualizar.setDisable(false);
 
-                textResposta.setText("O vetor foi invertido com sucesso");
+                textResposta.setText("O vetor foi invertido com sucesso!");
                 sPaneView.setVisible(true);
             }
             

@@ -19,6 +19,7 @@ public class Questao20 {
         setMesesRendendo(mesesRendendo);
 
         rendimentoMensal = new double[mesesRendendo];
+        this.deixarRender(mesesRendendo, investimentoInicial, investimentoMensal, taxaJuros);
     }
 
 
@@ -65,7 +66,7 @@ public class Questao20 {
 
 
     public double getRendimentoMensal(int mesDesejado) {
-        if (mesDesejado < 0 || mesDesejado > getMesesRendendo()) {
+        if (mesDesejado < 0 || mesDesejado >= getMesesRendendo()) {
             return 0;
         }
         return rendimentoMensal[mesDesejado];
@@ -102,5 +103,22 @@ public class Questao20 {
 
 
         return deixarRender(mesesRendendo-1, resultado, getInvestimentoMensal(), getTaxaJuros());
+    }
+
+
+
+
+    
+    public String toString(){
+        String classe = getClass().getName() + "\n\n" + 
+            "Atributos \n" + 
+            "double: investimentoInicial -> " + getInvestimentoInicial() + "\n" +
+            "double: investimentoMensal -> " + getInvestimentoMensal() + "\n" +
+            "double: saldoAcumulado -> " + getSaldoAcumulado() + "\n" +
+            "double: taxaJuros -> " + getTaxaJuros() + "\n" +
+            "double[]: rendimentoMensal -> " + getRendimentoMensal(getMesesRendendo()-1) + "\n" +
+            "int: mesesRendendo -> " + getMesesRendendo() + "\n";
+
+        return classe;
     }
 }

@@ -319,8 +319,10 @@
     -fx-border-width: 0;
     
 }
-
 .scroll-bar {
+    -fx-background-color: transparent;
+}
+.corner {
     -fx-background-color: transparent;
 }
 

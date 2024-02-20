@@ -87,12 +87,14 @@ public class Questao8Controller {
             @Override
             public void handle(MouseEvent arg0) {
                 if (verificarInput()) {
-                    Questao8.setAltura(Double.parseDouble(tfAltura.getText()));
-                    Questao8.setMassa(Double.parseDouble(tfMassa.getText()));
+                    double altura = Double.parseDouble(tfAltura.getText());
+                    double massa = Double.parseDouble(tfMassa.getText());
+
+                    Questao8 pessoa = new Questao8(altura, massa);
                     
                     textAltura.setText(tfAltura.getText());
                     textMassa.setText(tfMassa.getText());
-                    IMC.setText(String.valueOf(Questao8.medirIMC()));
+                    IMC.setText(String.valueOf(pessoa.getIMC()));
 
                     outputVBox.setVisible(true);
                 }

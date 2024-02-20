@@ -1,35 +1,58 @@
 package questoes;
 
-public abstract class Questao2 {
-    private static String nome;
-    private static char inicial;
-    private static int idade;
-    private static float altura;
+public class Questao2 {
+    private String nome;
+    private char inicial;
+    private int idade;
+    private float altura;
     
-    public static String getNome() {
+    public Questao2() {
+    }
+
+    public Questao2(String nome, char inicial, int idade, float altura) {
+        this.setNome(nome);
+        this.setInicial(inicial);
+        this.setIdade(idade);
+        this.setAltura(altura);
+    }
+
+
+
+    public String getNome() {
         return nome;
     }
-    public static void setNome(String nome) {
-        Questao2.nome = nome;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-    public static char getInicial() {
+    public char getInicial() {
         return inicial;
     }
-    public static void setInicial(char inicial) {
-        Questao2.inicial = inicial;
+    public void setInicial(char inicial) {
+        this.inicial = inicial;
     }
-    public static int getIdade() {
+    public int getIdade() {
         return idade;
     }
-    public static void setIdade(int idade) {
-        Questao2.idade = idade;
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
-    public static float getAltura() {
+    public float getAltura() {
         return altura;
     }
-    public static void setAltura(float altura) {
-        Questao2.altura = altura;
+    public void setAltura(float altura) {
+        this.altura = altura;
     }
 
     
+
+    public String toString(){
+        String classe = getClass().getName() + "\n\n" + 
+            "Atributos \n" + 
+            "String: nome -> " + getNome() +"\n" +
+            "char: inicial -> " + getInicial() + "\n" +
+            "int: idade -> " + getIdade() + "\n" +
+            "float: altura -> " + getAltura() + "\n";
+
+        return classe;
+    }
 }

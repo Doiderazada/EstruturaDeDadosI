@@ -141,7 +141,7 @@ public class Questao30Controller {
                     
                     fraseEntrada = tfCreate.getText();
 
-                    inversor = new Questao30(fraseEntrada);
+                    inversor = new Questao30(fraseEntrada, false);
                     
                     textResposta.setText("Frase criada com sucesso!");
                     hBoxParent.getChildren().remove(vBoxCreate);

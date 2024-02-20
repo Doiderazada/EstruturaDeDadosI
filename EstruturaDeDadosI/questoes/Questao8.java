@@ -3,35 +3,44 @@ package questoes;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public abstract class Questao8 {
-    private static double altura;
-    private static double massa;
-    private static double IMC;
+public  class Questao8 {
+    private double altura;
+    private double massa;
+    private double IMC;
 
-    public static double getAltura() {
+    
+    public Questao8(double altura, double massa) {
+        setAltura(altura);
+        setMassa(massa);
+
+        medirIMC();
+    }
+
+
+    public double getAltura() {
         return altura;
     }
-    public static void setAltura(double altura) {
-        Questao8.altura = altura;
+    public void setAltura(double altura) {
+        this.altura = altura;
     }
     
-    public static double getMassa() {
+    public double getMassa() {
         return massa;
     }
-    public static void setMassa(double massa) {
-        Questao8.massa = massa;
+    public void setMassa(double massa) {
+        this.massa = massa;
     }
     
-    public static double getIMC() {
+    public double getIMC() {
         return IMC;
     }
-    private static void setIMC(double iMC) {
+    private void setIMC(double iMC) {
         IMC = iMC;
     }
 
 
-    public static double medirIMC() {
-        double result = getMassa()/(getAltura()*getAltura());
+    public double medirIMC() {
+        double result = this.massa/(this.altura*this.altura);
 
         Double truncar;
         truncar = BigDecimal.valueOf(result).setScale(2, RoundingMode.HALF_UP).doubleValue();

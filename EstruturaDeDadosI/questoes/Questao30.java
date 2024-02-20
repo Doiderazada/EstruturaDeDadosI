@@ -5,9 +5,10 @@ public class Questao30 {
     private String fraseInvertida;
     
     
-    public Questao30(String frase) {
+    public Questao30(String frase, boolean inverte) {
         this.setFraseOriginal(frase);
-        this.setFraseInvertida(null);
+        if (inverte) 
+            inverterFrase();
     }
 
 
@@ -38,5 +39,16 @@ public class Questao30 {
             fraseTemp += fraseOriginal.charAt(fim-i);
         }
         setFraseInvertida(fraseTemp);
+    }
+
+
+
+    public String toString(){
+        String classe = getClass().getName() + "\n\n" + 
+            "Atributos \n" + 
+            "String: fraseOriginal -> "+ getFraseOriginal() + "\n" +
+            "String: fraseInvertida -> " + getFraseInvertida() + "\n";
+
+        return classe;
     }
 }

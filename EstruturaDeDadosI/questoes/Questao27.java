@@ -5,9 +5,8 @@ public class Questao27 {
     private int tamanho = 0;
     
     public Questao27(int vetor[]){
-        for (int i : vetor) {
-            tamanho++;
-        }
+        tamanho = vetor.length;
+
         this.inverso = new int[tamanho];
         tamanho--;
         inverterVetor(vetor);

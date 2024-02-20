@@ -157,8 +157,6 @@ public class Questao20Controller {
 
         investimento = new Questao20(iniInvest, investMens, taxaJur, tempo);
 
-        investimento.deixarRender(tempo, iniInvest, investMens, taxaJur);
-
         for (int i = 0; i < tempo; i++) {
             textResposta.setText(textResposta.getText() + "Valor rendido ao final do " + (i+1) + "º mês: \n");
             textSaldo.setText(textSaldo.getText() + investimento.getRendimentoMensal(i) + " R$\n");

@@ -185,7 +185,7 @@ public class Questao22Controller {
 
     private void exibirConteudo() { 
         questao.setText(questao.getText() + "\t");
-        textEnunciado.setText(EnunciadoDasQuestoes.questao21.substring(3));
+        textEnunciado.setText(EnunciadoDasQuestoes.questao22.substring(3));
     }
 
 

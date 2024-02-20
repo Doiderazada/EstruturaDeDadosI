@@ -78,15 +78,20 @@ public class Questao2Controller {
 
             @Override
             public void handle(MouseEvent arg0) {
-                Questao2.setNome(tfNome.getText());
-                Questao2.setInicial(tfNome.getText().charAt(0));
-                Questao2.setIdade(Integer.parseInt(tfIdade.getText()));
-                Questao2.setAltura(Float.parseFloat(tfAltura.getText()));
+                String nome = tfNome.getText();
+                char inicial = tfNome.getText().charAt(0);
+                int idade = Integer.parseInt(tfIdade.getText());
+                float altura = Float.parseFloat(tfAltura.getText());
+                Questao2 usuario = new Questao2();
+                usuario.setNome(nome);
+                usuario.setInicial(inicial);
+                usuario.setIdade(idade);
+                usuario.setAltura(altura);
 
-                textNome.setText(Questao2.getNome());
-                textInicial.setText(String.valueOf(Questao2.getInicial()));
-                textIdade.setText(String.valueOf(Questao2.getIdade()) + " anos");
-                textAltura.setText(String.valueOf(Questao2.getAltura()) + "m");
+                textNome.setText(usuario.getNome());
+                textInicial.setText(String.valueOf(usuario.getInicial()));
+                textIdade.setText(String.valueOf(usuario.getIdade()) + " anos");
+                textAltura.setText(String.valueOf(usuario.getAltura()) + "m");
 
                 inputVBox.setVisible(false);
                 outputHBox.setVisible(true);
