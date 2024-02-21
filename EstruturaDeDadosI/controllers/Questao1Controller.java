@@ -15,7 +15,7 @@ import questoes.EnunciadoDasQuestoes;
 import questoes.Questao1;
 import source.App;
 
-public class Questao1Controller {
+public class Questao1Controller extends BaseController{
     
     @FXML private BorderPane telaQuestao1;
     @FXML private Button buttonHome;
@@ -34,9 +34,21 @@ public class Questao1Controller {
 
 
     public void initialize() {
+        super.initialize(1);
         acaoDosBotoes();
         setStilo();
         exibirConteudo();
+        estadoInicia();
+    }
+
+
+
+
+    private void estadoInicia() {
+        textNome.setText(Questao1.getNome());
+        textInicial.setText(String.valueOf(Questao1.getInicial()));
+        textIdade.setText(String.valueOf(Questao1.getIdade()) + " anos");
+        textAltura.setText(String.valueOf(Questao1.getAltura()) + "m");
     }
 
 
@@ -96,10 +108,6 @@ public class Questao1Controller {
     private void exibirConteudo() {
         questao.setText(questao.getText() + "\t");
         textEnunciado.setText(EnunciadoDasQuestoes.questao1.substring(3));
-        textNome.setText(Questao1.getNome());
-        textInicial.setText(String.valueOf(Questao1.getInicial()));
-        textIdade.setText(String.valueOf(Questao1.getIdade()) + " anos");
-        textAltura.setText(String.valueOf(Questao1.getAltura()) + "m");
     }
 
     

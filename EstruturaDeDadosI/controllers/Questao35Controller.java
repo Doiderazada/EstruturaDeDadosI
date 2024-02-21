@@ -8,12 +8,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import javafx.animation.PauseTransition;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -23,35 +19,26 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import questoes.EnunciadoDasQuestoes;
 import questoes.Questao35;
-import source.App;
 
-public class Questao35Controller {
+public class Questao35Controller extends BaseController{
 
     
     @FXML private BorderPane telaQuestao35;
     @FXML private Button buttonAbrirCSV;
     @FXML private Button buttonConfirmar;
-    @FXML private Button buttonHome;
     @FXML private Button buttonNovaFrase;
     @FXML private Button buttonSalvarCSV;
     @FXML private Button buttonVisualizar;
-    @FXML private Button buttonVoltar;
     @FXML private HBox hBoxOutput;
     @FXML private Label copyRight;
     @FXML private Label labelFrase;
     @FXML private Pane paneView;
     @FXML private ScrollPane sPaneView;
-    @FXML private Text questao;
-    @FXML private Text textEnunciado;
     @FXML private Text textView;
     @FXML private TextField tfFrase;
     @FXML private VBox vBoxButtons;
@@ -73,11 +60,13 @@ public class Questao35Controller {
     
 
     public void initialize() {
+        BaseController.numQuestao = 35;
         acaoDosBotoes();
-        setStilo();
-        exibirConteudo();
+        setStilo(new Button[]{ buttonAbrirCSV, buttonConfirmar, buttonNovaFrase, buttonSalvarCSV, buttonVisualizar},
+                 new Label[] { labelFrase}, 
+                 new Pane[]  { paneView, telaQuestao35}, null,
+                 new Text[]  { textView});
         estadoInicial();
-
     }
 
 
@@ -92,23 +81,6 @@ public class Questao35Controller {
 
 
     private void acaoDosBotoes() {
-
-        buttonVoltar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                App.trocarDeTela("telaQuestoes");
-            }
-        });
-        buttonHome.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                App.trocarDeTela("telaInicial");
-            }
-        });
-
-
         buttonNovaFrase.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
@@ -122,14 +94,12 @@ public class Questao35Controller {
             }
         });
         buttonVisualizar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 visualizarFrase();
             }
         });
         buttonAbrirCSV.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 realizarAbertura();
@@ -146,7 +116,6 @@ public class Questao35Controller {
                 tfFrase.clear();
                 hBoxOutput.getChildren().addAll(vBoxFrase);
             }
-            
         });
 
         buttonConfirmar.setOnMouseClicked(new EventHandler<MouseEvent>(){
@@ -161,15 +130,12 @@ public class Questao35Controller {
                     if (buttonVisualizar.isDisable()) buttonVisualizar.setDisable(false);
                     if (buttonSalvarCSV.isDisable()) buttonSalvarCSV.setDisable(false);
                 } else {
-                    if (validarFrase()) {
-                        nomeArquivo = tfFrase.getText();
-                    }
+                    if (validarFrase()) nomeArquivo = tfFrase.getText();
 
                     realizarSalvamento();
                 }
 			}
         });
-
     }
 
 
@@ -188,19 +154,19 @@ public class Questao35Controller {
         }
     }
 
-    protected void realizarAbertura() {
-        
+    private void realizarAbertura() {
         if (hBoxOutput.getChildren().contains(vBoxFrase)) hBoxOutput.getChildren().remove(vBoxFrase);
         if (hBoxOutput.getChildren().contains(sPaneView)) hBoxOutput.getChildren().remove(sPaneView);
 
         if (abrirArquivoCSV()) {
             if (converterConteudoLido()) {
+                showPopup("O arquivo foi aberto com sucesso!", true);
 
-                textView.setText("O arquivo foi aberto com sucesso. Clique no botão \"Visualizar\" para poder acessa-lo.");
+                textView.setText("Clique no botão \"Visualizar\" para acessar o arquivo aberto.");
                 buttonVisualizar.setDisable(false);
                 buttonSalvarCSV.setDisable(false);
                 hBoxOutput.getChildren().addAll(sPaneView);
-            } else showPopup("Ops... Ocorreu um erro abrindo o arquivo desejado. :(");
+            } else showPopup("Ops... Ocorreu um erro abrindo o arquivo desejado. :(", false);
         }
     }
 
@@ -236,7 +202,6 @@ public class Questao35Controller {
                 break;
             }
         }
-
         return adicionado;
     }
 
@@ -264,7 +229,7 @@ public class Questao35Controller {
                 return true;
                 
             } catch (IOException e) {
-                showPopup("Infelizmente não foi possível ler o arquivo...");
+                showPopup("Infelizmente não foi possível ler o arquivo...", false);
                 e.printStackTrace();
                 return false;
             } 
@@ -272,7 +237,6 @@ public class Questao35Controller {
         else return false;
     }
     private boolean salvarArquivoCSV() {
-
         try {
             File arquivo = new File(diretorioProjeto + pastaArquivo + nomeArquivo + tipoArquivo);
             PrintWriter escritorCSV = new PrintWriter(arquivo);
@@ -289,7 +253,7 @@ public class Questao35Controller {
             return true;
 
         } catch (FileNotFoundException e) {
-            showPopup("Não foi possível criar o arquivo desejado...");
+            showPopup("Não foi possível criar o arquivo desejado...", false);
             e.printStackTrace();
             return false;
         } 
@@ -298,7 +262,6 @@ public class Questao35Controller {
 
 
     private void novaFrase(){
-
         if (validarFrase()) {
             String frase = tfFrase.getText();
             
@@ -324,111 +287,10 @@ public class Questao35Controller {
     
     
     private boolean validarFrase() {
-
         if (tfFrase.getText().isEmpty()) {
-            showPopup("O campo não pode ser vazio, tente novamente");
+            showPopup("O campo não pode ser vazio, tente novamente", false);
             return false;
         } 
         return true;
-    }   
-
-
-
-
-    private void showPopup(String texto) {
-        try{
-            
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/telaPopupErro.fxml"));
-            Parent root = loader.load();
-            
-            TelaPopupErroController controller = loader.getController();
-            controller.initialize(texto);
-            
-            
-            Popup popup = new Popup();
-
-            popup.getContent().add(root);
-            popup.setAutoHide(true);
-            popup.setHideOnEscape(true);
-            
-            double winX = buttonHome.getScene().getWindow().getX();
-            double winY = buttonHome.getScene().getWindow().getY();
-            double halfX = buttonHome.getScene().getWindow().getWidth()/2;
-            double halfY = buttonHome.getScene().getWindow().getHeight()/2;
-
-            double newX = (winX + halfX) - (popup.getWidth()/2);
-            double newY = (winY + halfY) - (popup.getHeight()/2);
-
-            popup.setX(newX);
-            popup.setY(newY);
-            
-            
-            popup.show(buttonHome.getScene().getWindow());
-
-            PauseTransition closeDelay = new PauseTransition(Duration.seconds(2.5));
-            closeDelay.setOnFinished(new EventHandler<ActionEvent>() {
-
-                @Override
-                public void handle(ActionEvent arg0) {
-                    popup.hide();
-                }
-            });
-            closeDelay.play();
-
-            
-        }catch(Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-
-    private void exibirConteudo() { 
-        questao.setText(questao.getText() + "\t");
-        textEnunciado.setText(EnunciadoDasQuestoes.questao35.substring(3));
-    }
-
-
-
-    
-
-    private void setStilo() {
-        if (App.darkMode) {
-            buttonVoltar.getStyleClass().setAll("btn-voltar-DM");
-            buttonHome.getStyleClass().setAll("btn-questao-DM");
-            buttonConfirmar.getStyleClass().setAll("btn-questao-DM");
-            buttonNovaFrase.getStyleClass().setAll("btn-questao-DM");
-            buttonVisualizar.getStyleClass().setAll("btn-questao-DM");
-            buttonAbrirCSV.getStyleClass().setAll("btn-questao-DM");
-            buttonSalvarCSV.getStyleClass().setAll("btn-questao-DM");
-            telaQuestao35.setStyle("-fx-background-color: #282828");
-            paneView.setStyle("-fx-background-color: #282828");
-
-            labelFrase.setTextFill(Paint.valueOf("WHITE"));
-            
-            questao.setFill(Paint.valueOf("WHITE"));
-            textEnunciado.setFill(Paint.valueOf("WHITE"));
-            textView.setFill(Paint.valueOf("WHITE"));
-            
-        } else {
-            buttonVoltar.getStyleClass().setAll("btn-voltar");
-            buttonHome.getStyleClass().setAll("btn-questao");
-            buttonConfirmar.getStyleClass().setAll("btn-questao");
-            buttonNovaFrase.getStyleClass().setAll("btn-questao");
-            buttonVisualizar.getStyleClass().setAll("btn-questao");
-            buttonAbrirCSV.getStyleClass().setAll("btn-questao");
-            buttonSalvarCSV.getStyleClass().setAll("btn-questao");
-            telaQuestao35.setStyle(null);
-            paneView.setStyle(null);
-
-            labelFrase.setTextFill(Paint.valueOf("BLACK"));
-            
-            questao.setFill(Paint.valueOf("BLACK"));
-            textEnunciado.setFill(Paint.valueOf("BLACK"));
-            textView.setFill(Paint.valueOf("BLACK"));
-        }
     }
 }

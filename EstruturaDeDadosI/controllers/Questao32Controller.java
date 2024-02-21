@@ -8,14 +8,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -27,31 +23,24 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.util.Duration;
-import questoes.EnunciadoDasQuestoes;
 import questoes.Questao32;
 import questoes.Questao8;
-import source.App;
 
-public class Questao32Controller {
+public class Questao32Controller extends BaseController{
 
 
     @FXML private BorderPane telaQuestao32;
     @FXML private Button buttonAbrirArquivo;
     @FXML private Button buttonEditar;
-    @FXML private Button buttonHome;
     @FXML private Button buttonInicial;
     @FXML private Button buttonPrincipal;
     @FXML private Button buttonCadastrar;
     @FXML private Button buttonSalvarArquivo;
     @FXML private Button buttonVisualizar;
-    @FXML private Button buttonVoltar;
     @FXML private ChoiceBox<Character> choiceBoxSexo;
     @FXML private HBox hBoxOutput;
     @FXML private Label copyRight;
@@ -65,8 +54,6 @@ public class Questao32Controller {
     @FXML private Label labelSexo;
     @FXML private Pane paneView;
     @FXML private ScrollPane sPaneView;
-    @FXML private Text questao;
-    @FXML private Text textEnunciado;
     @FXML private Text textView;
     @FXML private TextField tfAltura;
     @FXML private TextField tfCPF;
@@ -89,7 +76,7 @@ public class Questao32Controller {
     
     private final String diretorioProjeto = System.getProperty("user.dir");
     private final String pasta = "/EstruturaDeDadosI/arquivos/";
-    private String caminhoSalvo;
+    private final String caminhoSalvo = diretorioProjeto + pasta;
     private String nomeArquivo = "pessoa";
     private File arquivoSelecionado;
     private FileChooser selecionador = new FileChooser();
@@ -100,9 +87,15 @@ public class Questao32Controller {
     
 
     public void initialize() {
+        BaseController.numQuestao = 32;
+        super.initialize();
         acaoDosBotoes();
-        setStilo();
-        exibirConteudo();
+        setStilo(new Button[] { buttonAbrirArquivo, buttonCadastrar, buttonEditar, buttonInicial, 
+                                buttonPrincipal, buttonSalvarArquivo, buttonVisualizar},
+                 new Label[]  { labelAltura, labelCPF, labelIdade, labelInfoPessoal, 
+                                labelInicial, labelNome, labelPeso, labelSexo},
+                 new Pane[]   { paneView, telaQuestao32}, null,
+                 new Text[]   { textView});
         estadoInicial();
 
         cont = 0;
@@ -125,39 +118,19 @@ public class Questao32Controller {
 
 
     private void acaoDosBotoes() {
-
-        buttonVoltar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                App.trocarDeTela("telaQuestoes");
-            }
-        });
-        buttonHome.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                App.trocarDeTela("telaInicial");
-            }
-        });
-
-
         buttonCadastrar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 iniciarCadastro();
             }
         });
         buttonEditar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 iniciarEdicao();
             }
         });
         buttonVisualizar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 visualizarPessoas();
@@ -167,9 +140,7 @@ public class Questao32Controller {
 
             @Override
             public void handle(MouseEvent arg0) {
-                if (hBoxOutput.getChildren().contains(vBoxInicial)) hBoxOutput.getChildren().remove(vBoxInicial);
-                if (hBoxOutput.getChildren().contains(sPaneView)) hBoxOutput.getChildren().remove(sPaneView);
-
+                removerElementos();
                 realizarAbertura();
             }
         });
@@ -177,9 +148,7 @@ public class Questao32Controller {
 
             @Override
             public void handle(MouseEvent arg0) {
-                if(hBoxOutput.getChildren().contains(vBoxInicial)) hBoxOutput.getChildren().remove(vBoxInicial);
-                if(hBoxOutput.getChildren().contains(sPaneView)) hBoxOutput.getChildren().remove(sPaneView);
-
+                removerElementos();
                 save = true;
 
                 iniciarSalvamento();
@@ -188,7 +157,6 @@ public class Questao32Controller {
 
 
         buttonInicial.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 if(cad) realizarCadastro();
@@ -197,7 +165,6 @@ public class Questao32Controller {
             }
         });
         buttonPrincipal.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 if(cad) cadastarPessoas();
@@ -207,14 +174,12 @@ public class Questao32Controller {
         
 
         tfCPF.setOnKeyTyped(new EventHandler<KeyEvent>() {
-
             @Override
             public void handle(KeyEvent arg0) {
                 autoCompleteCPF();
             }
         });
         tfInicial.setOnKeyTyped(new EventHandler<KeyEvent>() {
-
             @Override
             public void handle(KeyEvent arg0) {
                 if (edit) autoCompleteCPF();
@@ -227,7 +192,14 @@ public class Questao32Controller {
 
 
 
-    protected void realizarAbertura() {
+    private void removerElementos() {
+        if(hBoxOutput.getChildren().contains(vBoxInicial)) hBoxOutput.getChildren().remove(vBoxInicial);
+        if(hBoxOutput.getChildren().contains(sPaneView)) hBoxOutput.getChildren().remove(sPaneView);
+    }
+
+
+
+    private void realizarAbertura() {
         if(abrirArquivo()){
             textView.setText("O arquivo foi aberto com sucesso. Clique no botão \"Visualizar\" para poder acessa-lo.");
             buttonCadastrar.setDisable(true);
@@ -235,7 +207,7 @@ public class Questao32Controller {
             buttonVisualizar.setDisable(false);
             buttonSalvarArquivo.setDisable(false);
             hBoxOutput.getChildren().addAll(sPaneView);
-        } else showPopup("Ops... Ocorreu um erro ao abrir o arquivo desejado.");
+        } else showPopup("Ops... Ocorreu um erro ao abrir o arquivo desejado.", false);
     }
 
 
@@ -267,7 +239,6 @@ public class Questao32Controller {
         selecionador.setInitialDirectory(new File(diretorioProjeto + pasta));
 
         Stage janela = (Stage) buttonAbrirArquivo.getScene().getWindow();
-
         arquivoSelecionado = selecionador.showOpenDialog(janela);
 
         if(arquivoSelecionado != null){
@@ -276,18 +247,17 @@ public class Questao32Controller {
                 ObjectInputStream objectInput = new ObjectInputStream(fileInput);
                 listaPessoas = (Questao32[]) objectInput.readObject();
 
-
                 objectInput.close();
                 fileInput.close();
 
                 return true;
                 
             } catch (IOException e) {
-                showPopup("Infelizmente não foi possível ler o arquivo...");
+                showPopup("Infelizmente não foi possível ler o arquivo...", false);
                 e.printStackTrace();
                 return false;
             } catch (ClassNotFoundException e) {
-                showPopup("A classe selecionada para a leitura não existe.");
+                showPopup("A classe selecionada para a leitura não existe.", false);
                 e.printStackTrace();
                 return false;
             } 
@@ -300,18 +270,17 @@ public class Questao32Controller {
             ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
             objectOutput.writeObject(listaPessoas);
 
-            caminhoSalvo = diretorioProjeto + pasta;
             objectOutput.close();
             fileOutput.close();
 
             return true;
 
         } catch (FileNotFoundException e) {
-            showPopup("Não foi possível criar o arquivo desejado...");
+            showPopup("Não foi possível criar o arquivo desejado...", false);
             e.printStackTrace();
             return false;
         } catch (IOException e) {
-            showPopup("Infelizmente não foi possível escrever o arquivo...");
+            showPopup("Infelizmente não foi possível escrever o arquivo...", false);
             e.printStackTrace();
             return false;
         }
@@ -452,7 +421,6 @@ public class Questao32Controller {
             }
         }
     }
-
     private void editarPessoas(){
         if(validarCampos()){
         
@@ -521,203 +489,82 @@ public class Questao32Controller {
 
 
     private boolean validarQuantidade() {
-        
         if (tfInicial.getText().isEmpty()) {
-            showPopup("O campo não pode ser vazio, tente novamente");
+            showPopup("O campo não pode ser vazio, tente novamente", false);
             return false;
         } else if (tfInicial.getText().matches("\\D")) {
-            showPopup("O campo não pode conter letras");
+            showPopup("O campo não pode conter letras", false);
             return false;
         } else if (tfInicial.getText().matches("[0-9]+")) {
             int num =  Integer.parseInt(tfInicial.getText());
             if (num < 1 ) {
-                showPopup("A quantidade mínima de pessoas a cadastrar é 1");
+                showPopup("A quantidade mínima de pessoas a cadastrar é 1", false);
                 return false;
             }
         }
         return true;
     }
     private boolean validarCampos() {
-
         if (tfNome.getText().isEmpty()) {
-            showPopup("O campo Nome não pode ser vazio, tente novamente");
+            showPopup("O campo Nome não pode ser vazio, tente novamente", false);
             return false;
         } else if (tfNome.getText().matches("^[a-zA-Z\\s^áéíóúãâêõ]{1,60}$")) {} 
           else {
-            showPopup("O campo Nome não pode conter números ou mesmo símbolos");
+            showPopup("O campo Nome não pode conter números ou mesmo símbolos", false);
             return false;
         }
 
         if (tfCPF.getText().isEmpty()) {
-            showPopup("O campo CPF não pode ser vazio, tente novamente");
+            showPopup("O campo CPF não pode ser vazio, tente novamente", false);
             return false;
 
         } else if (tfCPF.getText().matches("^[0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2}$")){} 
           else {
-            showPopup("O conteúdo do campo CPF é inválido");
+            showPopup("O conteúdo do campo CPF é inválido", false);
             return false;
         }
 
         if (tfIdade.getText().isEmpty()) {
-            showPopup("O campo Idade não pode ser vazio, tente novamente");
+            showPopup("O campo Idade não pode ser vazio, tente novamente", false);
             return false;
         } else if (tfIdade.getText().matches("\\D")) {
-            showPopup("O campo Idade não pode conter letras");
+            showPopup("O campo Idade não pode conter letras", false);
             return false;
         } else if (tfIdade.getText().matches("[0-9]+")) {
             int num =  Integer.parseInt(tfIdade.getText());
             if (num <= 0 ) {
-                showPopup("A idade não pode ser 0 ou mesmo negativa");
+                showPopup("A idade não pode ser 0 ou mesmo negativa", false);
                 return false;
             }
         }
 
         if (tfAltura.getText().isEmpty()) {
-            showPopup("O campo Altura não pode ser vazio, tente novamente");
+            showPopup("O campo Altura não pode ser vazio, tente novamente", false);
             return false;
         } else if (tfAltura.getText().matches("\\D")) {
-            showPopup("O campo Altura não pode conter letras");
+            showPopup("O campo Altura não pode conter letras", false);
             return false;
         } else if (tfAltura.getText().matches("[0-9^.]+")) {
             double num =  Double.parseDouble(tfAltura.getText());
             if (num <= 0 ) {
-                showPopup("A altura não pode ser nula ou negativa");
+                showPopup("A altura não pode ser nula ou negativa", false);
                 return false;
             }
         }
 
         if (tfPeso.getText().isEmpty()) {
-            showPopup("O campo Peso não pode ser vazio, tente novamente");
+            showPopup("O campo Peso não pode ser vazio, tente novamente", false);
             return false;
         } else if (tfPeso.getText().matches("\\D")) {
-            showPopup("O campo Peso não pode conter letras");
+            showPopup("O campo Peso não pode conter letras", false);
             return false;
         } else if (tfPeso.getText().matches("[0-9^.]+")) {
             double num =  Double.parseDouble(tfPeso.getText());
             if (num <= 0 ) {
-                showPopup("O peso não pode ser nulo ou negativo");
+                showPopup("O peso não pode ser nulo ou negativo", false);
                 return false;
             }
         }
         return true;
     }    
-
-
-
-
-
-    private void showPopup(String texto) {
-        try{
-            
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/telaPopupErro.fxml"));
-            Parent root = loader.load();
-            
-            TelaPopupErroController controller = loader.getController();
-            controller.initialize(texto);
-            
-            
-            Popup popup = new Popup();
-
-            popup.getContent().add(root);
-            popup.setAutoHide(true);
-            popup.setHideOnEscape(true);
-            
-            double winX = buttonHome.getScene().getWindow().getX();
-            double winY = buttonHome.getScene().getWindow().getY();
-            double halfX = buttonHome.getScene().getWindow().getWidth()/2;
-            double halfY = buttonHome.getScene().getWindow().getHeight()/2;
-
-            double newX = (winX + halfX) - (popup.getWidth()/2);
-            double newY = (winY + halfY) - (popup.getHeight()/2);
-
-            popup.setX(newX);
-            popup.setY(newY);
-            
-            
-            popup.show(buttonHome.getScene().getWindow());
-
-            PauseTransition closeDelay = new PauseTransition(Duration.seconds(2.5));
-            closeDelay.setOnFinished(new EventHandler<ActionEvent>() {
-
-                @Override
-                public void handle(ActionEvent arg0) {
-                    popup.hide();
-                }
-            });
-            closeDelay.play();
-
-            
-        }catch(Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-
-    private void exibirConteudo() { 
-        questao.setText(questao.getText() + "\t");
-        textEnunciado.setText(EnunciadoDasQuestoes.questao32.substring(3));
-    }
-
-
-
-    
-
-    private void setStilo() {
-        if (App.darkMode) {
-            buttonVoltar.getStyleClass().setAll("btn-voltar-DM");
-            buttonHome.getStyleClass().setAll("btn-questao-DM");
-            buttonAbrirArquivo.getStyleClass().setAll("btn-questao-DM");
-            buttonCadastrar.getStyleClass().setAll("btn-questao-DM");
-            buttonEditar.getStyleClass().setAll("btn-questao-DM");
-            buttonVisualizar.getStyleClass().setAll("btn-questao-DM");
-            buttonPrincipal.getStyleClass().setAll("btn-questao-DM");
-            buttonSalvarArquivo.getStyleClass().setAll("btn-questao-DM");
-            buttonInicial.getStyleClass().setAll("btn-questao-DM");
-            telaQuestao32.setStyle("-fx-background-color: #282828");
-            paneView.setStyle("-fx-background-color: #282828");
-
-            labelAltura.setTextFill(Paint.valueOf("WHITE"));
-            labelCPF.setTextFill(Paint.valueOf("WHITE"));
-            labelIdade.setTextFill(Paint.valueOf("WHITE"));
-            labelInfoPessoal.setTextFill(Paint.valueOf("WHITE"));
-            labelNome.setTextFill(Paint.valueOf("WHITE"));
-            labelPeso.setTextFill(Paint.valueOf("WHITE"));
-            labelInicial.setTextFill(Paint.valueOf("WHITE"));
-            labelSexo.setTextFill(Paint.valueOf("WHITE"));
-            
-            questao.setFill(Paint.valueOf("WHITE"));
-            textEnunciado.setFill(Paint.valueOf("WHITE"));
-            textView.setFill(Paint.valueOf("WHITE"));
-            
-        } else {
-            buttonVoltar.getStyleClass().setAll("btn-voltar");
-            buttonHome.getStyleClass().setAll("btn-questao");
-            buttonAbrirArquivo.getStyleClass().setAll("btn-questao");
-            buttonCadastrar.getStyleClass().setAll("btn-questao");
-            buttonEditar.getStyleClass().setAll("btn-questao");
-            buttonVisualizar.getStyleClass().setAll("btn-questao");
-            buttonPrincipal.getStyleClass().setAll("btn-questao");
-            buttonSalvarArquivo.getStyleClass().setAll("btn-questao");
-            buttonInicial.getStyleClass().setAll("btn-questao");
-            telaQuestao32.setStyle(null);
-            paneView.setStyle(null);
-
-            labelAltura.setTextFill(Paint.valueOf("BLACK"));
-            labelCPF.setTextFill(Paint.valueOf("BLACK"));
-            labelIdade.setTextFill(Paint.valueOf("BLACK"));
-            labelInfoPessoal.setTextFill(Paint.valueOf("BLACK"));
-            labelNome.setTextFill(Paint.valueOf("BLACK"));
-            labelPeso.setTextFill(Paint.valueOf("BLACK"));
-            labelInicial.setTextFill(Paint.valueOf("BLACK"));
-            labelSexo.setTextFill(Paint.valueOf("BLACK"));
-            
-            questao.setFill(Paint.valueOf("BLACK"));
-            textEnunciado.setFill(Paint.valueOf("BLACK"));
-            textView.setFill(Paint.valueOf("BLACK"));
-        }
-    }
 }

@@ -64,16 +64,13 @@ public class Questao25Controller {
     public void initialize() {
         acaoDosBotoes();
         setStilo();
-        exibirConteudo();
         estadoInicial();
-
 
         cont = -1;
     }
 
 
     private void estadoInicial(){
-
         labelVetor.setText("Tamanho do vetor");
         
         buttonEditar.setDisable(true);
@@ -89,32 +86,11 @@ public class Questao25Controller {
 
 
     private void acaoDosBotoes() {
-
-        buttonVoltar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                App.trocarDeTela("telaQuestoes");
-            }
-            
-        });
-        
-        buttonHome.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                App.trocarDeTela("telaInicial");
-            }
-            
-        });
-
         buttonCriar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 vBoxCreate.setVisible(true);
             }
-            
         });
         buttonEditar.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -126,7 +102,6 @@ public class Questao25Controller {
                 textResposta.setVisible(false);
                 vBoxEdit.setVisible(true);
             }
-            
         });
         buttonVisualizar.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -138,10 +113,7 @@ public class Questao25Controller {
                 textView.setText(vetor.exibirVetor());
                 sPaneView.setVisible(true);
             }
-            
         });
-
-
 
         buttonConfirmCreate.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -186,7 +158,6 @@ public class Questao25Controller {
                     if (questao29) vBoxButtons.getChildren().add(buttonQuestao29);
                 }
             }
-            
         });
         buttonConfirmEdit.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -205,34 +176,25 @@ public class Questao25Controller {
                     textResposta.setVisible(true);
                 }
             }
-            
         });
 
-
         buttonQuestao27.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 irQuestao27();
             }
-
-            
         });
         buttonQuestao28.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 irQuestao28();
             }
-
         });
         buttonQuestao29.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 irQuestao29();
             }
-
         });
 
         Tooltip mensagem = new Tooltip("Você ainda vai voltar nessa questão...");
@@ -252,7 +214,6 @@ public class Questao25Controller {
 
 
     private boolean validarCreate() {
-        
         if (tfVetor.getText().isEmpty()) {
             showPopup("O campo não pode ser vazio, tente novamente");
             return false;
@@ -266,12 +227,9 @@ public class Questao25Controller {
                 return false;
             }
         }
-
         return true;
     }
-    
     private boolean validarEdit() {
-        
         if (tfPosicao.getText().isEmpty()) {
             showPopup("O campo não pode ser vazio, tente novamente");
             return false;
@@ -285,7 +243,6 @@ public class Questao25Controller {
                 return false;
             }
         }
-        
         if (tfValor.getText().isEmpty()) {
             showPopup("O campo não pode ser vazio, tente novamente");
             return false;
@@ -293,60 +250,9 @@ public class Questao25Controller {
             showPopup("O campo não pode conter letras");
             return false;
         }
-
         return true;
     }
 
-
-
-
-
-    private void showPopup(String texto) {
-        try{
-            
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/telaPopupErro.fxml"));
-            Parent root = loader.load();
-            
-            TelaPopupErroController controller = loader.getController();
-            controller.initialize(texto);
-            
-            
-            Popup popup = new Popup();
-
-            popup.getContent().add(root);
-            popup.setAutoHide(true);
-            popup.setHideOnEscape(true);
-            
-            double winX = buttonHome.getScene().getWindow().getX();
-            double winY = buttonHome.getScene().getWindow().getY();
-            double halfX = buttonHome.getScene().getWindow().getWidth()/2;
-            double halfY = buttonHome.getScene().getWindow().getHeight()/2;
-
-            double newX = (winX + halfX) - (popup.getWidth()/2);
-            double newY = (winY + halfY) - (popup.getHeight()/2);
-
-            popup.setX(newX);
-            popup.setY(newY);
-            
-            
-            popup.show(buttonHome.getScene().getWindow());
-
-            PauseTransition closeDelay = new PauseTransition(Duration.seconds(3));
-            closeDelay.setOnFinished(new EventHandler<ActionEvent>() {
-
-                @Override
-                public void handle(ActionEvent arg0) {
-                    popup.hide();
-                }
-            });
-            closeDelay.play();
-
-            
-        }catch(Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
 
 
 
@@ -355,74 +261,15 @@ public class Questao25Controller {
         Questao27Controller.vetorQ25 = vetor;
         App.trocarDeTela("questao27");
     }
-
     private void irQuestao28() {
         Questao28Controller.questao25 = true;
         Questao28Controller.vetorQ25 = vetor;
         App.trocarDeTela("questao28");
     }
-    
     private void irQuestao29() {
         Questao29Controller.questao25 = true;
         Questao29Controller.vetorQ25 = vetor;
         App.trocarDeTela("questao29");
     }
 
-
-
-    private void exibirConteudo() { 
-        questao.setText(questao.getText() + "\t");
-        textEnunciado.setText(EnunciadoDasQuestoes.questao25.substring(3));
-    }
-
-
-    
-    private void setStilo() {
-        if (App.darkMode) {
-            buttonVoltar.getStyleClass().setAll("btn-voltar-DM");
-            buttonHome.getStyleClass().setAll("btn-questao-DM");
-            buttonCriar.getStyleClass().setAll("btn-questao-DM");
-            buttonEditar.getStyleClass().setAll("btn-questao-DM");
-            buttonVisualizar.getStyleClass().setAll("btn-questao-DM");
-            buttonConfirmCreate.getStyleClass().setAll("btn-questao-DM");
-            buttonConfirmEdit.getStyleClass().setAll("btn-questao-DM");
-            buttonQuestao27.getStyleClass().setAll("btn-questao-DM");
-            buttonQuestao28.getStyleClass().setAll("btn-questao-DM");
-            buttonQuestao29.getStyleClass().setAll("btn-questao-DM");
-            telaQuestao25.setStyle("-fx-background-color: #282828");
-            paneView.setStyle("-fx-background-color: #282828");
-
-            labelPosicao.setTextFill(Paint.valueOf("WHITE"));
-            labelValor.setTextFill(Paint.valueOf("WHITE"));
-            labelVetor.setTextFill(Paint.valueOf("WHITE"));
-            
-            questao.setFill(Paint.valueOf("WHITE"));
-            textEnunciado.setFill(Paint.valueOf("WHITE"));
-            textResposta.setFill(Paint.valueOf("WHITE"));
-            textView.setFill(Paint.valueOf("WHITE"));
-            
-        } else {
-            buttonVoltar.getStyleClass().setAll("btn-voltar");
-            buttonHome.getStyleClass().setAll("btn-questao");
-            buttonCriar.getStyleClass().setAll("btn-questao");
-            buttonEditar.getStyleClass().setAll("btn-questao");
-            buttonVisualizar.getStyleClass().setAll("btn-questao");
-            buttonConfirmCreate.getStyleClass().setAll("btn-questao");
-            buttonConfirmEdit.getStyleClass().setAll("btn-questao");
-            buttonQuestao27.getStyleClass().setAll("btn-questao");
-            buttonQuestao28.getStyleClass().setAll("btn-questao");
-            buttonQuestao29.getStyleClass().setAll("btn-questao");
-            telaQuestao25.setStyle(null);
-            paneView.setStyle(null);
-
-            labelPosicao.setTextFill(Paint.valueOf("BLACK"));
-            labelValor.setTextFill(Paint.valueOf("BLACK"));
-            labelVetor.setTextFill(Paint.valueOf("BLACK"));
-            
-            questao.setFill(Paint.valueOf("BLACK"));
-            textEnunciado.setFill(Paint.valueOf("BLACK"));
-            textResposta.setFill(Paint.valueOf("BLACK"));
-            textView.setFill(Paint.valueOf("BLACK"));
-        }
-    }
 }
