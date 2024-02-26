@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<BorderPane fx:id="telaQuestao14" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Questao14Controller">
+<BorderPane fx:id="telaQuestao14" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Questao14Controller">
    <top>
       <AnchorPane prefHeight="150.0" prefWidth="1200.0" style="-fx-background-color: #F23C13; -fx-border-radius: 5;" BorderPane.alignment="CENTER">
          <children>
@@ -195,7 +195,7 @@
                                                       <Font name="System Bold" size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="Raiz" layoutX="220.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="√">
+                                                <Text fx:id="raiz" layoutX="220.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="√">
                                                    <font>
                                                       <Font name="System Bold" size="20.0" />
                                                    </font>

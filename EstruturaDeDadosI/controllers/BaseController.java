@@ -25,9 +25,8 @@ public class BaseController {
     @FXML private Text questao;
     @FXML private Text textEnunciado;
 
-    public static int numQuestao = 0;
-
-    final private EnunciadoDasQuestoes enunciado = new EnunciadoDasQuestoes();
+    public static int numQuestao = 1;
+    final private static EnunciadoDasQuestoes enunciado = new EnunciadoDasQuestoes();
 
     public void initialize(){
         this.acaoBotoesPrincipais();
@@ -61,10 +60,8 @@ public class BaseController {
                 loader = new FXMLLoader(getClass().getResource("../views/telaPopupSucesso.fxml"));
                 root = loader.load();
 
-                
                 TelaPopupSucessoController controller = loader.getController();
                 controller.initialize(texto);
-
             }
             else {
                 loader = new FXMLLoader(getClass().getResource("../views/telaPopupErro.fxml"));
@@ -73,7 +70,6 @@ public class BaseController {
                 TelaPopupErroController controller = loader.getController();
                 controller.initialize(texto);
             };
-            
             
             Popup popup = new Popup();
 
@@ -92,7 +88,6 @@ public class BaseController {
             popup.setX(newX);
             popup.setY(newY);
             
-            
             popup.show(buttonHome.getScene().getWindow());
 
             PauseTransition closeDelay = new PauseTransition(Duration.seconds(3));
@@ -105,7 +100,6 @@ public class BaseController {
             });
             closeDelay.play();
 
-            
         }catch(Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -129,7 +123,7 @@ public class BaseController {
             if (args1 != null) { for (Label label : args1) label.setTextFill(Color.WHITE);}
             if (args2 != null) { for (Pane pane : args2) pane.setStyle("-fx-background-color: #282828");}
             if (args3 != null) { for (Shape shape : args3) shape.setStroke(Color.WHITE);}
-            if (args3 != null) { for (Text text : args4) text.setFill(Color.WHITE);}
+            if (args4 != null) { for (Text text : args4) text.setFill(Color.WHITE);}
         } else {
             buttonHome.getStyleClass().setAll("btn-home");
             buttonVoltar.getStyleClass().setAll("btn-voltar");
@@ -139,7 +133,7 @@ public class BaseController {
             if (args1 != null) { for (Label label : args1) label.setTextFill(Color.BLACK);}
             if (args2 != null) { for (Pane pane : args2) pane.setStyle(null);}
             if (args3 != null) { for (Shape shape : args3) shape.setStroke(Color.BLACK);}
-            if (args3 != null) { for (Text text : args4) text.setFill(Color.BLACK);}
+            if (args4 != null) { for (Text text : args4) text.setFill(Color.BLACK);}
         }
     }
 }

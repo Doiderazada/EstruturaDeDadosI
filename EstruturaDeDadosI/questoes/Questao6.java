@@ -1,5 +1,8 @@
 package questoes;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public abstract class Questao6 {
     private static final float precoFatia =  3.0f;
     private static final float precoRefri =  1.5f;
@@ -95,6 +98,7 @@ public abstract class Questao6 {
         setTotal(tTotal);
 
         float totPessoa = getTotal()/getQuantPessoa();
+        totPessoa = (float) BigDecimal.valueOf(totPessoa).setScale(2, RoundingMode.HALF_UP).doubleValue();
 
         setValPessoa(totPessoa);
 

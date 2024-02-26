@@ -1,11 +1,7 @@
 package controllers;
 
-import javafx.animation.PauseTransition;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -15,22 +11,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
-import javafx.stage.Popup;
 import javafx.util.Duration;
-import questoes.EnunciadoDasQuestoes;
 import questoes.Questao20;
-import source.App;
 
-public class Questao20Controller {
+public class Questao20Controller extends BaseController{
     
 
     @FXML private BorderPane telaQuestao20;
     @FXML private Button buttonConfirmar;
-    @FXML private Button buttonHome;
     @FXML private Button buttonNovoInvestimento;
-    @FXML private Button buttonVoltar;
     @FXML private Label copyRight;
     @FXML private Label labelInvestimentoInicial;
     @FXML private Label labelInvestimentoMensal;
@@ -38,8 +28,6 @@ public class Questao20Controller {
     @FXML private Label labelTempoRendimento;
     @FXML private Pane paneTeste;
     @FXML private ScrollPane sPaneOutput;
-    @FXML private Text questao;
-    @FXML private Text textEnunciado;
     @FXML private Text textResposta;
     @FXML private Text textSaldo;
     @FXML private TextField tfInvestIni;
@@ -52,10 +40,20 @@ public class Questao20Controller {
 
 
     public void initialize() {
+        BaseController.numQuestao = 20;
+        super.initialize();
         acaoDosBotoes();
-        setStilo();
-        exibirConteudo();
+        setStilo(new Button[] { buttonConfirmar, buttonNovoInvestimento},
+                 new Label[]  { labelInvestimentoInicial, labelInvestimentoMensal, 
+                                labelTaxaJuros, labelTempoRendimento},
+                 new Pane[]   { paneTeste, telaQuestao20}, null,
+                 new Text[]   { textResposta, textSaldo});
+        estadoInicial();
+    }
 
+
+
+    private void estadoInicial() {
         sPaneOutput.setVisible(false);
         textResposta.setText(null);
         textSaldo.setText(null);
@@ -66,26 +64,6 @@ public class Questao20Controller {
 
 
     private void acaoDosBotoes() {
-
-        buttonVoltar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                App.trocarDeTela("telaQuestoes");
-            }
-            
-        });
-        
-        buttonHome.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                App.trocarDeTela("telaInicial");
-            }
-            
-        });
-
-
         buttonConfirmar.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
@@ -96,7 +74,6 @@ public class Questao20Controller {
                     sPaneOutput.setVisible(true);
                 }
             }
-            
         });
 
         
@@ -116,7 +93,6 @@ public class Questao20Controller {
 
                 vBoxInput.setVisible(true);
             }
-            
         });
 
         Tooltip investHint1 = new Tooltip("O depósito inicial na poupança");
@@ -143,13 +119,10 @@ public class Questao20Controller {
         labelInvestimentoMensal.setTooltip(investHint2);
         labelTaxaJuros.setTooltip(investHint3);
         labelTempoRendimento.setTooltip(investHint4);
-
     }
 
     
     private void fazerRender() {
-        
-
         double iniInvest = Double.parseDouble(tfInvestIni.getText());
         double investMens = Double.parseDouble(tfInvestMens.getText());
         double taxaJur = Double.parseDouble(tfTaxJur.getText());
@@ -161,175 +134,63 @@ public class Questao20Controller {
             textResposta.setText(textResposta.getText() + "Valor rendido ao final do " + (i+1) + "º mês: \n");
             textSaldo.setText(textSaldo.getText() + investimento.getRendimentoMensal(i) + " R$\n");
         }
-
     }
 
 
 
     private boolean verificarInput() {
-        
         if (tfInvestIni.getText().isEmpty()) {
-            showPopup("O campo não pode ser vazio, tente novamente");
+            showPopup("O campo não pode ser vazio, tente novamente", false);
             return false;
         } else if (tfInvestIni.getText().matches("\\D")) {
-            showPopup("O campo não pode conter letras");
+            showPopup("O campo não pode conter letras", false);
             return false;
         } else if (tfInvestIni.getText().matches("[0-9]+")) {
             int num =  Integer.parseInt(tfInvestIni.getText());
             if (num < 1 ) {
-                showPopup("O investimento não pode ser menor que 1");
+                showPopup("O investimento não pode ser menor que 1", false);
                 return false;
             }
         }
-        
-        
         if (tfInvestMens.getText().isEmpty()) {
-            showPopup("O campo não pode ser vazio, mas pode ser 0");
+            showPopup("O campo não pode ser vazio, mas pode ser 0", false);
             return false;
         } else if (tfInvestMens.getText().matches("\\D")) {
-            showPopup("O campo não pode conter letras");
+            showPopup("O campo não pode conter letras", false);
             return false;
         } else if (tfInvestMens.getText().matches("[0-9]+")) {
             int num =  Integer.parseInt(tfInvestMens.getText());
             if (num < 0 ) {
-                showPopup("O investimento não pode ser menor que 0");
+                showPopup("O investimento não pode ser menor que 0", false);
                 return false;
             }
         }
-        
-        
         if (tfTaxJur.getText().isEmpty()) {
-            showPopup("O campo não pode ser vazio, tente novamente");
+            showPopup("O campo não pode ser vazio, tente novamente", false);
             return false;
         } else if (tfTaxJur.getText().matches("\\D")) {
-            showPopup("O campo não pode conter letras");
+            showPopup("O campo não pode conter letras", false);
             return false;
         } else if (tfTaxJur.getText().matches("[0-9]+")) {
             int num =  Integer.parseInt(tfTaxJur.getText());
             if (num <= 0 ) {
-                showPopup("A taxa de rendimento não pode ser menor que, ou 0");
+                showPopup("A taxa de rendimento não pode ser menor que, ou 0", false);
                 return false;
             }
         }
-        
-        
         if (tfTempo.getText().isEmpty()) {
-            showPopup("O campo não pode ser vazio, tente novamente");
+            showPopup("O campo não pode ser vazio, tente novamente", false);
             return false;
         } else if (tfTempo.getText().matches("\\D")) {
-            showPopup("O campo não pode conter letras");
+            showPopup("O campo não pode conter letras", false);
             return false;
         } else if (tfTempo.getText().matches("[0-9]+")) {
             int num =  Integer.parseInt(tfTempo.getText());
             if (num <= 0 ) {
-                showPopup("A tempo rendendo não pode ser menor que, ou igual a 0");
+                showPopup("A tempo rendendo não pode ser menor que, ou igual a 0", false);
                 return false;
             }
         }
-
         return true;
-    }
-
-
-
-
-
-    private void showPopup(String texto) {
-        try{
-            
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/telaPopupErro.fxml"));
-            Parent root = loader.load();
-            
-            TelaPopupErroController controller = loader.getController();
-            controller.initialize(texto);
-            
-            
-            Popup popup = new Popup();
-
-            popup.getContent().add(root);
-            popup.setAutoHide(true);
-            popup.setHideOnEscape(true);
-            
-            double winX = buttonHome.getScene().getWindow().getX();
-            double winY = buttonHome.getScene().getWindow().getY();
-            double halfX = buttonHome.getScene().getWindow().getWidth()/2;
-            double halfY = buttonHome.getScene().getWindow().getHeight()/2;
-
-            double newX = (winX + halfX) - (popup.getWidth()/2);
-            double newY = (winY + halfY) - (popup.getHeight()/2);
-
-            popup.setX(newX);
-            popup.setY(newY);
-            
-            
-            popup.show(buttonHome.getScene().getWindow());
-
-            
-
-            PauseTransition closeDelay = new PauseTransition(Duration.seconds(3));
-            closeDelay.setOnFinished(new EventHandler<ActionEvent>() {
-
-                @Override
-                public void handle(ActionEvent arg0) {
-                    popup.hide();
-                }
-            });
-            closeDelay.play();
-
-            
-        }catch(Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-
-    private void exibirConteudo() { 
-        questao.setText(questao.getText() + "\t");
-        textEnunciado.setText(EnunciadoDasQuestoes.questao20.substring(3));
-    }
-
-
-    
-    private void setStilo() {
-        if (App.darkMode) {
-            buttonVoltar.getStyleClass().setAll("btn-voltar-DM");
-            buttonHome.getStyleClass().setAll("btn-questao-DM");
-            buttonConfirmar.getStyleClass().setAll("btn-questao-DM");
-            buttonNovoInvestimento.getStyleClass().setAll("btn-questao-DM");
-            telaQuestao20.setStyle("-fx-background-color: #282828");
-            paneTeste.setStyle("-fx-background-color: #282828");
-
-            labelInvestimentoInicial.setTextFill(Paint.valueOf("WHITE"));
-            labelInvestimentoMensal.setTextFill(Paint.valueOf("WHITE"));
-            labelTaxaJuros.setTextFill(Paint.valueOf("WHITE"));
-            labelTempoRendimento.setTextFill(Paint.valueOf("WHITE"));
-
-            questao.setFill(Paint.valueOf("WHITE"));
-            textEnunciado.setFill(Paint.valueOf("WHITE"));
-            textResposta.setFill(Paint.valueOf("WHITE"));
-            textSaldo.setFill(Paint.valueOf("WHITE"));
-            
-        } else {
-            buttonVoltar.getStyleClass().setAll("btn-voltar");
-            buttonHome.getStyleClass().setAll("btn-questao");
-            buttonConfirmar.getStyleClass().setAll("btn-questao");
-            buttonNovoInvestimento.getStyleClass().setAll("btn-questao");
-            telaQuestao20.setStyle(null);
-            paneTeste.setStyle(null);
-
-            labelInvestimentoInicial.setTextFill(Paint.valueOf("BLACK"));
-            labelInvestimentoMensal.setTextFill(Paint.valueOf("BLACK"));
-            labelTaxaJuros.setTextFill(Paint.valueOf("BLACK"));
-            labelTempoRendimento.setTextFill(Paint.valueOf("BLACK"));
-
-            questao.setFill(Paint.valueOf("BLACK"));
-            textEnunciado.setFill(Paint.valueOf("BLACK"));
-            textResposta.setFill(Paint.valueOf("BLACK"));
-            textSaldo.setFill(Paint.valueOf("BLACK"));
-        }
-    }
+    }   
 }

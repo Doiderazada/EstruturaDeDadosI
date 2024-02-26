@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<BorderPane fx:id="telaQuestao6" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Questao6Controller">
+<BorderPane fx:id="telaQuestao6" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Questao6Controller">
    <top>
       <AnchorPane prefHeight="150.0" prefWidth="1200.0" style="-fx-background-color: #F23C13; -fx-border-radius: 5;" BorderPane.alignment="CENTER">
          <children>
@@ -120,22 +120,22 @@
                            <children>
                               <VBox prefHeight="208.0" prefWidth="250.0" spacing="10.0">
                                  <children>
-                                    <Text fx:id="valRefri" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor do refris">
+                                    <Text fx:id="textValRefri" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor do refris">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="valPizza" layoutX="124.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor das pizzas">
+                                    <Text fx:id="textValPizza" layoutX="124.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor das pizzas">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="subTotal" layoutX="124.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="subtotal">
+                                    <Text fx:id="textSubTotal" layoutX="124.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="subtotal">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="total" layoutX="124.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="total">
+                                    <Text fx:id="textTotal" layoutX="124.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="total">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
@@ -143,7 +143,7 @@
                                           <Insets top="25.0" />
                                        </VBox.margin>
                                     </Text>
-                                    <Text fx:id="valPessoa" layoutX="124.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor por pessoa">
+                                    <Text fx:id="textValPessoa" layoutX="124.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor por pessoa">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
@@ -155,22 +155,22 @@
                               </VBox>
                               <VBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" spacing="10.0">
                                  <children>
-                                    <Text fx:id="resultRefri" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
+                                    <Text fx:id="textResultRefri" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="resultPizza" layoutX="124.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
+                                    <Text fx:id="textResultPizza" layoutX="124.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="resultSubT" layoutX="124.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
+                                    <Text fx:id="textResultSubT" layoutX="124.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="resultTot" layoutX="124.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
+                                    <Text fx:id="textResultTot" layoutX="124.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
@@ -178,7 +178,7 @@
                                           <Insets top="25.0" />
                                        </VBox.margin>
                                     </Text>
-                                    <Text fx:id="resultPessoa" layoutX="124.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
+                                    <Text fx:id="textResultPessoa" layoutX="124.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>

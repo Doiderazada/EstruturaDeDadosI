@@ -11,46 +11,48 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
-import questoes.EnunciadoDasQuestoes;
 import questoes.Questao3;
-import source.App;
 
-public class Questao3Controller {
+public class Questao3Controller extends BaseController{
+    
     
     @FXML private BorderPane telaQuestao3;
     @FXML private Button buttonConfirmar;
-    @FXML private Button buttonHome;
-    @FXML private Button buttonVoltar;
-    @FXML private HBox outputHBox;
+    @FXML private HBox hBoxOutput;
     @FXML private Label copyRight;
     @FXML private Label labelValA;
     @FXML private Label labelValB;
-    @FXML private Text divisao;
-    @FXML private Text multiplicacao;
-    @FXML private Text questao;
-    @FXML private Text resto;
-    @FXML private Text resultadoDiv;
-    @FXML private Text resultadoMod;
-    @FXML private Text resultadoMult;
-    @FXML private Text resultadoSoma;
-    @FXML private Text resultadoSub;
-    @FXML private Text soma;
-    @FXML private Text subtracao;
-    @FXML private Text textEnunciado;
+    @FXML private Text textDivisao;
+    @FXML private Text textMultiplicacao;
+    @FXML private Text textResto;
+    @FXML private Text textResultadoDiv;
+    @FXML private Text textResultadoMod;
+    @FXML private Text textResultadoMult;
+    @FXML private Text textResultadoSoma;
+    @FXML private Text textResultadoSub;
+    @FXML private Text textSoma;
+    @FXML private Text textSubtracao;
     @FXML private TextField tfValA;
     @FXML private TextField tfValB;
-    @FXML private VBox inputVBox;
+    @FXML private VBox vBoxInput;
 
+
+    private final Tooltip texto = new Tooltip("Texto copiado");
 
     public void initialize() {
+        BaseController.numQuestao = 3;
+        super.initialize();
+        setStilo(new Button[] { buttonConfirmar}, 
+                 new Label[]  { labelValA, labelValB}, 
+                 new Pane[]   { telaQuestao3}, null, 
+                 new Text[]   { textDivisao, textMultiplicacao, textResto, textResultadoDiv, textResultadoMod, 
+                                textResultadoMult, textResultadoSoma, textResultadoSub, textSoma, textSubtracao});
         acaoDosBotoes();
-        setStilo();
-        exibirConteudo();
-        outputHBox.setVisible(false);
-        inputVBox.setVisible(true);
+        hBoxOutput.setVisible(false);
+        vBoxInput.setVisible(true);
     }
 
 
@@ -58,25 +60,6 @@ public class Questao3Controller {
 
 
     private void acaoDosBotoes() {
-        buttonVoltar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                App.trocarDeTela("telaQuestoes");
-            }
-            
-        });
-        
-        buttonHome.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                App.trocarDeTela("telaInicial");
-            }
-            
-        });
-
-
         buttonConfirmar.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
@@ -84,201 +67,104 @@ public class Questao3Controller {
                 Questao3.setValA(Integer.valueOf(tfValA.getText()));                
                 Questao3.setValB(Integer.valueOf(tfValB.getText()));
 
-                soma.setText(tfValA.getText() + " + " + tfValB.getText() + " = ");
-                subtracao.setText(tfValA.getText() + " - " + tfValB.getText() + " = ");
-                multiplicacao.setText(tfValA.getText() + " * " + tfValB.getText() + " = ");
-                divisao.setText(tfValA.getText() + " / " + tfValB.getText() + " = ");
-                resto.setText(tfValA.getText() + " % " + tfValB.getText() + " = ");
+                textSoma.setText(tfValA.getText() + " + " + tfValB.getText() + " = ");
+                textSubtracao.setText(tfValA.getText() + " - " + tfValB.getText() + " = ");
+                textMultiplicacao.setText(tfValA.getText() + " * " + tfValB.getText() + " = ");
+                textDivisao.setText(tfValA.getText() + " / " + tfValB.getText() + " = ");
+                textResto.setText(tfValA.getText() + " % " + tfValB.getText() + " = ");
                 
-                
-                resultadoSoma.setText(String.valueOf(Questao3.somar()));
-                resultadoSub.setText(String.valueOf(Questao3.subtrair()));
-                resultadoMult.setText(String.valueOf(Questao3.multiplicar()));
-                resultadoDiv.setText(String.valueOf(Questao3.dividir()));
-                resultadoMod.setText(String.valueOf(Questao3.modulo()));
+                textResultadoSoma.setText(String.valueOf(Questao3.somar()));
+                textResultadoSub.setText(String.valueOf(Questao3.subtrair()));
+                textResultadoMult.setText(String.valueOf(Questao3.multiplicar()));
+                textResultadoDiv.setText(String.valueOf(Questao3.dividir()));
+                textResultadoMod.setText(String.valueOf(Questao3.modulo()));
 
-
-                outputHBox.setVisible(true);
+                hBoxOutput.setVisible(true);
             }
-            
         });
 
 
-        Tooltip texto = new Tooltip("Texto copiado");
-        
-
-        resultadoSoma.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        textResultadoSoma.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                Clipboard clipboard = Clipboard.getSystemClipboard();
-                ClipboardContent content = new ClipboardContent();
-                content.putString(resultadoSoma.getText());
-                clipboard.setContent(content);
-
-                Tooltip.install(resultadoSoma, texto);
-                texto.setAutoHide(true);
-                texto.fireEvent(arg0);
-                texto.centerOnScreen();
-                texto.show(telaQuestao3.getScene().getWindow());
+                copiarTexto(arg0, textResultadoSoma);
             }
         });
-        resultadoSoma.setOnMouseExited(new EventHandler<MouseEvent>() {
+        textResultadoSoma.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
                 texto.hide();
-                Tooltip.uninstall(resultadoSoma, texto);
+                Tooltip.uninstall(textResultadoSoma, texto);
             }
         });
         
-
-        resultadoSub.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        textResultadoSub.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                Clipboard clipboard = Clipboard.getSystemClipboard();
-                ClipboardContent content = new ClipboardContent();
-                content.putString(resultadoSoma.getText());
-                clipboard.setContent(content);
-                
-                Tooltip.install(resultadoSub, texto);
-                texto.setAutoHide(true);
-                texto.fireEvent(arg0);
-                texto.centerOnScreen();
-                texto.show(telaQuestao3.getScene().getWindow());
+                copiarTexto(arg0, textResultadoSub);
             } 
         });
-        resultadoSub.setOnMouseExited(new EventHandler<MouseEvent>() {
+        textResultadoSub.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
                 texto.hide();
-                Tooltip.uninstall(resultadoSub, texto);
+                Tooltip.uninstall(textResultadoSub, texto);
             }
         });
-        
 
-        resultadoMult.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        textResultadoMult.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                Clipboard clipboard = Clipboard.getSystemClipboard();
-                ClipboardContent content = new ClipboardContent();
-                content.putString(resultadoSoma.getText());
-                clipboard.setContent(content);
-                
-                Tooltip.install(resultadoMult, texto);
-                texto.setAutoHide(true);
-                texto.fireEvent(arg0);
-                texto.centerOnScreen();
-                texto.show(telaQuestao3.getScene().getWindow());
+                copiarTexto(arg0, textResultadoMult);
             }
         });
-        resultadoMult.setOnMouseExited(new EventHandler<MouseEvent>() {
+        textResultadoMult.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
                 texto.hide();
-                Tooltip.uninstall(resultadoMult, texto);
+                Tooltip.uninstall(textResultadoMult, texto);
             } 
         });
         
-
-        resultadoDiv.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        textResultadoDiv.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                Clipboard clipboard = Clipboard.getSystemClipboard();
-                ClipboardContent content = new ClipboardContent();
-                content.putString(resultadoSoma.getText());
-                clipboard.setContent(content);
-                
-                Tooltip.install(resultadoDiv, texto);
-                texto.setAutoHide(true);
-                texto.fireEvent(arg0);
-                texto.centerOnScreen();
-                texto.show(telaQuestao3.getScene().getWindow());
+                copiarTexto(arg0, textResultadoDiv);
             }
         });
-        resultadoDiv.setOnMouseExited(new EventHandler<MouseEvent>() {
+        textResultadoDiv.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
                 texto.hide();
-                Tooltip.uninstall(resultadoDiv, texto);
+                Tooltip.uninstall(textResultadoDiv, texto);
             }
         });
         
-        resultadoMod.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        textResultadoMod.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                Clipboard clipboard = Clipboard.getSystemClipboard();
-                ClipboardContent content = new ClipboardContent();
-                content.putString(resultadoSoma.getText());
-                clipboard.setContent(content);
-                
-                Tooltip.install(resultadoMod, texto);
-                texto.setAutoHide(true);
-                texto.fireEvent(arg0);
-                texto.centerOnScreen();
-                texto.show(telaQuestao3.getScene().getWindow());
+                copiarTexto(arg0, textResultadoMod);
             }
         });
-        resultadoMod.setOnMouseExited(new EventHandler<MouseEvent>() {
+        textResultadoMod.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
                 texto.hide();
-                Tooltip.uninstall(resultadoMod, texto);
+                Tooltip.uninstall(textResultadoMod, texto);
             }
         });
+    }
+
+    private void copiarTexto(MouseEvent evento, Text textoCopiado) {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(textoCopiado.getText());
+        clipboard.setContent(content);
         
-    }
-
-    
-
-    private void exibirConteudo() {
-        questao.setText(questao.getText() + "\t");
-        textEnunciado.setText(EnunciadoDasQuestoes.questao3.substring(3));
-    }
-
-
-    
-    private void setStilo() {
-        if (App.darkMode) {
-            buttonVoltar.getStyleClass().setAll("btn-voltar-DM");
-            buttonHome.getStyleClass().setAll("btn-questao-DM");
-            buttonConfirmar.getStyleClass().setAll("btn-questao-DM");
-            telaQuestao3.setStyle("-fx-background-color: #282828");
-
-            divisao.setFill(Paint.valueOf("WHITE"));
-            multiplicacao.setFill(Paint.valueOf("WHITE"));
-            soma.setFill(Paint.valueOf("WHITE"));
-            subtracao.setFill(Paint.valueOf("WHITE"));
-            resto.setFill(Paint.valueOf("WHITE"));
-            labelValA.setTextFill(Paint.valueOf("WHITE"));
-            labelValB.setTextFill(Paint.valueOf("WHITE"));
-            
-            questao.setFill(Paint.valueOf("WHITE"));
-            textEnunciado.setFill(Paint.valueOf("WHITE"));
-            resultadoDiv.setFill(Paint.valueOf("WHITE"));
-            resultadoMod.setFill(Paint.valueOf("WHITE"));
-            resultadoMult.setFill(Paint.valueOf("WHITE"));
-            resultadoSoma.setFill(Paint.valueOf("WHITE"));
-            resultadoSub.setFill(Paint.valueOf("WHITE"));
-        } else {
-            buttonVoltar.getStyleClass().setAll("btn-voltar");
-            buttonHome.getStyleClass().setAll("btn-questao");
-            buttonConfirmar.getStyleClass().setAll("btn-questao");
-            telaQuestao3.setStyle(null);
-
-            divisao.setFill(Paint.valueOf("BLACK"));
-            multiplicacao.setFill(Paint.valueOf("BLACK"));
-            soma.setFill(Paint.valueOf("BLACK"));
-            subtracao.setFill(Paint.valueOf("BLACK"));
-            resto.setFill(Paint.valueOf("BLACK"));
-            labelValA.setTextFill(Paint.valueOf("BLACK"));
-            labelValB.setTextFill(Paint.valueOf("BLACK"));
-            
-            questao.setFill(Paint.valueOf("BLACK"));
-            textEnunciado.setFill(Paint.valueOf("BLACK"));
-            resultadoDiv.setFill(Paint.valueOf("BLACK"));
-            resultadoMod.setFill(Paint.valueOf("BLACK"));
-            resultadoMult.setFill(Paint.valueOf("BLACK"));
-            resultadoSoma.setFill(Paint.valueOf("BLACK"));
-            resultadoSub.setFill(Paint.valueOf("BLACK"));
-        }
+        Tooltip.install(textoCopiado, texto);
+        texto.setAutoHide(true);
+        texto.fireEvent(evento);
+        texto.centerOnScreen();
+        texto.show(telaQuestao3.getScene().getWindow());
     }
 }

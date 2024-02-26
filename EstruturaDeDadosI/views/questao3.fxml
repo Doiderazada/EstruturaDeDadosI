@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<BorderPane fx:id="telaQuestao3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Questao3Controller">
+<BorderPane fx:id="telaQuestao3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Questao3Controller">
    <top>
       <AnchorPane prefHeight="150.0" prefWidth="1200.0" style="-fx-background-color: #F23C13; -fx-border-radius: 5;" BorderPane.alignment="CENTER">
          <children>
@@ -70,7 +70,7 @@
                   </HBox>
                   <HBox spacing="100.0">
                      <children>
-                        <VBox fx:id="inputVBox" prefHeight="200.0" prefWidth="300.0">
+                        <VBox fx:id="vBoxInput" prefHeight="200.0" prefWidth="300.0">
                            <children>
                               <HBox spacing="40.0">
                                  <children>
@@ -113,31 +113,31 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <HBox fx:id="outputHBox" spacing="50.0">
+                        <HBox fx:id="hBoxOutput" spacing="50.0">
                            <children>
                               <VBox spacing="10.0">
                                  <children>
-                                    <Text fx:id="soma" strokeType="OUTSIDE" strokeWidth="0.0" text="Soma">
+                                    <Text fx:id="textSoma" strokeType="OUTSIDE" strokeWidth="0.0" text="Soma">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="subtracao" strokeType="OUTSIDE" strokeWidth="0.0" text="Subtração">
+                                    <Text fx:id="textSubtracao" strokeType="OUTSIDE" strokeWidth="0.0" text="Subtração">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="multiplicacao" strokeType="OUTSIDE" strokeWidth="0.0" text="Multiplicação">
+                                    <Text fx:id="textMultiplicacao" strokeType="OUTSIDE" strokeWidth="0.0" text="Multiplicação">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="divisao" strokeType="OUTSIDE" strokeWidth="0.0" text="Divisão">
+                                    <Text fx:id="textDivisao" strokeType="OUTSIDE" strokeWidth="0.0" text="Divisão">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="resto" layoutX="10.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resto">
+                                    <Text fx:id="textResto" layoutX="10.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resto">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -146,27 +146,27 @@
                               </VBox>
                               <VBox spacing="10.0">
                                  <children>
-                                    <Text fx:id="resultadoSoma" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
+                                    <Text fx:id="textResultadoSoma" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="resultadoSub" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
+                                    <Text fx:id="textResultadoSub" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="resultadoMult" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
+                                    <Text fx:id="textResultadoMult" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="resultadoDiv" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
+                                    <Text fx:id="textResultadoDiv" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="resultadoMod" layoutX="10.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
+                                    <Text fx:id="textResultadoMod" layoutX="10.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
                                           <Font size="20.0" />
                                        </font>

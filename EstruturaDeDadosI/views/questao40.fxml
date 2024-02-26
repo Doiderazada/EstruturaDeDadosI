@@ -115,7 +115,7 @@
                                           <TextField fx:id="tfNomeArquivo" prefHeight="35.0" prefWidth="150.0" />
                                        </children>
                                     </VBox>
-                                    <Button fx:id="buttonConfirmarSave" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" stylesheets="@../stilos.css" text="Confirmar">
+                                    <Button fx:id="buttonConfirmarSave" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" stylesheets="@../stilos.css" text="Confirmar">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>

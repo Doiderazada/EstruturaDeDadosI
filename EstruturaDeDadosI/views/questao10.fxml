@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<BorderPane fx:id="telaQuestao10" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Questao10Controller">
+<BorderPane fx:id="telaQuestao10" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Questao10Controller">
    <top>
       <AnchorPane prefHeight="150.0" prefWidth="1200.0" style="-fx-background-color: #F23C13; -fx-border-radius: 5;" BorderPane.alignment="CENTER">
          <children>
@@ -89,7 +89,7 @@
                               </Button>
                            </children>
                         </VBox>
-                        <VBox fx:id="outputVBox">
+                        <VBox fx:id="vBoxOutput">
                            <children>
                               <Text fx:id="textResposta" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto resposta">
                                  <font>
@@ -109,6 +109,20 @@
                                        </font>
                                     </Text>
                                     <Text fx:id="textInteiro" strokeType="OUTSIDE" strokeWidth="0.0" text="K ∈ ℕ">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="hBoxMultiplo" alignment="BASELINE_LEFT">
+                                 <children>
+                                    <Text fx:id="textE" strokeType="OUTSIDE" strokeWidth="0.0" text="e ">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="textMultiplo" strokeType="OUTSIDE" strokeWidth="0.0" text="K = ">
                                        <font>
                                           <Font size="25.0" />
                                        </font>

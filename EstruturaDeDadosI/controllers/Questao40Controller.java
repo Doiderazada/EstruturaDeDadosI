@@ -62,7 +62,7 @@ public class Questao40Controller extends BaseController{
 
 
     private boolean textoAberto = false;
-    private String fraseLida;
+    private String fraseLida = "";
     private String mensagemCodificada;
     private String mensagemDecoficicada;
     private String mensagem;
@@ -73,12 +73,12 @@ public class Questao40Controller extends BaseController{
         BaseController.numQuestao = 40;
         super.initialize();
         this.acaoDosBotoes();
-        setStilo(new Button[]{buttonAbrirTexto, buttonConfirmarSave, buttonConfirmarTexto, 
-                              buttonEditarTexto, buttonNovoTexto, buttonSalvarTexto, buttonVisualizar},
-                 new Label[]{labelMensagem, labelNomeArquivo},
-                 new Pane[]{telaQuestao40, paneView},
+        setStilo(new Button[]{ buttonAbrirTexto, buttonConfirmarSave, buttonConfirmarTexto, 
+                               buttonEditarTexto, buttonNovoTexto, buttonSalvarTexto, buttonVisualizar},
+                 new Label[] { labelMensagem, labelNomeArquivo},
+                 new Pane[]  { telaQuestao40, paneView},
                  null,
-                 new Text[]{textView});
+                 new Text[]  { textView});
         this.estadoInicial();
     }
 
@@ -123,14 +123,15 @@ public class Questao40Controller extends BaseController{
                 
                 if (textoAberto) {
                     mensagemDecoficicada = coderDecoder.decodificar(mensagem);
+                    mensagem = mensagemDecoficicada;
                     mensagemCodificada = coderDecoder.getFraseCodificada();
-                    textView.setText("Mensagem original: " + mensagemDecoficicada + "\n" +
-                                     "Mensagem codificada: " + mensagemCodificada);
+                    textView.setText("Mensagem original \n" + mensagemDecoficicada + "\n\n" +
+                                     "Mensagem codificada \n" + mensagemCodificada);
                     textoAberto = false;
                 }
                 else {
-                    textView.setText("Mensagem original: " + mensagem + "\n" + 
-                                     "Mensagem codificada: " + mensagemCodificada);
+                    textView.setText("Mensagem original \n" + mensagem + "\n\n" + 
+                                     "Mensagem codificada \n" + mensagemCodificada);
                 }
                 hBoxElements.getChildren().add(sPaneView);
             }
@@ -142,13 +143,17 @@ public class Questao40Controller extends BaseController{
                 removerElementos();
                 if(abrirArquivo()) {
                     showPopup("O arquivo foi aberto com sucesso!", true);
+                    
+                    buttonEditarTexto.setDisable(false);
+                    buttonVisualizar.setDisable(false);
+                    buttonSalvarTexto.setDisable(false);
+
                     textView.setText("Clieque em \"Visualizar\" para acessar o arquivo aberto");
                     hBoxElements.getChildren().add(sPaneView);
                 }
             }
         });
         buttonSalvarTexto.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 removerElementos();
@@ -239,7 +244,7 @@ public class Questao40Controller extends BaseController{
             try {
                 BufferedReader leitor = new BufferedReader(new FileReader(arquivoSelecionado));
                 
-                String linha;
+                String linha = "";
                 
                 while ((linha = leitor.readLine()) != null) {
                     fraseLida += linha;

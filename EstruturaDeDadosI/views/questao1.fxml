@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<BorderPane fx:id="telaQuestao1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Questao1Controller">
+<BorderPane fx:id="telaQuestao1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Questao1Controller">
    <top>
       <AnchorPane prefHeight="150.0" prefWidth="1200.0" style="-fx-background-color: #F23C13; -fx-border-radius: 5;" BorderPane.alignment="CENTER">
          <children>
@@ -71,22 +71,22 @@
                      <children>
                         <VBox spacing="10.0">
                            <children>
-                              <Text fx:id="nomeCompleto" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome completo:">
+                              <Text fx:id="textNome" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome completo:">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="inicial" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicial:">
+                              <Text fx:id="textInicial" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicial:">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="idade" strokeType="OUTSIDE" strokeWidth="0.0" text="Idade:">
+                              <Text fx:id="textIdade" strokeType="OUTSIDE" strokeWidth="0.0" text="Idade:">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="altura" strokeType="OUTSIDE" strokeWidth="0.0" text="Altura:">
+                              <Text fx:id="textAltura" strokeType="OUTSIDE" strokeWidth="0.0" text="Altura:">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -95,22 +95,22 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="10.0" spacing="10.0">
                            <children>
-                              <Text fx:id="textNome" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome ">
+                              <Text fx:id="textRespostaNome" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome ">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textInicial" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicial">
+                              <Text fx:id="textRespostaInicial" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicial">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textIdade" strokeType="OUTSIDE" strokeWidth="0.0" text="Idade">
+                              <Text fx:id="textRespostaIdade" strokeType="OUTSIDE" strokeWidth="0.0" text="Idade">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textAltura" strokeType="OUTSIDE" strokeWidth="0.0" text="Altura">
+                              <Text fx:id="textRespostaAltura" strokeType="OUTSIDE" strokeWidth="0.0" text="Altura">
                                  <font>
                                     <Font size="20.0" />
                                  </font>

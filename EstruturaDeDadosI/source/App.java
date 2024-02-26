@@ -8,7 +8,7 @@ public class App extends Application {
 
     private static Stage janela;
     private static GerenciadorDeTelas gerenciador = new GerenciadorDeTelas();
-    public static boolean darkMode = false;
+    public static boolean darkMode = true;
 
 
     public static void main(String[] args) {

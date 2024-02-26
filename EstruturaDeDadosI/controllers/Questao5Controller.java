@@ -11,74 +11,54 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import questoes.EnunciadoDasQuestoes;
 import questoes.Questao5;
-import source.App;
 
-public class Questao5Controller {
+public class Questao5Controller extends BaseController{
 
     @FXML private BorderPane telaQuestao5;
     @FXML private Button buttonConfirmar;
-    @FXML private Button buttonHome;
-    @FXML private Button buttonVoltar;
-    @FXML private HBox outputHBox;
+    @FXML private HBox hBoxOutput;
     @FXML private Label copyRight;
     @FXML private Label labelValA;
     @FXML private Label labelValB;
     @FXML private Label labelValC;
     @FXML private Line divLine;
-    @FXML private Text igual;
-    @FXML private Text plusSign1;
-    @FXML private Text plusSign2;
-    @FXML private Text questao;
-    @FXML private Text textEnunciado;
+    @FXML private Text textIgual;
+    @FXML private Text textPlusSign1;
+    @FXML private Text textPlusSign2;
     @FXML private Text textResultado;
     @FXML private Text textValA;
     @FXML private Text textValB;
     @FXML private Text textValC;
-    @FXML private Text tres;
+    @FXML private Text textTres;
     @FXML private TextField tfValA;
     @FXML private TextField tfValB;
     @FXML private TextField tfValC;
-    @FXML private VBox inputVBox;
+    @FXML private VBox vBoxInput;
 
 
     public void initialize() {
+        BaseController.numQuestao = 5;
+        super.initialize();
+        setStilo(new Button[] {buttonConfirmar}, 
+                 new Label[]  {labelValA, labelValB, labelValC}, 
+                 new Pane[]   { telaQuestao5}, 
+                 new Shape[]  {(Shape)divLine}, 
+                 new Text[]   { textIgual, textPlusSign1, textPlusSign1, textPlusSign2, textResultado, 
+                                textTres, textValA, textValB, textValC});
         acaoDosBotoes();
-        setStilo();
-        exibirConteudo();
-        outputHBox.setVisible(false);
+        hBoxOutput.setVisible(false);
     }
 
 
 
-
-
     private void acaoDosBotoes() {
-        buttonVoltar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                App.trocarDeTela("telaQuestoes");
-            }
-            
-        });
-        
-        buttonHome.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent arg0) {
-                App.trocarDeTela("telaInicial");
-            }
-            
-        });
-
-
         buttonConfirmar.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
@@ -93,19 +73,15 @@ public class Questao5Controller {
                 textValB.setText(tfValB.getText());
                 textValC.setText(tfValC.getText());
 
-                outputHBox.setVisible(true);
+                hBoxOutput.setVisible(true);
             }
-            
         });
 
-
         Tooltip texto = new Tooltip("Texto copiado");
-        
         Tooltip mensagemSubliminar = new Tooltip("Boa escolha");
         mensagemSubliminar.setShowDelay(Duration.millis(100));
         mensagemSubliminar.setShowDuration(Duration.millis(300));
         Tooltip.install(copyRight, mensagemSubliminar);
-        
 
         textResultado.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -129,62 +105,5 @@ public class Questao5Controller {
                 Tooltip.uninstall(textResultado, texto);
             }
         });
-    }
-
-    
-
-    private void exibirConteudo() {
-        questao.setText(questao.getText() + "\t");
-        textEnunciado.setText(EnunciadoDasQuestoes.questao5.substring(3));
-    }
-
-
-    
-    private void setStilo() {
-        if (App.darkMode) {
-            buttonVoltar.getStyleClass().setAll("btn-voltar-DM");
-            buttonHome.getStyleClass().setAll("btn-questao-DM");
-            buttonConfirmar.getStyleClass().setAll("btn-questao-DM");
-            telaQuestao5.setStyle("-fx-background-color: #282828");
-
-            plusSign1.setFill(Paint.valueOf("WHITE"));
-            plusSign2.setFill(Paint.valueOf("WHITE"));
-            igual.setFill(Paint.valueOf("WHITE"));
-            tres.setFill(Paint.valueOf("WHITE"));
-            divLine.setStroke(Paint.valueOf("WHITE"));
-
-            labelValA.setTextFill(Paint.valueOf("WHITE"));
-            labelValB.setTextFill(Paint.valueOf("WHITE"));
-            labelValC.setTextFill(Paint.valueOf("WHITE"));
-            
-            questao.setFill(Paint.valueOf("WHITE"));
-            textEnunciado.setFill(Paint.valueOf("WHITE"));
-            textResultado.setFill(Paint.valueOf("WHITE"));
-            textValA.setFill(Paint.valueOf("WHITE"));
-            textValB.setFill(Paint.valueOf("WHITE"));
-            textValC.setFill(Paint.valueOf("WHITE"));
-        } else {
-            buttonVoltar.getStyleClass().setAll("btn-voltar");
-            buttonHome.getStyleClass().setAll("btn-questao");
-            buttonConfirmar.getStyleClass().setAll("btn-questao");
-            telaQuestao5.setStyle(null);
-
-            plusSign1.setFill(Paint.valueOf("BLACK"));
-            plusSign2.setFill(Paint.valueOf("BLACK"));
-            igual.setFill(Paint.valueOf("BLACK"));
-            tres.setFill(Paint.valueOf("BLACK"));
-            divLine.setStroke(Paint.valueOf("BLACK"));
-
-            labelValA.setTextFill(Paint.valueOf("BLACK"));
-            labelValB.setTextFill(Paint.valueOf("BLACK"));
-            labelValC.setTextFill(Paint.valueOf("BLACK"));
-            
-            questao.setFill(Paint.valueOf("BLACK"));
-            textEnunciado.setFill(Paint.valueOf("BLACK"));
-            textResultado.setFill(Paint.valueOf("BLACK"));
-            textValA.setFill(Paint.valueOf("BLACK"));
-            textValB.setFill(Paint.valueOf("BLACK"));
-            textValC.setFill(Paint.valueOf("BLACK"));
-        }
     }
 }

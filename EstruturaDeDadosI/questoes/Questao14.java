@@ -59,7 +59,7 @@ public abstract class Questao14 {
 
     
 
-    public static void calcularRaiz() {
+    public static void calcularRaiz() throws NumberFormatException{
         
         double tempDelta = (getTermoB()*getTermoB()) - (4*getTermoA()*getTermoC());
         setDelta(tempDelta);
@@ -72,7 +72,5 @@ public abstract class Questao14 {
 
         setX1(tx1);
         setX2(tx2);
-
     }
-    
 }

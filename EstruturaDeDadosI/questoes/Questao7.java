@@ -1,5 +1,8 @@
 package questoes;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public abstract class Questao7 {
     private static double valA;
     private static double valB;
@@ -29,6 +32,8 @@ public abstract class Questao7 {
     
     public static double dividir() {
         double result = getValA() / getValB();
+
+        result = BigDecimal.valueOf(result).setScale(3, RoundingMode.HALF_UP).doubleValue();
 
         setResultado(result);
 

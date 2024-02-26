@@ -1,6 +1,5 @@
 package controllers;
 
-
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,7 +10,7 @@ import javafx.scene.layout.BorderPane;
 import questoes.EnunciadoDasQuestoes;
 import source.App;
 
-public class TelaQuestoesController {
+public class TelaQuestoesController extends BaseController{
     
     
     @FXML private BorderPane telaQuestoes;
@@ -61,7 +60,7 @@ public class TelaQuestoesController {
     @FXML private Label labelListaQ;
     @FXML private TextArea enumTextArea;
 
-
+    private final EnunciadoDasQuestoes questoes = new EnunciadoDasQuestoes();
     
     public void initialize() {
         acaoDosBotoes();
@@ -170,254 +169,250 @@ public class TelaQuestoesController {
     
     private void acaoDosBotoes() {
         buttonVoltar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 App.trocarDeTela("telaInicial");
             }
-            
         });
-
-
 
         questao_1.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao1);
+                enumTextArea.setText(questoes.pegarQuestao(1));
             }
         });
         questao_2.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao2);
+                enumTextArea.setText(questoes.pegarQuestao(2));
             }
         });
         questao_3.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao3);
+                enumTextArea.setText(questoes.pegarQuestao(3));
             }
         });
         questao_4.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao4);
+                enumTextArea.setText(questoes.pegarQuestao(4));
             }
         });
         questao_5.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao5);
+                enumTextArea.setText(questoes.pegarQuestao(5));
             }
         });
         questao_6.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao6);
+                enumTextArea.setText(questoes.pegarQuestao(6));
             }
         });
         questao_7.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao7);
+                enumTextArea.setText(questoes.pegarQuestao(7));
             }
         });
         questao_8.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao8);
+                enumTextArea.setText(questoes.pegarQuestao(8));
             }
         });
         questao_9.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao9);
+                enumTextArea.setText(questoes.pegarQuestao(9));
             }
         });
         questao_10.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao10);
+                enumTextArea.setText(questoes.pegarQuestao(10));
             }
         });
         questao_11.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao11);
+                enumTextArea.setText(questoes.pegarQuestao(11));
             }
         });
         questao_12.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao12);
+                enumTextArea.setText(questoes.pegarQuestao(12));
             }
         });
         questao_13.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao13);
+                enumTextArea.setText(questoes.pegarQuestao(13));
             }
         });
         questao_14.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao14);
+                enumTextArea.setText(questoes.pegarQuestao(14));
             }
         });
         questao_15.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao15);
+                enumTextArea.setText(questoes.pegarQuestao(15));
             }
         });
         questao_16.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao16);
+                enumTextArea.setText(questoes.pegarQuestao(16));
             }
         });
         questao_17.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao17);
+                enumTextArea.setText(questoes.pegarQuestao(17));
             }
         });
         questao_18.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao18);
+                enumTextArea.setText(questoes.pegarQuestao(18));
             }
         });
         questao_19.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao19);
+                enumTextArea.setText(questoes.pegarQuestao(19));
             }
         });
         questao_20.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao20);
+                enumTextArea.setText(questoes.pegarQuestao(20));
             }
         });
         questao_21.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao21);
+                enumTextArea.setText(questoes.pegarQuestao(21));
             }
         });
         questao_22.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao22);
+                enumTextArea.setText(questoes.pegarQuestao(22));
             }
         });
         questao_23.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao23);
+                enumTextArea.setText(questoes.pegarQuestao(23));
             }
         });
         questao_24.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao24);
+                enumTextArea.setText(questoes.pegarQuestao(24));
             }
         });
         questao_25.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao25);
+                enumTextArea.setText(questoes.pegarQuestao(25));
             }
         });
         questao_26.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao26);
+                enumTextArea.setText(questoes.pegarQuestao(26));
             }
         });
         questao_27.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao27);
+                enumTextArea.setText(questoes.pegarQuestao(27));
             }
         });
         questao_28.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao28);
+                enumTextArea.setText(questoes.pegarQuestao(28));
             }
         });
         questao_29.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao29);
+                enumTextArea.setText(questoes.pegarQuestao(29));
             }
         });
         questao_30.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao30);
+                enumTextArea.setText(questoes.pegarQuestao(30));
             }
         });
         questao_31.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao31);
+                enumTextArea.setText(questoes.pegarQuestao(31));
             }
         });
         questao_32.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao32);
+                enumTextArea.setText(questoes.pegarQuestao(32));
             }
         });
         questao_33.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao33);
+                enumTextArea.setText(questoes.pegarQuestao(33));
             }
         });
         questao_34.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao34);
+                enumTextArea.setText(questoes.pegarQuestao(34));
             }
         });
         questao_35.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao35);
+                enumTextArea.setText(questoes.pegarQuestao(35));
             }
         });
         questao_36.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao36);
+                enumTextArea.setText(questoes.pegarQuestao(36));
             }
         });
         questao_37.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao37);
+                enumTextArea.setText(questoes.pegarQuestao(37));
             }
         });
         questao_38.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao38);
+                enumTextArea.setText(questoes.pegarQuestao(38));
             }
         });
         questao_39.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao39);
+                enumTextArea.setText(questoes.pegarQuestao(39));
             }
         });
         questao_40.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                enumTextArea.setText(EnunciadoDasQuestoes.questao40);
+                enumTextArea.setText(questoes.pegarQuestao(40));
             }
         });
         

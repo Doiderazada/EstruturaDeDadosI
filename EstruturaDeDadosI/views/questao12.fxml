@@ -127,7 +127,7 @@
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="plusSign1" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
+                                                <Text fx:id="textPlusSign1" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
                                                    <font>
                                                       <Font name="System Bold" size="20.0" />
                                                    </font>
@@ -137,7 +137,7 @@
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="plusSign2" layoutX="220.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
+                                                <Text fx:id="textPlusSign2" layoutX="220.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
                                                    <font>
                                                       <Font name="System Bold" size="20.0" />
                                                    </font>
@@ -150,14 +150,14 @@
                                              </children>
                                           </HBox>
                                           <Line fx:id="divLine" endX="58.585784912109375" endY="-1.000610589981079" fill="BLACK" startX="-100.0" strokeWidth="2.0" VBox.vgrow="ALWAYS" />
-                                          <Text fx:id="tres" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                                          <Text fx:id="textTres" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
                                              <font>
                                                 <Font name="System Bold" size="20.0" />
                                              </font>
                                           </Text>
                                        </children>
                                     </VBox>
-                                    <Text fx:id="igual" strokeType="OUTSIDE" strokeWidth="0.0" text="=">
+                                    <Text fx:id="textIgual" strokeType="OUTSIDE" strokeWidth="0.0" text="=">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
