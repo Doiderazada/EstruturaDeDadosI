@@ -121,18 +121,21 @@ public class Questao32Controller extends BaseController{
         buttonCadastrar.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
+                removerElementos();
                 iniciarCadastro();
             }
         });
         buttonEditar.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
+                removerElementos();
                 iniciarEdicao();
             }
         });
         buttonVisualizar.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
+                removerElementos();
                 visualizarPessoas();
             }
         });
@@ -167,6 +170,7 @@ public class Questao32Controller extends BaseController{
         buttonPrincipal.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
+                removerElementos();
                 if(cad) cadastarPessoas();
                 else editarPessoas();
             }
@@ -215,6 +219,7 @@ public class Questao32Controller extends BaseController{
     private void iniciarSalvamento() {
         labelInicial.setText("Digite um nome para o arquivo, se desejar");
         buttonInicial.setText("Confirmar");
+        tfInicial.clear();
         hBoxOutput.getChildren().addAll(vBoxInicial);
     }
 
@@ -357,6 +362,8 @@ public class Questao32Controller extends BaseController{
             labelInfoPessoal.setText("Edite o dado desejado");
             hBoxOutput.getChildren().addAll(vBoxPrincipal);
         }
+
+        edit = false;
     }
 
 

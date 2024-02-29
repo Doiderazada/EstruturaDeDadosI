@@ -33,7 +33,7 @@ public class Questao22Controller extends BaseController{
         super.initialize();
         acaoDosBotoes();
         setStilo(new Button[] { buttonConfirmar, buttonNovamente},
-                 new Label[]  { labelNumFin, labelNumFin},
+                 new Label[]  { labelNumIni, labelNumFin},
                  new Pane[]   { telaQuestao22}, null,
                  new Text[]   { textResposta});
         vBoxOutput.setVisible(false);

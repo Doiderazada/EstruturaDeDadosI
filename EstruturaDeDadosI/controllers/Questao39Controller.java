@@ -26,11 +26,11 @@ public class Questao39Controller extends BaseController{
 
 
     @FXML private BorderPane telaQuestao39;
-    @FXML private Button buttonConfirmDelete;
+    @FXML private Button buttonDeleteOne;
     @FXML private Button buttonConfirmPessoa;
-    @FXML private Button buttonConfirmRead;
+    @FXML private Button buttonReadOne;
     @FXML private Button buttonConfirmUpdate;
-    @FXML private Button buttonCDR;
+    @FXML private Button buttonCRUD;
     @FXML private Button buttonCreate;
     @FXML private Button buttonCriarObjeto;
     @FXML private Button buttonDelete;
@@ -46,7 +46,7 @@ public class Questao39Controller extends BaseController{
     @FXML private HBox hBoxElements;
     @FXML private Label labelAltura;
     @FXML private Label labelCPF;
-    @FXML private Label labelCDR;
+    @FXML private Label labelCRUD;
     @FXML private Label labelElemento;
     @FXML private Label labelIdade;
     @FXML private Label labelInfoPessoa;
@@ -60,20 +60,19 @@ public class Questao39Controller extends BaseController{
     @FXML private Text textView;
     @FXML private TextField tfAltura;
     @FXML private TextField tfCPF;
-    @FXML private TextField tfCDR;
+    @FXML private TextField tfCRUD;
     @FXML private TextField tfElemento;
     @FXML private TextField tfIdade;
     @FXML private TextField tfNome;
     @FXML private TextField tfPeso;
     @FXML private TextField tfPosicao;
     @FXML private VBox vBoxButtons;
-    @FXML private VBox vBoxCDR;
+    @FXML private VBox vBoxCRUD;
     @FXML private VBox vBoxDelete;
     @FXML private VBox vBoxObjeto;
     @FXML private VBox vBoxPessoa;
     @FXML private VBox vBoxRead;
     @FXML private VBox vBoxUpdate;
-
 
     private final char masc = 'M'; private final char femn = 'F';
     private ObservableList<Character> opcoesSexos = FXCollections.observableArrayList(masc, femn);
@@ -82,17 +81,20 @@ public class Questao39Controller extends BaseController{
     private String tipoObjeto;
     private boolean tipoPessoa = false;
     private boolean tipoInteger = false;
+    private boolean tipoString = false;
     private boolean create = false;
-    private boolean delete = false;
     private boolean read = false;
+    private boolean update = false;
+    private boolean delete = false;
     
+
     public void initialize() {
         BaseController.numQuestao = 39;
         super.initialize();
-        setStilo(new Button[]{buttonCDR, buttonConfirmDelete, buttonConfirmPessoa, buttonConfirmRead, buttonConfirmUpdate, 
+        setStilo(new Button[]{buttonCRUD, buttonDeleteOne, buttonConfirmPessoa, buttonReadOne, buttonConfirmUpdate, 
                               buttonCreate, buttonCriarObjeto, buttonDelete, buttonDeleteAll, buttonInteger, 
                               buttonPessoa, buttonRead, buttonReadAll, buttonString, buttonUpdate}, 
-                new Label[]{  labelAltura, labelCDR, labelCPF, labelElemento,
+                new Label[]{  labelAltura, labelCRUD, labelCPF, labelElemento,
                               labelIdade, labelInfoPessoa, labelNome, labelObjeto, 
                               labelPeso, labelPosicao, labelSexo},
                 new Pane[]{   paneView, telaQuestao39}, null,
@@ -102,9 +104,11 @@ public class Questao39Controller extends BaseController{
     }
 
 
+
+
     private void estadoInicial(){
         hBoxElements.setPadding(new Insets(0, 0, 0, 200));
-        hBoxElements.getChildren().removeAll(vBoxUpdate, vBoxPessoa, vBoxObjeto, vBoxRead, vBoxDelete, vBoxCDR, sPaneView);
+        hBoxElements.getChildren().removeAll(vBoxUpdate, vBoxPessoa, vBoxObjeto, vBoxRead, vBoxDelete, vBoxCRUD, sPaneView);
         vBoxButtons.getChildren().removeAll(buttonCreate, buttonRead, buttonUpdate, buttonDelete);
 
         choiceBoxSexo.setItems(opcoesSexos);
@@ -112,28 +116,29 @@ public class Questao39Controller extends BaseController{
     }
 
 
-    private void acaoDosBotoes() {
 
+
+    private void acaoDosBotoes() {
         buttonCriarObjeto.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent arg0){
                 hBoxElements.getChildren().addAll(vBoxObjeto);
             }
         });
+
+
         buttonCreate.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent arg0){
                 removerElementos();
-                create = true;
-                delete = false;
-                read = false;
+                create = true;   
+                read = false; update = false; delete = false;
 
-                if (tipoPessoa) 
-                    hBoxElements.getChildren().add(vBoxPessoa);
+                if (tipoPessoa) hBoxElements.getChildren().add(vBoxPessoa);
                 else {
-                    labelCDR.setText("Novo elemento");
-                    tfCDR.clear();
-                    hBoxElements.getChildren().add(vBoxCDR);
+                    labelCRUD.setText("Novo elemento");
+                    tfCRUD.clear();
+                    hBoxElements.getChildren().add(vBoxCRUD);
                 }
             }
         });
@@ -141,6 +146,9 @@ public class Questao39Controller extends BaseController{
             @Override
             public void handle(MouseEvent arg0) {
                 removerElementos();
+                read = true;
+                create = false; update = false; delete = false;
+                
                 hBoxElements.getChildren().add(vBoxRead);
             }
         });
@@ -148,13 +156,23 @@ public class Questao39Controller extends BaseController{
             @Override
             public void handle(MouseEvent arg0) {
                 removerElementos();
-                hBoxElements.getChildren().add(vBoxUpdate);
+                update = true;
+                create = false; read = false; delete = false;
+
+                if (tipoPessoa) {
+                    tfCRUD.clear();
+                    labelCRUD.setText("Posição do elemento");
+                    hBoxElements.getChildren().add(vBoxCRUD);
+                } else hBoxElements.getChildren().add(vBoxUpdate);
             }
         });
         buttonDelete.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
                 removerElementos();
+                delete = true;
+                create = false; read = false; update = false;
+
                 hBoxElements.getChildren().add(vBoxDelete);
             }
         });
@@ -165,8 +183,8 @@ public class Questao39Controller extends BaseController{
             public void handle(MouseEvent arg0) {
                 objeto = new Questao39<>();
                 tipoObjeto = "Pessoa";
-                tipoPessoa = true;
-                tipoInteger = false;
+                tipoPessoa = true;  
+                tipoInteger = false; tipoString = false;
                 objetoCriado();
             }
         });
@@ -174,9 +192,9 @@ public class Questao39Controller extends BaseController{
             @Override
             public void handle(MouseEvent arg0) {
                 objeto = new Questao39<>();
-                tipoObjeto = "Pessoa";
-                tipoPessoa = false;
-                tipoInteger = false;
+                tipoObjeto = "String";
+                tipoString = true;   
+                tipoPessoa = false; tipoInteger = false;
                 objetoCriado();
             }
         });
@@ -185,23 +203,20 @@ public class Questao39Controller extends BaseController{
             public void handle(MouseEvent arg0) {
                 objeto = new Questao39<>();
                 tipoObjeto = "Integer";
-                tipoPessoa = false;
-                tipoInteger = true;
+                tipoInteger = true;   
+                tipoString = false; tipoPessoa = false;
                 objetoCriado();
             }
         });
         
         
-        buttonConfirmRead.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        buttonReadOne.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
                 removerElementos();
-                create = false;
-                delete = false;
-                read = true;
-                labelCDR.setText("Posição do elemento");
-                tfCDR.clear();
-                hBoxElements.getChildren().add(vBoxCDR);
+                labelCRUD.setText("Posição do elemento");
+                tfCRUD.clear();
+                hBoxElements.getChildren().add(vBoxCRUD);
             }
         });
         buttonReadAll.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -220,16 +235,13 @@ public class Questao39Controller extends BaseController{
         });
         
         
-        buttonConfirmDelete.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        buttonDeleteOne.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
                 removerElementos();
-                create = false;
-                delete = true;
-                read = false;
-                labelCDR.setText("Posição do elemento");
-                tfCDR.clear();
-                hBoxElements.getChildren().add(vBoxCDR);
+                labelCRUD.setText("Posição do elemento");
+                tfCRUD.clear();
+                hBoxElements.getChildren().add(vBoxCRUD);
             }
         });
         buttonDeleteAll.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -252,7 +264,6 @@ public class Questao39Controller extends BaseController{
             public void handle(MouseEvent arg0) {
                 if (validarUpdate()) {
                     removerElementos();
-
                     textView.setText("Elemento editado com sucesso!");
                     hBoxElements.getChildren().add(sPaneView);
                 } else showPopup("Ops... Ocorreu um erro inesperado ao editar o elemento", false);
@@ -261,25 +272,11 @@ public class Questao39Controller extends BaseController{
         buttonConfirmPessoa.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
-                if(adicionarPessoa()){
-                    removerElementos();
-                    
-                    textView.setText("Pessoa adicionada com sucesso!");
-                    hBoxElements.getChildren().add(sPaneView);
-
-                    tfAltura.clear();
-                    tfCPF.clear();
-                    tfIdade.clear();
-                    tfNome.clear();
-                    tfPeso.clear();
-                    choiceBoxSexo.setValue(opcoesSexos.get(0));
-
-                    if(buttonRead.isDisabled()) buttonRead.setDisable(false);
-                    if(buttonUpdate.isDisabled()) buttonUpdate.setDisable(false);
-                }
+                if(create) createPessoa();
+                if (update) updatePessoa();
             }
         });
-        buttonCDR.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        buttonCRUD.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
                 if (create) {
@@ -292,6 +289,26 @@ public class Questao39Controller extends BaseController{
                         if(buttonUpdate.isDisabled()) buttonUpdate.setDisable(false);
                     } else showPopup("Ops... Ocorreu um erro inesperado ao cadastrar o elemento", false);
                 }
+                if (update) {
+                    if (validarUpdate()) {
+                        removerElementos();
+                        
+                        preencherCamposPessoa();
+                        labelInfoPessoa.setText("Informações a atualizar");
+                        hBoxElements.getChildren().addAll(vBoxPessoa);
+                    }
+                }
+                if (read) {
+                    if (validarRead()) {
+                        removerElementos();
+
+                        int posicao = Integer.parseInt(tfCRUD.getText());
+                        String elemento = String.valueOf(objeto.read(posicao));
+                        
+                        textView.setText(elemento);
+                        hBoxElements.getChildren().add(sPaneView);
+                    }
+                }
                 if (delete) {
                     if (validarDelete()) {
                         removerElementos();
@@ -300,19 +317,9 @@ public class Questao39Controller extends BaseController{
                         hBoxElements.getChildren().add(sPaneView);
                     }
                 }
-                if (read) {
-                    if (validarRead()) {
-                        removerElementos();
-
-                        int posicao = Integer.parseInt(tfCDR.getText());
-                        String elemento = String.valueOf(objeto.read(posicao));
-                        
-                        textView.setText(elemento);
-                        hBoxElements.getChildren().add(sPaneView);
-                    }
-                }
             }
         });
+
 
         tfCPF.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
@@ -321,23 +328,133 @@ public class Questao39Controller extends BaseController{
             }
         });
     }
+    
 
-    
-    
-    private boolean validarUpdate() {
-        if(validarCamposUpdate()){
-            if (tipoInteger) {
-                Integer elemento = Integer.parseInt(tfElemento.getText());
-                int posicao = Integer.parseInt(tfPosicao.getText());
-                return objeto.update(elemento, posicao);
-            } else {
-                String elemento = tfElemento.getText();
-                int posicao = Integer.parseInt(tfPosicao.getText());
-                return objeto.update(elemento, posicao);
-            }
+
+
+
+
+
+    private void createPessoa() {
+        if(adicionarPessoa()){
+            removerElementos();
+            
+            textView.setText("Pessoa adicionada com sucesso!");
+            hBoxElements.getChildren().add(sPaneView);
+
+            tfAltura.clear();
+            tfCPF.clear();
+            tfIdade.clear();
+            tfNome.clear();
+            tfPeso.clear();
+            choiceBoxSexo.setValue(opcoesSexos.get(0));
+
+            if(buttonRead.isDisabled()) buttonRead.setDisable(false);
+            if(buttonUpdate.isDisabled()) buttonUpdate.setDisable(false);
+        }
+    }
+    private void updatePessoa() {
+        if(atualizarPessoa()){
+            removerElementos();
+            
+            textView.setText("Pessoa atualizada com sucesso!");
+            hBoxElements.getChildren().add(sPaneView);
+
+            tfAltura.clear();
+            tfCPF.clear();
+            tfIdade.clear();
+            tfNome.clear();
+            tfPeso.clear();
+            choiceBoxSexo.setValue(opcoesSexos.get(0));
+        }
+    }
+
+
+    private boolean adicionarPessoa() {
+        String nome = tfNome.getText();
+        String cpf = tfCPF.getText();
+        char sexo = choiceBoxSexo.getSelectionModel().getSelectedItem();
+        int idade = Integer.parseInt(tfIdade.getText());
+        double altura = Double.parseDouble(tfAltura.getText());
+        double peso = Double.parseDouble(tfPeso.getText());
+
+        Questao31 pessoa = new Questao31(cpf, nome, sexo, idade, peso, altura);
+        
+        return objeto.create(pessoa);
+    }
+    private boolean atualizarPessoa() {
+        String nome = tfNome.getText();
+        String cpf = tfCPF.getText();
+        char sexo = choiceBoxSexo.getSelectionModel().getSelectedItem();
+        int idade = Integer.parseInt(tfIdade.getText());
+        double altura = Double.parseDouble(tfAltura.getText());
+        double peso = Double.parseDouble(tfPeso.getText());
+
+        Questao31 pessoa = new Questao31(cpf, nome, sexo, idade, peso, altura);
+        int posicao = Integer.parseInt(tfCRUD.getText());
+        
+        return objeto.update(pessoa, posicao);
+    }
+    private void preencherCamposPessoa() {
+        Questao31 pessoa = (Questao31) objeto.read(Integer.parseInt(tfCRUD.getText()));
+        tfNome.setText(pessoa.getNome());
+        tfCPF.setText(pessoa.getCpf());
+        tfIdade.setText(String.valueOf(pessoa.getIdade()));
+        tfAltura.setText(String.valueOf(pessoa.getAltura()));
+        tfPeso.setText(String.valueOf(pessoa.getPeso()));
+        choiceBoxSexo.setValue(pessoa.getSexo());
+    }
+
+
+
+
+    private boolean validarCreate() {
+        if (tipoInteger){ 
+            if (validarIntCreate()) {
+                Integer elemento = Integer.parseInt(tfCRUD.getText());
+                return objeto.create(elemento);
+            } 
+        } else {
+            if (validarStringCreate()) {
+                String elemento = tfCRUD.getText();
+                return objeto.create(elemento);
+            } 
         } 
         return false;
     }
+    private boolean validarRead() {
+        return validarPosicao();
+    }
+    private boolean validarUpdate() {
+        if (tipoPessoa) {
+            return validarPosicao();
+        }
+        else {
+            if(validarCamposUpdate()){
+                if (tipoInteger) {
+                    Integer elemento = Integer.parseInt(tfElemento.getText());
+                    int posicao = Integer.parseInt(tfPosicao.getText());
+                    return objeto.update(elemento, posicao);
+                }
+                if (tipoString) {
+                    String elemento = tfElemento.getText();
+                    int posicao = Integer.parseInt(tfPosicao.getText());
+                    return objeto.update(elemento, posicao);
+                }
+            }
+        }
+        return false;
+    }
+    private boolean validarDelete() {
+        if (validarPosicao()) {
+            int posicao = Integer.parseInt(tfCRUD.getText());
+            return objeto.delete(posicao);
+        }
+        return false;
+    }
+
+
+
 
     private boolean validarCamposUpdate() {
         if (tfPosicao.getText().isEmpty()) {
@@ -347,13 +464,13 @@ public class Questao39Controller extends BaseController{
             showPopup("A posição não pode conter letras", false);
             return false;
         } else if (tfPosicao.getText().matches("[0-9^.]+")) {
-            double num =  Double.parseDouble(tfPosicao.getText());
-            if (num < 0 ) {
-                showPopup("A posição não pode ser negativa", false);
+            int num =  Integer.parseInt(tfPosicao.getText());
+            int tamanho = objeto.size();
+            if (num < 0 || num >= tamanho) {
+                showPopup("O valor para a posição é inválido", false);
                 return false;
             }
         }
-
         if (tipoInteger) {
             if (tfElemento.getText().isEmpty()) {
                 showPopup("O campo não pode ser vazio, tente novamente", false);
@@ -370,49 +487,20 @@ public class Questao39Controller extends BaseController{
         }
         return true;
     }
-    
-
-
-    private boolean validarRead() {
-        return validarPosicao();
-    }
-
-    private boolean validarDelete() {
-        if (validarPosicao()) {
-            int posicao = Integer.parseInt(tfCDR.getText());
-            return objeto.delete(posicao);
-        }
-        return false;
-    }
-
-    private boolean validarCreate() {
-        if (tipoInteger){ 
-            if (validarIntCreate()) {
-                Integer elemento = Integer.parseInt(tfCDR.getText());
-                return objeto.create(elemento);
-            } 
-        } else {
-            if (validarStringCreate()) {
-                String elemento = tfCDR.getText();
-                return objeto.create(elemento);
-            } 
-        } 
-        return false;
-    }
 
 
     private boolean validarStringCreate() {
-        if (tfCDR.getText().isEmpty()) {
+        if (tfCRUD.getText().isEmpty()) {
             showPopup("O campo não pode ser vazio, tente novamente", false);
             return false;
         }
         return true;
     }
     private boolean validarIntCreate() {
-        if (tfCDR.getText().isEmpty()) {
+        if (tfCRUD.getText().isEmpty()) {
             showPopup("O campo não pode ser vazio, tente novamente", false);
             return false;
-        } else if (tfCDR.getText().matches("\\D")) {
+        } else if (tfCRUD.getText().matches("\\D")) {
             showPopup("O campo é do tipo Integer, portanto não pode conter letras", false);
             return false;
         }
@@ -421,17 +509,19 @@ public class Questao39Controller extends BaseController{
 
 
 
+
     private boolean validarPosicao() {
-        if (tfCDR.getText().isEmpty()) {
+        if (tfCRUD.getText().isEmpty()) {
             showPopup("O campo não pode ser vazio, tente novamente", false);
             return false;
-        } else if (tfCDR.getText().matches("\\D")) {
+        } else if (tfCRUD.getText().matches("\\D")) {
             showPopup("A posição não pode conter letras", false);
             return false;
-        } else if (tfCDR.getText().matches("[0-9^.]+")) {
-            double num =  Double.parseDouble(tfCDR.getText());
-            if (num < 0 ) {
-                showPopup("A posição não pode ser negativa", false);
+        } else if (tfCRUD.getText().matches("[0-9^.]+")) {
+            int num =  Integer.parseInt(tfCRUD.getText());
+            int tamanho = objeto.size();
+            if (num < 0 || num >= tamanho) {
+                showPopup("O valor para a posição é inválido", false);
                 return false;
             }
         }
@@ -439,18 +529,9 @@ public class Questao39Controller extends BaseController{
     }
 
 
-    private boolean adicionarPessoa() {
-        String nome = tfNome.getText();
-        String cpf = tfCPF.getText();
-        char sexo = choiceBoxSexo.getSelectionModel().getSelectedItem();
-        int idade = Integer.parseInt(tfIdade.getText());
-        double altura = Double.parseDouble(tfAltura.getText());
-        double peso = Double.parseDouble(tfPeso.getText());
+    
 
-        Questao31 pessoa = new Questao31(cpf, nome, sexo, idade, peso, altura);
-        
-        return objeto.create(pessoa);
-    }
+
 
 
     private void removerElementos() {
@@ -459,7 +540,7 @@ public class Questao39Controller extends BaseController{
         if(hBoxElements.getChildren().contains(vBoxObjeto)) hBoxElements.getChildren().remove(vBoxObjeto);
         if(hBoxElements.getChildren().contains(vBoxRead)) hBoxElements.getChildren().remove(vBoxRead);
         if(hBoxElements.getChildren().contains(vBoxDelete)) hBoxElements.getChildren().remove(vBoxDelete);
-        if(hBoxElements.getChildren().contains(vBoxCDR)) hBoxElements.getChildren().remove(vBoxCDR);
+        if(hBoxElements.getChildren().contains(vBoxCRUD)) hBoxElements.getChildren().remove(vBoxCRUD);
         if(hBoxElements.getChildren().contains(sPaneView)) hBoxElements.getChildren().remove(sPaneView);
     }
 

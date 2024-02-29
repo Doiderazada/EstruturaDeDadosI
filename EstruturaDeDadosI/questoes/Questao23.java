@@ -12,10 +12,10 @@ public abstract class Questao23 {
     }
 
 
-    public static int calcularFatorial(int fator) {
+    public static double calcularFatorial(int fator) {
         
         setFator(fator);
-        int fatorial = fator;
+        double fatorial = fator;
 
         for (int i = 1; i < fator; i++) {
             fatorial *= i;

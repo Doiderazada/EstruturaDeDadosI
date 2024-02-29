@@ -84,12 +84,10 @@ public class TelaSobreController {
         
 
         buttonVoltar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 App.trocarDeTela("telaInicial");
             }
-            
         });
 
         buttonGitHub.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -107,7 +105,6 @@ public class TelaSobreController {
                     e.printStackTrace();
                 }
             }
-            
         });
 
         buttonLinkedIn.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -125,7 +122,6 @@ public class TelaSobreController {
                     e.printStackTrace();
                 }
             }
-            
         });
 
         buttonTwitter.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -143,12 +139,6 @@ public class TelaSobreController {
                     e.printStackTrace();
                 }
             }
-            
         });
     }
-
-    // @FXML
-    // private void trocarDeTela() {
-    //     App.trocarDeTela("telaInicial");
-    // }
 }

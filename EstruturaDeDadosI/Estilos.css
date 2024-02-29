@@ -276,6 +276,20 @@
 
 
 
+.btn-OpenSenha {
+    -fx-background-image: url("VisualElements/olho-aberto.png");
+    -fx-background-size: 25px;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: transparent;
+}
+.btn-CloseSenha {
+    -fx-background-image: url("VisualElements/olho-fechado.png");
+    -fx-background-size: 25px;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: transparent;
+}
 
 
 

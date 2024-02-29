@@ -76,7 +76,7 @@ public class Questao30Controller extends BaseController{
                 if(hBoxParent.getChildren().contains(sPaneView)) hBoxParent.getChildren().remove(sPaneView);
                 hBoxParent.getChildren().add(vBoxEdit);
 
-                tfEdit.setText(fraseEntrada);
+                tfEdit.clear();
             }
         });
         buttonVisualizar.setOnMouseClicked(new EventHandler<MouseEvent>() {

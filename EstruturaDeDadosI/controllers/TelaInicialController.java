@@ -34,12 +34,10 @@ public class TelaInicialController {
 
     private void acaoDosBotoes() {
         buttonLista.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 App.trocarDeTela("telaQuestoes");
             }
-            
         });
 
         buttonPDF.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -56,16 +54,13 @@ public class TelaInicialController {
                     e.printStackTrace();
                 }
             }
-            
         });
 
         buttonSobre.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 App.trocarDeTela("telaSobre");
             }
-            
         });
 
         buttonDM.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -80,7 +75,6 @@ public class TelaInicialController {
                     setStilo();
                 }
             }
-            
         });
     }
 
@@ -100,6 +94,5 @@ public class TelaInicialController {
             buttonSobre.getStyleClass().setAll("btn-questao");
             buttonDM.getStyleClass().setAll("btn-LightMode");
         }
-        
     }
 }

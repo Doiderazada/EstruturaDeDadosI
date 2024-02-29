@@ -18,9 +18,9 @@
    <top>
       <AnchorPane prefHeight="150.0" prefWidth="1200.0" style="-fx-background-color: #F23C13; -fx-border-radius: 5;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="129.0" layoutY="57.0" text="Lista de questões da primeira unidade de Estrutura de Dados I">
+            <Label layoutX="184.0" layoutY="56.0" text="Lista de questões da primeira unidade de Estrutura de Dados I">
                <font>
-                  <Font name="Lucida Bright Demibold" size="30.0" />
+                  <Font name="Book Antiqua" size="30.0" />
                </font>
             </Label>
          </children>
@@ -34,7 +34,7 @@
          <children>
             <HBox spacing="20.0">
                <children>
-                  <Button fx:id="buttonVoltar" alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" stylesheets="@../stilos.css" text="Voltar    ">
+                  <Button fx:id="buttonVoltar" alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" stylesheets="@../Estilos.css" text="Voltar    ">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -42,7 +42,7 @@
                         <Insets left="15.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="buttonHome" alignment="CENTER" layoutX="25.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@../stilos.css" text="Voltar à tela inicial">
+                  <Button fx:id="buttonHome" alignment="CENTER" layoutX="25.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@../Estilos.css" text="Voltar à tela inicial">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -57,12 +57,12 @@
                            <children>
                               <Text fx:id="questao" strokeType="OUTSIDE" strokeWidth="0.0" text="Questão 13.">
                                  <font>
-                                    <Font name="System Bold" size="25.0" />
+                                    <Font name="Segoe UI Black Italic" size="25.0" />
                                  </font>
                               </Text>
                               <Text fx:id="textEnunciado" strokeType="OUTSIDE" strokeWidth="0.0" text="Enunciado da questão">
                                  <font>
-                                    <Font size="20.0" />
+                                    <Font name="Arial" size="20.0" />
                                  </font>
                               </Text>
                            </children>
@@ -79,7 +79,7 @@
                                        <children>
                                           <Label fx:id="labelNota1" text="Primeira nota">
                                              <font>
-                                                <Font size="15.0" />
+                                                <Font name="Georgia" size="15.0" />
                                              </font>
                                           </Label>
                                           <TextField fx:id="tfNota1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" />
@@ -89,7 +89,7 @@
                                        <children>
                                           <Label fx:id="labelNota2" text="Segunda nota">
                                              <font>
-                                                <Font size="15.0" />
+                                                <Font name="Georgia" size="15.0" />
                                              </font>
                                           </Label>
                                           <TextField fx:id="tfNota2" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" />
@@ -99,7 +99,7 @@
                                        <children>
                                           <Label fx:id="labelNota3" text="Terceira nota">
                                              <font>
-                                                <Font size="15.0" />
+                                                <Font name="Georgia" size="15.0" />
                                              </font>
                                           </Label>
                                           <TextField fx:id="tfNota3" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" />
@@ -107,7 +107,7 @@
                                     </VBox>
                                  </children>
                               </VBox>
-                              <Button fx:id="buttonConfirmar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Confirmar">
+                              <Button fx:id="buttonConfirmar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Confirmar">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -124,27 +124,27 @@
                                              <children>
                                                 <Text fx:id="textNota1" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota 1">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Arial" size="18.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="textPlusSign1" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
                                                    <font>
-                                                      <Font name="System Bold" size="20.0" />
+                                                      <Font name="Arial Bold" size="20.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="textNota2" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota 2">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Arial" size="18.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="textPlusSign2" layoutX="220.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
                                                    <font>
-                                                      <Font name="System Bold" size="20.0" />
+                                                      <Font name="Arial Bold" size="20.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="textNota3" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota 3">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Arial" size="18.0" />
                                                    </font>
                                                 </Text>
                                              </children>
@@ -152,19 +152,19 @@
                                           <Line fx:id="divLine" endX="58.585784912109375" endY="-1.000610589981079" fill="BLACK" startX="-100.0" strokeWidth="2.0" VBox.vgrow="ALWAYS" />
                                           <Text fx:id="textTres" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
                                              <font>
-                                                <Font name="System Bold" size="20.0" />
+                                                <Font name="Arial Bold" size="20.0" />
                                              </font>
                                           </Text>
                                        </children>
                                     </VBox>
                                     <Text fx:id="textIgual" strokeType="OUTSIDE" strokeWidth="0.0" text="=">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="Arial Bold" size="20.0" />
                                        </font>
                                     </Text>
                                     <Text fx:id="textResultado" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultado">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Arial" size="18.0" />
                                        </font>
                                     </Text>
                                  </children>
@@ -173,12 +173,12 @@
                                  <children>
                                     <Text fx:id="textSituacao" strokeType="OUTSIDE" strokeWidth="0.0" text="Situação do aluno: ">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="Arial Bold" size="20.0" />
                                        </font>
                                     </Text>
                                     <Text fx:id="textSitRes" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font name="Arial" size="20.0" />
                                        </font>
                                        <HBox.margin>
                                           <Insets left="5.0" />
@@ -190,12 +190,12 @@
                                  <children>
                                     <Text fx:id="textNotaMin" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota mínima na 4ª prova: ">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="Arial Bold" size="20.0" />
                                        </font>
                                     </Text>
                                     <Text fx:id="textNota4" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font name="Arial" size="20.0" />
                                        </font>
                                        <HBox.margin>
                                           <Insets left="5.0" />

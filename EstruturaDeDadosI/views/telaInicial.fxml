@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="telaInicial" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TelaInicialController">
+<BorderPane fx:id="telaInicial" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TelaInicialController">
    <top>
       <AnchorPane prefHeight="150.0" prefWidth="1200.0" style="-fx-background-color: #F23C13; -fx-border-radius: 5;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="129.0" layoutY="57.0" text="Lista de questões da primeira unidade de Estrutura de Dados I">
+            <Label alignment="CENTER" layoutX="184.0" layoutY="56.0" text="Lista de questões da primeira unidade de Estrutura de Dados I">
                <font>
-                  <Font name="Lucida Bright Demibold" size="30.0" />
+                  <Font name="Book Antiqua" size="30.0" />
                </font>
             </Label>
          </children>
@@ -30,7 +30,7 @@
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="1180.0" spacing="20.0">
                <children>
-                  <Button fx:id="buttonDM" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="36.0" prefWidth="74.0" stylesheets="@../stilos.css">
+                  <Button fx:id="buttonDM" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="36.0" prefWidth="74.0" stylesheets="@../Estilos.css">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
@@ -41,19 +41,19 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="90.0" layoutY="93.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" spacing="60.0">
                <children>
-                  <Button fx:id="buttonLista" alignment="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" stylesheets="@../stilos.css" text="Lista de questões">
+                  <Button fx:id="buttonLista" alignment="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" stylesheets="@../Estilos.css" text="Lista de questões">
                      <font>
-                        <Font name="Lucida Bright Demibold" size="20.0" />
+                        <Font name="Constantia" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="buttonPDF" alignment="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" stylesheets="@../stilos.css" text="Visualisar lista em PDF">
+                  <Button fx:id="buttonPDF" alignment="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" stylesheets="@../Estilos.css" text="Visualisar lista em PDF">
                      <font>
-                        <Font name="Lucida Bright Demibold" size="20.0" />
+                        <Font name="Constantia" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="buttonSobre" alignment="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" stylesheets="@../stilos.css" text="Sobre">
+                  <Button fx:id="buttonSobre" alignment="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" stylesheets="@../Estilos.css" text="Sobre">
                      <font>
-                        <Font name="Lucida Bright Demibold" size="20.0" />
+                        <Font name="Constantia" size="22.0" />
                      </font>
                   </Button>
                </children>

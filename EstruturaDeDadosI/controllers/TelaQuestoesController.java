@@ -10,7 +10,7 @@ import javafx.scene.layout.BorderPane;
 import questoes.EnunciadoDasQuestoes;
 import source.App;
 
-public class TelaQuestoesController extends BaseController{
+public class TelaQuestoesController {
     
     
     @FXML private BorderPane telaQuestoes;

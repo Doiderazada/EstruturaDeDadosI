@@ -48,9 +48,9 @@ public class Questao35Controller extends BaseController{
 
     private final String diretorioProjeto = System.getProperty("user.dir");
     private final String pastaArquivo = "/EstruturaDeDadosI/arquivos/";
+    private final String caminhoSalvo = diretorioProjeto + pastaArquivo;
     private final String tipoArquivo = ".CSV";
     private String nomeArquivo = "frase";
-    private String caminhoSalvo;
     private boolean novaFrase = false;
 
     private FileChooser selecionador = new FileChooser();
@@ -61,6 +61,7 @@ public class Questao35Controller extends BaseController{
 
     public void initialize() {
         BaseController.numQuestao = 35;
+        super.initialize();
         acaoDosBotoes();
         setStilo(new Button[]{ buttonAbrirCSV, buttonConfirmar, buttonNovaFrase, buttonSalvarCSV, buttonVisualizar},
                  new Label[] { labelFrase}, 
@@ -131,7 +132,6 @@ public class Questao35Controller extends BaseController{
                     if (buttonSalvarCSV.isDisable()) buttonSalvarCSV.setDisable(false);
                 } else {
                     if (validarFrase()) nomeArquivo = tfFrase.getText();
-
                     realizarSalvamento();
                 }
 			}
@@ -174,7 +174,6 @@ public class Questao35Controller extends BaseController{
 
 
     private boolean converterConteudoLido() {
-
         String fraseLida = linhasLidas.get(0);
         fraseLida = fraseLida.replace("\"", "");
         fraseQ35.setFrase(fraseLida);
@@ -246,12 +245,9 @@ public class Questao35Controller extends BaseController{
             for (int i = 0; i < fraseQ35.getPalavras().size(); i++) {
                 escritorCSV.printf("%s, %d\n", fraseQ35.getPalavras().get(i), fraseQ35.getQuantidade().get(i));
             }
-
-            caminhoSalvo = diretorioProjeto + pastaArquivo;
             escritorCSV.close();
 
             return true;
-
         } catch (FileNotFoundException e) {
             showPopup("Não foi possível criar o arquivo desejado...", false);
             e.printStackTrace();
@@ -268,7 +264,6 @@ public class Questao35Controller extends BaseController{
             fraseQ35.setFrase(frase);
             fraseQ35.setPalavras();
             fraseQ35.setQuantidade();
-
             fraseQ35.contarPalavras();
 
             textView.setText("A frase foi cadastrada com sucesso.");

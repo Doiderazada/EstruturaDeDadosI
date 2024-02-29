@@ -74,7 +74,7 @@ public class Questao29Controller extends BaseController{
             @Override
             public void handle(MouseEvent arg0) {
                 Questao25Controller.questao29 = true;
-                showPopup("Você foi redirecionado para a questão 25 para a criação do vetor", false);
+                showPopup("Você foi redirecionado para a questão 25 para a criação do vetor", true);
                 App.trocarDeTela("questao25");
             }
         });

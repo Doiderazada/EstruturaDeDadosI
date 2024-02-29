@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import questoes.EnunciadoDasQuestoes;
 import source.App;
@@ -106,6 +107,60 @@ public class BaseController {
         }
     }
 
+    final public void showPopup(String texto, boolean isSucess, Stage stage) {
+        try{
+
+            FXMLLoader loader;
+            Parent root;
+            if (isSucess) {
+                loader = new FXMLLoader(getClass().getResource("../views/telaPopupSucesso.fxml"));
+                root = loader.load();
+
+                TelaPopupSucessoController controller = loader.getController();
+                controller.initialize(texto);
+            }
+            else {
+                loader = new FXMLLoader(getClass().getResource("../views/telaPopupErro.fxml"));
+                root = loader.load();
+                
+                TelaPopupErroController controller = loader.getController();
+                controller.initialize(texto);
+            };
+            
+            Popup popup = new Popup();
+
+            popup.getContent().add(root);
+            popup.setAutoHide(true);
+            popup.setHideOnEscape(true);
+            
+            double winX = stage.getScene().getWindow().getX();
+            double winY = stage.getScene().getWindow().getY();
+            double halfX = stage.getScene().getWindow().getWidth()/2;
+            double halfY = stage.getScene().getWindow().getHeight()/2;
+
+            double newX = (winX + halfX) - (popup.getWidth()/2);
+            double newY = (winY + halfY) - (popup.getHeight()/2);
+
+            popup.setX(newX);
+            popup.setY(newY);
+            
+            popup.show(stage.getScene().getWindow());
+
+            PauseTransition closeDelay = new PauseTransition(Duration.seconds(3));
+            closeDelay.setOnFinished(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent arg0) {
+                    popup.hide();
+                }
+            });
+            closeDelay.play();
+
+        }catch(Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
     final protected void exibirConteudo(final int numQuestao) {
         questao.setText("Questão " + numQuestao + ".\t");

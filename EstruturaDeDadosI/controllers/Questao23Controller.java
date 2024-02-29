@@ -45,7 +45,7 @@ public class Questao23Controller extends BaseController{
             public void handle(MouseEvent arg0) {
                 if (verificarInput()) {
                     int fator = Integer.parseInt(tfNumero.getText());
-                    int fatorial = Questao23.calcularFatorial(fator);
+                    double fatorial = Questao23.calcularFatorial(fator);
                     textResposta.setText("O fatorial de " + fator + " é: " + String.valueOf(fatorial));
 
                     textResposta.setVisible(true);

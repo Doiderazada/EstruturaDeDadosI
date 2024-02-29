@@ -14,8 +14,8 @@ public abstract class Questao24 {
         return root;
     }
 
-    public static int calcFactor(int fator){
-        int fatorial = Questao23.calcularFatorial(fator);
+    public static double calcFactor(int fator){
+        double fatorial = Questao23.calcularFatorial(fator);
 
         return fatorial;
     }

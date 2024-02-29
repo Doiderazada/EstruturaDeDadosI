@@ -1,5 +1,8 @@
 package questoes;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public abstract class Questao5 {
     private static float valA;
     private static float valB;
@@ -27,6 +30,8 @@ public abstract class Questao5 {
     
     public static float media() {
         float media = (valA + valB + valC) / 3;
+        media = (float) BigDecimal.valueOf(media).setScale(3, RoundingMode.HALF_UP).doubleValue();
+
         return media;
     }
 }

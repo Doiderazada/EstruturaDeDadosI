@@ -17,9 +17,9 @@
    <top>
       <AnchorPane prefHeight="150.0" prefWidth="1200.0" style="-fx-background-color: #F23C13; -fx-border-radius: 5;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="129.0" layoutY="57.0" text="Lista de questões da primeira unidade de Estrutura de Dados I">
+            <Label layoutX="184.0" layoutY="56.0" text="Lista de questões da primeira unidade de Estrutura de Dados I">
                <font>
-                  <Font name="Lucida Bright Demibold" size="30.0" />
+                  <Font name="Book Antiqua" size="30.0" />
                </font>
             </Label>
          </children>
@@ -33,7 +33,7 @@
          <children>
             <HBox spacing="20.0">
                <children>
-                  <Button fx:id="buttonVoltar" alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" stylesheets="@../stilos.css" text="Voltar    ">
+                  <Button fx:id="buttonVoltar" alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" stylesheets="@../Estilos.css" text="Voltar    ">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -41,7 +41,7 @@
                         <Insets left="15.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="buttonHome" alignment="CENTER" layoutX="25.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@../stilos.css" text="Voltar à tela inicial">
+                  <Button fx:id="buttonHome" alignment="CENTER" layoutX="25.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@../Estilos.css" text="Voltar à tela inicial">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -56,12 +56,12 @@
                            <children>
                               <Text fx:id="questao" strokeType="OUTSIDE" strokeWidth="0.0" text="Questão 6.">
                                  <font>
-                                    <Font name="System Bold" size="25.0" />
+                                    <Font name="Segoe UI Black Italic" size="25.0" />
                                  </font>
                               </Text>
                               <Text fx:id="textEnunciado" strokeType="OUTSIDE" strokeWidth="0.0" text="Enunciado da questão" textAlignment="JUSTIFY" wrappingWidth="600.0">
                                  <font>
-                                    <Font size="20.0" />
+                                    <Font name="Arial" size="20.0" />
                                  </font>
                               </Text>
                            </children>
@@ -76,7 +76,7 @@
                                  <children>
                                     <Label fx:id="labelPessoa" text="Quantidade de pessoas à mesa">
                                        <font>
-                                          <Font size="15.0" />
+                                          <Font name="Georgia" size="15.0" />
                                        </font>
                                     </Label>
                                     <TextField fx:id="tfPessoa" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" />
@@ -86,7 +86,7 @@
                                  <children>
                                     <Label fx:id="labelRefri" text="Quantidade de refrigerantes pedidos">
                                        <font>
-                                          <Font size="15.0" />
+                                          <Font name="Georgia" size="15.0" />
                                        </font>
                                     </Label>
                                     <TextField fx:id="tfRefri" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" />
@@ -96,7 +96,7 @@
                                  <children>
                                     <Label fx:id="labelPizza" text="Quantidade de Pizzas pedidas">
                                        <font>
-                                          <Font size="15.0" />
+                                          <Font name="Georgia" size="15.0" />
                                        </font>
                                     </Label>
                                     <TextField fx:id="tfPizza" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" />
@@ -104,7 +104,7 @@
                               </VBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Button fx:id="buttonConfirmar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Confirmar">
+                                    <Button fx:id="buttonConfirmar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Confirmar">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
@@ -122,22 +122,22 @@
                                  <children>
                                     <Text fx:id="textValRefri" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor do refris">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="Arial Bold" size="20.0" />
                                        </font>
                                     </Text>
                                     <Text fx:id="textValPizza" layoutX="124.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor das pizzas">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="Arial Bold" size="20.0" />
                                        </font>
                                     </Text>
                                     <Text fx:id="textSubTotal" layoutX="124.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="subtotal">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="Arial Bold" size="20.0" />
                                        </font>
                                     </Text>
                                     <Text fx:id="textTotal" layoutX="124.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="total">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="Arial Bold" size="20.0" />
                                        </font>
                                        <VBox.margin>
                                           <Insets top="25.0" />
@@ -145,7 +145,7 @@
                                     </Text>
                                     <Text fx:id="textValPessoa" layoutX="124.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor por pessoa">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="Arial Bold" size="20.0" />
                                        </font>
                                        <VBox.margin>
                                           <Insets />
@@ -157,22 +157,22 @@
                                  <children>
                                     <Text fx:id="textResultRefri" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="Arial Bold" size="20.0" />
                                        </font>
                                     </Text>
                                     <Text fx:id="textResultPizza" layoutX="124.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="Arial Bold" size="20.0" />
                                        </font>
                                     </Text>
                                     <Text fx:id="textResultSubT" layoutX="124.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="Arial Bold" size="20.0" />
                                        </font>
                                     </Text>
                                     <Text fx:id="textResultTot" layoutX="124.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="Arial Bold" size="20.0" />
                                        </font>
                                        <VBox.margin>
                                           <Insets top="25.0" />
@@ -180,7 +180,7 @@
                                     </Text>
                                     <Text fx:id="textResultPessoa" layoutX="124.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="resultado">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="Arial Bold" size="20.0" />
                                        </font>
                                        <VBox.margin>
                                           <Insets />

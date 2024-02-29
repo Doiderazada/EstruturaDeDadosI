@@ -64,4 +64,8 @@ public class Questao39<T extends Object> {
         return this.elementosRemovidos;
     }
 
+
+    public int size() {
+        return this.listaElementos.size();
+    }
 }

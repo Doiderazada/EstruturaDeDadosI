@@ -77,7 +77,7 @@ public class Questao8Controller extends BaseController{
                     
                     textAltura.setText(tfAltura.getText());
                     textMassa.setText(tfMassa.getText());
-                    textIMC.setText(String.valueOf(pessoa.getIMC()));
+                    textIMC.setText(String.valueOf(pessoa.getIMC()) + "Kg/m²");
 
                     vBoxOutput.setVisible(true);
                 }
@@ -118,18 +118,23 @@ public class Questao8Controller extends BaseController{
             tfAltura.setText(tfAltura.getText().replace(",", "."));
         if (tfMassa.getText().contains(",")) 
             tfMassa.setText(tfMassa.getText().replace(",", "."));
+
         if (tfAltura.getText().isEmpty()) {
             showPopup("Os valores inseridos não são válidos, por favor, tente novamente.", false);
+            return false;
+        } else if (tfAltura.getText().matches("0")) {
+            showPopup("O valor não pode ser 0", false);
             return false;
         } else if (tfAltura.getText().matches("[a-zA-Z]+")) {
             showPopup("Os valores inseridos não são válidos, por favor, tente novamente.", false);
             return false;
         };
+
         if (tfMassa.getText().isEmpty()) {
             showPopup("Os valores inseridos não são válidos, por favor, tente novamente.", false);
             return false;
         } else if (tfMassa.getText().matches("0")) {
-            showPopup("O divisor não pode ser 0", false);
+            showPopup("O valor não pode ser 0", false);
             return false;
         } else if (tfMassa.getText().matches("[a-zA-Z]+")) {
             showPopup("Os valores inseridos não são válidos, por favor, tente novamente.", false);

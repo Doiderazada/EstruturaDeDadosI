@@ -1,4 +1,7 @@
 package source;
+
+import java.io.IOException;
+import controllers.BaseController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -6,23 +9,22 @@ import javafx.scene.Scene;
 public class GerenciadorDeTelas {
     
     private TelasDisponiveis telasDisponiveis = new TelasDisponiveis();
+    private Scene tela;
+    private BaseController controller = new BaseController();
 
     public Scene carregarTela(String nome) {
         try {
-            try{
+            
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/" + telasDisponiveis.trocarTelas(nome)));
             Parent root = loader.load();
-            Scene tela = new Scene(root);
+            tela = new Scene(root);
             
             return tela;
-        } catch(Exception e) {
+        } catch(IOException e) {
             System.out.println(e.getMessage());
-        }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
+            controller.showPopup("Ocorreu um erro ao carregar a tela desejada", false, App.janela);
+            return this.carregarTela("telaInicial");
         }
 
-        return null;
     }
 }

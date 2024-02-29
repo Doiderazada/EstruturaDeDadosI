@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
-    private static Stage janela;
+    protected static Stage janela;
     private static GerenciadorDeTelas gerenciador = new GerenciadorDeTelas();
     public static boolean darkMode = true;
 

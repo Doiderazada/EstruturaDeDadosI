@@ -11,7 +11,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import questoes.Questao23;
 import questoes.Questao36;
 
 public class Questao36Controller extends BaseController{
@@ -32,8 +31,8 @@ public class Questao36Controller extends BaseController{
     @FXML private VBox vBoxInput;
 
 
-    int fatorial;
-    int fator;
+    private double fatorial;
+    private int fator;
 
     public void initialize() {
         BaseController.numQuestao = 36;
@@ -75,8 +74,8 @@ public class Questao36Controller extends BaseController{
                 if (hBoxElements.getChildren().contains(textResposta)) hBoxElements.getChildren().remove(textResposta);
 
                 fator = Integer.parseInt(tfFator.getText());
-                fatorial = Questao23.calcularFatorial(fator);
-                textResposta.setText("O fatorial de " + fator + " é igual a " + Questao36.calcularFatorial(fator));
+                fatorial = Questao36.calcularFatorial(fator);
+                textResposta.setText("O fatorial de " + fator + " é igual a " + fatorial);
                 hBoxElements.getChildren().addAll(textResposta);
             }
         });

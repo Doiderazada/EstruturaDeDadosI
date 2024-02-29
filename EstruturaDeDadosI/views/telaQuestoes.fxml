@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="telaQuestoes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TelaQuestoesController">
+<BorderPane fx:id="telaQuestoes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TelaQuestoesController">
    <top>
       <AnchorPane prefHeight="150.0" prefWidth="1200.0" style="-fx-background-color: #F23C13; -fx-border-radius: 5;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="129.0" layoutY="57.0" text="Lista de questões da primeira unidade de Estrutura de Dados I">
+            <Label layoutX="184.0" layoutY="56.0" text="Lista de questões da primeira unidade de Estrutura de Dados I">
                <font>
-                  <Font name="Lucida Bright Demibold" size="30.0" />
+                  <Font name="Book Antiqua" size="30.0" />
                </font>
             </Label>
          </children>
@@ -32,7 +32,7 @@
          <children>
             <VBox spacing="15.0">
                <children>
-                  <Button fx:id="buttonVoltar" alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" stylesheets="@../stilos.css" text="Voltar    " textAlignment="CENTER">
+                  <Button fx:id="buttonVoltar" alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" stylesheets="@../Estilos.css" text="Voltar    " textAlignment="CENTER">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
@@ -49,81 +49,201 @@
                            <children>
                               <Label fx:id="labelListaQ" text="Lista de questões">
                                  <font>
-                                    <Font name="System Bold" size="20.0" />
+                                    <Font name="Segoe UI Black" size="20.0" />
                                  </font>
                               </Label>
                               <VBox spacing="15.0">
                                  <children>
                                     <HBox spacing="12.0">
                                        <children>
-                                          <Button fx:id="questao_1" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 1" />
-                                          <Button fx:id="questao_2" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 2" />
-                                          <Button fx:id="questao_3" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 3" />
-                                          <Button fx:id="questao_4" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 4" />
-                                          <Button fx:id="questao_5" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 5" />
+                                          <Button fx:id="questao_1" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 1">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_2" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 2">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_3" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 3">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_4" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 4">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_5" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 5">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
                                        </children>
                                     </HBox>
                                     <HBox spacing="12.0">
                                        <children>
-                                          <Button fx:id="questao_6" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 6" />
-                                          <Button fx:id="questao_7" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 7" />
-                                          <Button fx:id="questao_8" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 8" />
-                                          <Button fx:id="questao_9" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 9" />
-                                          <Button fx:id="questao_10" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 10" />
+                                          <Button fx:id="questao_6" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 6">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_7" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 7">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_8" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 8">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_9" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 9">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_10" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 10">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
                                        </children>
                                     </HBox>
                                     <HBox layoutX="10.0" layoutY="50.0" spacing="12.0">
                                        <children>
-                                          <Button fx:id="questao_11" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 11" />
-                                          <Button fx:id="questao_12" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 12" />
-                                          <Button fx:id="questao_13" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 13" />
-                                          <Button fx:id="questao_14" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 14" />
-                                          <Button fx:id="questao_15" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão15" />
+                                          <Button fx:id="questao_11" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 11">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_12" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 12">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_13" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 13">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_14" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 14">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_15" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão15">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
                                        </children>
                                     </HBox>
                                     <HBox layoutX="10.0" layoutY="90.0" spacing="12.0">
                                        <children>
-                                          <Button fx:id="questao_16" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 16" />
-                                          <Button fx:id="questao_17" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 17" />
-                                          <Button fx:id="questao_18" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 18" />
-                                          <Button fx:id="questao_19" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 19" />
-                                          <Button fx:id="questao_20" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 20" />
+                                          <Button fx:id="questao_16" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 16">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_17" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 17">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_18" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 18">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_19" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 19">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_20" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 20">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
                                        </children>
                                     </HBox>
                                     <HBox layoutX="10.0" layoutY="130.0" spacing="12.0">
                                        <children>
-                                          <Button fx:id="questao_21" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 21" />
-                                          <Button fx:id="questao_22" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 22" />
-                                          <Button fx:id="questao_23" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 23" />
-                                          <Button fx:id="questao_24" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 24" />
-                                          <Button fx:id="questao_25" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 25" />
+                                          <Button fx:id="questao_21" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 21">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_22" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 22">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_23" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 23">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_24" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 24">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_25" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 25">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
                                        </children>
                                     </HBox>
                                     <HBox layoutX="10.0" layoutY="170.0" spacing="12.0">
                                        <children>
-                                          <Button fx:id="questao_26" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 26" />
-                                          <Button fx:id="questao_27" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 27" />
-                                          <Button fx:id="questao_28" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 28" />
-                                          <Button fx:id="questao_29" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 29" />
-                                          <Button fx:id="questao_30" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 30" />
+                                          <Button fx:id="questao_26" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 26">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_27" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 27">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_28" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 28">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_29" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 29">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_30" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 30">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
                                        </children>
                                     </HBox>
                                     <HBox layoutX="10.0" layoutY="210.0" spacing="12.0">
                                        <children>
-                                          <Button fx:id="questao_31" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 31" />
-                                          <Button fx:id="questao_32" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 32" />
-                                          <Button fx:id="questao_33" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 33" />
-                                          <Button fx:id="questao_34" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 34" />
-                                          <Button fx:id="questao_35" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 35" />
+                                          <Button fx:id="questao_31" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 31">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_32" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 32">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_33" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 33">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_34" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 34">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_35" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 35">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
                                        </children>
                                     </HBox>
                                     <HBox layoutX="10.0" layoutY="250.0" spacing="12.0">
                                        <children>
-                                          <Button fx:id="questao_36" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 36" />
-                                          <Button fx:id="questao_37" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 37" />
-                                          <Button fx:id="questao_38" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 38" />
-                                          <Button fx:id="questao_39" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 39" />
-                                          <Button fx:id="questao_40" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Questão 40" />
+                                          <Button fx:id="questao_36" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 36">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_37" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 37">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_38" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 38">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_39" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 39">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="questao_40" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Questão 40">
+                                             <font>
+                                                <Font name="Segoe UI" size="12.0" />
+                                             </font></Button>
                                        </children>
                                     </HBox>
                                  </children>
@@ -137,7 +257,7 @@
                            <children>
                               <Label fx:id="labelEnumQ" text="Enunciado da questão">
                                  <font>
-                                    <Font name="System Bold" size="20.0" />
+                                    <Font name="Segoe UI Black" size="20.0" />
                                  </font>
                               </Label>
                               <TextArea fx:id="enumTextArea" prefHeight="240.0" prefWidth="580.0" wrapText="true">

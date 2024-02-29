@@ -19,9 +19,9 @@
    <top>
       <AnchorPane prefHeight="150.0" prefWidth="1200.0" style="-fx-background-color: #F23C13; -fx-border-radius: 5;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="129.0" layoutY="57.0" text="Lista de questões da primeira unidade de Estrutura de Dados I">
+            <Label layoutX="184.0" layoutY="56.0" text="Lista de questões da primeira unidade de Estrutura de Dados I">
                <font>
-                  <Font name="Lucida Bright Demibold" size="30.0" />
+                  <Font name="Book Antiqua" size="30.0" />
                </font>
             </Label>
          </children>
@@ -35,7 +35,7 @@
          <children>
             <HBox spacing="20.0">
                <children>
-                  <Button fx:id="buttonVoltar" alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" stylesheets="@../stilos.css" text="Voltar    ">
+                  <Button fx:id="buttonVoltar" alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" stylesheets="@../Estilos.css" text="Voltar    ">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -43,7 +43,7 @@
                         <Insets left="15.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="buttonHome" alignment="CENTER" layoutX="25.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@../stilos.css" text="Voltar à tela inicial">
+                  <Button fx:id="buttonHome" alignment="CENTER" layoutX="25.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@../Estilos.css" text="Voltar à tela inicial">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -58,12 +58,12 @@
                            <children>
                               <Text fx:id="questao" strokeType="OUTSIDE" strokeWidth="0.0" text="Questão 28.">
                                  <font>
-                                    <Font name="System Bold" size="25.0" />
+                                    <Font name="Segoe UI Black Italic" size="25.0" />
                                  </font>
                               </Text>
                               <Text fx:id="textEnunciado" strokeType="OUTSIDE" strokeWidth="0.0" text="Enunciado da questão">
                                  <font>
-                                    <Font size="20.0" />
+                                    <Font name="Arial" size="20.0" />
                                  </font>
                               </Text>
                            </children>
@@ -74,17 +74,17 @@
                      <children>
                         <VBox spacing="20.0">
                            <children>
-                              <Button fx:id="buttonCriar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Criar">
+                              <Button fx:id="buttonCriar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Criar">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="buttonEditar" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Editar">
+                              <Button fx:id="buttonEditar" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Editar">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="buttonVisualizar" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Visualizar">
+                              <Button fx:id="buttonVisualizar" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Visualizar">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -101,7 +101,7 @@
                                              <children>
                                                 <Label fx:id="labelPosicao" text="Posição">
                                                    <font>
-                                                      <Font size="15.0" />
+                                                      <Font name="Georgia" size="15.0" />
                                                    </font>
                                                 </Label>
                                                 <TextField fx:id="tfPosicao" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="80.0" />
@@ -111,7 +111,7 @@
                                              <children>
                                                 <Label fx:id="labelValor" text="Valor">
                                                    <font>
-                                                      <Font size="15.0" />
+                                                      <Font name="Georgia" size="15.0" />
                                                    </font>
                                                 </Label>
                                                 <TextField fx:id="tfValor" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="80.0" />
@@ -119,7 +119,7 @@
                                           </VBox>
                                        </children>
                                     </VBox>
-                                    <Button fx:id="buttonConfirmEdit" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../stilos.css" text="Confirmar">
+                                    <Button fx:id="buttonConfirmEdit" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@../Estilos.css" text="Confirmar">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
@@ -129,13 +129,13 @@
                                     </Button>
                                  </children>
                               </VBox>
-                              <ScrollPane fx:id="sPaneView" fitToHeight="true" fitToWidth="true" layoutX="125.0" stylesheets="@../stilos.css">
+                              <ScrollPane fx:id="sPaneView" fitToHeight="true" fitToWidth="true" layoutX="125.0" stylesheets="@../Estilos.css">
                                  <content>
-                                    <Pane fx:id="paneView" stylesheets="@../stilos.css">
+                                    <Pane fx:id="paneView" stylesheets="@../Estilos.css">
                                        <children>
                                           <Text fx:id="textResposta" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto resposta">
                                              <font>
-                                                <Font name="System Bold" size="18.0" />
+                                                <Font name="Arial Bold" size="18.0" />
                                              </font>
                                           </Text>
                                        </children>

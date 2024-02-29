@@ -42,6 +42,7 @@ public class Questao28Controller extends BaseController{
     
     public void initialize() {
         BaseController.numQuestao = 28;
+        super.initialize();
         acaoDosBotoes();
         setStilo(new Button[] { buttonConfirmEdit, buttonCriar, buttonEditar, buttonVisualizar},
                  new Label[]  { labelPosicao, labelValor},

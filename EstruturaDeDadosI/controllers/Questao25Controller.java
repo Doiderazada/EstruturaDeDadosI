@@ -46,7 +46,7 @@ public class Questao25Controller extends BaseController{
     private int cont;
     private int tamanho;
     private Questao25 vetor;
-    public static boolean questao27, questao28, questao29;
+    public static boolean questao27 = false, questao28 = false, questao29 = false;
 
     
     public void initialize() {

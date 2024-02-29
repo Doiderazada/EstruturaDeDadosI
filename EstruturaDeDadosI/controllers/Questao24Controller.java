@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import questoes.Questao24;
+import source.App;
 
 public class Questao24Controller extends BaseController{
 
@@ -43,7 +44,7 @@ public class Questao24Controller extends BaseController{
     @FXML private VBox vBoxRaiz;
 
 
-    private int resultadoFatorial;
+    private double resultadoFatorial;
     private double resultadoPotencia;
     private double resultadoRaiz;
     private boolean fatorial = false, potencia = false, raiz = false;
@@ -52,27 +53,24 @@ public class Questao24Controller extends BaseController{
         BaseController.numQuestao = 24;
         super.initialize();
         acaoDosBotoes();
-        setStilo(new Button[] { buttonCalcFatorial, buttonCalcPotencia, buttonCalcRaiz, 
-                                buttonFatorial, buttonPotencia, buttonRaiz},
+        setStilo(new Button[] { buttonCalcFatorial, buttonCalcPotencia, buttonCalcRaiz},
                  new Label[]  { labelBase, labelExpoente, labelFatorial, labelRaiz}, 
                  new Pane[]   { telaQuestao24}, null,
                  new Text[]   { textResposta});
+        estiloBotoes();
         estadoInicial();
     }
 
 
 
 
-
-    private void estadoInicial() {
+	private void estadoInicial() {
         hBoxParent.getChildren().removeAll(vBoxFatorial, vBoxPotencia, vBoxRaiz, textResposta);
         tfBase.clear();
         tfExpoente.clear();
         tfFatorial.clear();
         tfRaiz.clear();
     }
-
-
 
 
 
@@ -245,4 +243,18 @@ public class Questao24Controller extends BaseController{
         }
         return true;
     }
+
+
+    
+    private void estiloBotoes() {
+        if(App.darkMode) {
+            buttonFatorial.getStyleClass().setAll("btn-factor-DM");
+            buttonPotencia.getStyleClass().setAll("btn-power-DM");
+            buttonRaiz.getStyleClass().setAll("btn-root-DM");
+        } else {
+            buttonFatorial.getStyleClass().setAll("btn-factor");
+            buttonPotencia.getStyleClass().setAll("btn-power");
+            buttonRaiz.getStyleClass().setAll("btn-root");
+        }
+	}
 }
