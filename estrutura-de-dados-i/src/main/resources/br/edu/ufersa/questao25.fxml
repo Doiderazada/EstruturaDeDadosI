@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<BorderPane fx:id="telaQuestao25" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.controllers.Questao25Controller">
+   <top>
+      <AnchorPane prefHeight="150.0" prefWidth="1200.0" style="-fx-background-color: #F23C13; -fx-border-radius: 5;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="186.0" layoutY="58.0" text="Lista de questões da primeira unidade de Estrutura de Dados I">
+               <font>
+                  <Font name="Georgia" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <Pane BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="10.0" right="10.0" top="15.0" />
+         </BorderPane.margin>
+         <children>
+            <HBox spacing="20.0">
+               <children>
+                  <Button fx:id="buttonVoltar" alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" stylesheets="@Estilos.css" text="Voltar    ">
+                     <font>
+                        <Font name="Cambria Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="buttonHome" alignment="CENTER" layoutX="25.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@Estilos.css" text="Voltar à tela inicial">
+                     <font>
+                        <Font name="Cambria Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <VBox layoutX="120.0" layoutY="95.0" prefHeight="300.0" prefWidth="900.0" spacing="25.0">
+               <children>
+                  <HBox alignment="BASELINE_LEFT" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="900.0" spacing="60.0">
+                     <children>
+                        <TextFlow lineSpacing="5.0" textAlignment="JUSTIFY">
+                           <children>
+                              <Text fx:id="questao" strokeType="OUTSIDE" strokeWidth="0.0" text="Questão 25.">
+                                 <font>
+                                    <Font name="Segoe UI Black Italic" size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="textEnunciado" strokeType="OUTSIDE" strokeWidth="0.0" text="Enunciado da questão">
+                                 <font>
+                                    <Font name="Segoe UI" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </TextFlow>
+                     </children>
+                  </HBox>
+                  <HBox spacing="200.0">
+                     <children>
+                        <VBox fx:id="vBoxButtons" spacing="20.0">
+                           <children>
+                              <Button fx:id="buttonCriar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@Estilos.css" text="Criar">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="buttonEditar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@Estilos.css" text="Editar">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="buttonVisualizar" alignment="CENTER" layoutX="10.0" layoutY="35.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@Estilos.css" text="Visualizar">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="buttonQuestao27" alignment="CENTER" layoutX="10.0" layoutY="130.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@Estilos.css" text="Questão 27">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="buttonQuestao28" alignment="CENTER" layoutX="10.0" layoutY="190.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@Estilos.css" text="Questão 28">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="buttonQuestao29" alignment="CENTER" layoutX="10.0" layoutY="250.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@Estilos.css" text="Questão 29">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <Group>
+                           <children>
+                              <VBox fx:id="vBoxCreate" alignment="CENTER" layoutX="-31.0" layoutY="1.0" spacing="25.0">
+                                 <children>
+                                    <VBox minWidth="-Infinity" prefWidth="160.0">
+                                       <children>
+                                          <Label fx:id="labelVetor" text="Vetor">
+                                             <font>
+                                                <Font name="Arial" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="tfVetor" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="80.0" />
+                                       </children>
+                                    </VBox>
+                                    <Button fx:id="buttonConfirmCreate" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@Estilos.css" text="Confirmar">
+                                       <font>
+                                          <Font name="Arial Bold" size="15.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="vBoxEdit" alignment="CENTER" layoutX="149.0" layoutY="1.0" spacing="20.0">
+                                 <children>
+                                    <VBox spacing="5.0">
+                                       <children>
+                                          <VBox>
+                                             <children>
+                                                <Label fx:id="labelPosicao" text="Posição">
+                                                   <font>
+                                                      <Font name="Arial" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="tfPosicao" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="80.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox>
+                                             <children>
+                                                <Label fx:id="labelValor" text="Valor">
+                                                   <font>
+                                                      <Font name="Arial" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="tfValor" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="80.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <Button fx:id="buttonConfirmEdit" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@Estilos.css" text="Confirmar">
+                                       <font>
+                                          <Font name="Arial Bold" size="15.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                              <Text fx:id="textResposta" layoutX="269.0" layoutY="92.423828125" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto resposta">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                              <ScrollPane fx:id="sPaneView" layoutX="414.0" layoutY="1.0" stylesheets="@Estilos.css">
+                                 <content>
+                                    <Pane fx:id="paneView" stylesheets="@Estilos.css">
+                                       <children>
+                                          <Text fx:id="textView" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto resposta">
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </Pane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </Group>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </center>
+   <bottom>
+      <Label fx:id="copyRight" alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="50.0" text="Feito por Doidera, 2023" textFill="DIMGRAY" BorderPane.alignment="TOP_CENTER">
+         <font>
+            <Font name="Leelawadee UI" size="15.0" />
+         </font>
+      </Label>
+   </bottom>
+</BorderPane>

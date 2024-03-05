@@ -1,0 +1,404 @@
+.btn-home{
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-home:hover{
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+.btn-home-DM{
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-home-DM:hover{
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+
+
+.btn-voltar{
+    -fx-background-image: url("visual-elements/arrow.png");
+    -fx-background-size: 40px;
+    -fx-background-color: transparent;
+    -fx-background-position: left;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0,0,0,20;
+
+}
+.btn-voltar:hover{
+    -fx-background-image: url("visual-elements/arrow.png");
+    -fx-background-size: 40px;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgba(255, 120, 120, 0.5);
+    -fx-background-position: left;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0,0,0,20;
+    -fx-border-radius: 4px;
+}
+
+.btn-voltar-DM{
+    -fx-background-image: url("visual-elements/arrow.png");
+    -fx-background-size: 40px;
+    -fx-background-color: transparent;
+    -fx-background-position: left;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0,0,0,20;
+    -fx-text-fill:white;
+}
+.btn-voltar-DM:hover{
+    -fx-background-image: url("visual-elements/arrow.png");
+    -fx-background-size: 40px;
+    -fx-background-color: rgba(255, 120, 120, 0.5);
+    -fx-background-radius: 5px;
+    -fx-background-position: left;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0,0,0,20;
+}
+
+
+
+
+
+.btn-questao{
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-questao:hover{
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-questao:disabled{
+    -fx-background-color: rgba(253, 0, 0, 0.5);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+.btn-questao-DM{
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-questao-DM:hover{
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-questao-DM:disabled{
+    -fx-background-color: rgba(255, 116, 116, 0.5);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+
+
+
+
+.btn-factor{
+    -fx-background-image: url("visual-elements/fatorial-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-factor:hover{
+    -fx-background-image: url("visual-elements/fatorial-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-factor:disabled{
+    -fx-background-image: url("visual-elements/fatorial-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgba(253, 0, 0, 0.5);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+.btn-factor-DM{
+    -fx-background-image: url("visual-elements/fatorial-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-factor-DM:hover{
+    -fx-background-image: url("visual-elements/fatorial-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-factor-DM:disabled{
+    -fx-background-image: url("visual-elements/fatorial-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgba(255, 116, 116, 0.5);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+
+
+.btn-power{
+    -fx-background-image: url("visual-elements/potencia-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-power:hover{
+    -fx-background-image: url("visual-elements/potencia-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-power:disabled{
+    -fx-background-image: url("visual-elements/potencia-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgba(253, 0, 0, 0.5);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+.btn-power-DM{
+    -fx-background-image: url("visual-elements/potencia-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-power-DM:hover{
+    -fx-background-image: url("visual-elements/potencia-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-power-DM:disabled{
+    -fx-background-image: url("visual-elements/potencia-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgba(255, 116, 116, 0.5);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+
+
+.btn-root{
+    -fx-background-image: url("visual-elements/raiz-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-root:hover{
+    -fx-background-image: url("visual-elements/raiz-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-root:disabled{
+    -fx-background-image: url("visual-elements/raiz-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgba(253, 0, 0, 0.5);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+.btn-root-DM{
+    -fx-background-image: url("visual-elements/raiz-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-root-DM:hover{
+    -fx-background-image: url("visual-elements/raiz-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: red;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+.btn-root-DM:disabled{
+    -fx-background-image: url("visual-elements/raiz-white.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 50px;
+    -fx-background-color: rgba(255, 116, 116, 0.5);
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+
+
+
+.btn-OpenSenha {
+    -fx-background-image: url("visual-elements/olho-aberto.png");
+    -fx-background-size: 25px;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: transparent;
+}
+.btn-CloseSenha {
+    -fx-background-image: url("visual-elements/olho-fechado.png");
+    -fx-background-size: 25px;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: transparent;
+}
+
+
+
+
+
+.btn-LightMode{
+    -fx-background-image: url("visual-elements/LightMode.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 70px;
+}
+.btn-DarkMode{
+    -fx-background-image: url("visual-elements/DarkMode.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 70px;
+}
+
+
+.btn-GitHub{
+    -fx-background-image: url("visual-elements/github-mark.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50px;
+}
+.btn-GitHub-DM{
+    -fx-background-image: url("visual-elements/github-mark-white.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50px;
+}
+
+
+
+.btn-Twitter{
+    -fx-background-image: url("visual-elements/X-logo-black.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 45px;
+}
+.btn-Twitter-DM{
+    -fx-background-image: url("visual-elements/X-logo-white.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 45px;
+}
+
+
+.btn-LinkedIn{
+    -fx-background-image: url("visual-elements/In-Black-128.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50px;
+}
+.btn-LinkedIn-DM{
+    -fx-background-image: url("visual-elements/In-White-128.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50px;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    
+}
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+.corner {
+    -fx-background-color: transparent;
+}
+
+
+.scroll-bar:horizontal .decrement-button,
+.scroll-bar:horizontal .increment-button {
+    -fx-background-color: transparent;
+}
+.scroll-bar:vertical .decrement-button,
+.scroll-bar:vertical .increment-button {
+    -fx-background-color: transparent;
+}/*
+.scroll-bar:vertical .decrement-button .decrement-arrow,
+.scroll-bar:vertical .increment-button .increment-arrow {
+    -fx-background-color: red;
+}*/
+
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: red;
+    -fx-background-radius: 25px;
+}
+.scroll-bar:horizontal .thumb:active, .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 25px;
+}
+.scroll-bar:vertical .thumb {
+    -fx-background-color: red;
+    -fx-background-radius: 25px;
+}
+.scroll-bar:vertical .thumb:active, .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: rgb(255, 105, 105);
+    -fx-background-radius: 25px;
+}

@@ -1,13 +1,3 @@
 {
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "EstruturaDeDadosI/javafx-files/lib/javafx.base.jar",
-        "EstruturaDeDadosI/javafx-files/lib/javafx.controls.jar",
-        "EstruturaDeDadosI/javafx-files/lib/javafx.fxml.jar",
-        "EstruturaDeDadosI/javafx-files/lib/javafx.graphics.jar",
-        "EstruturaDeDadosI/javafx-files/lib/javafx.media.jar",
-        "EstruturaDeDadosI/javafx-files/lib/javafx.swing.jar",
-        "EstruturaDeDadosI/javafx-files/lib/javafx.web.jar",
-        "EstruturaDeDadosI/javafx-files/lib/javafx-swt.jar"
-    ]
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
