@@ -1,8 +1,11 @@
 package br.edu.ufersa.controllers;
 
 import java.awt.Desktop;
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 import br.edu.ufersa.App;
 import javafx.event.EventHandler;
@@ -43,17 +46,16 @@ public class TelaInicialController {
 
             @Override
             public void handle(MouseEvent arg0) {
-                try{
-                    String path = App.class.getResource("Lista1.pdf").toString();
-                    
-                    if (path.startsWith("jar:")) path = path.replace("jar:", "");
-                    if (path.contains("file:/")) path = path.replace("file:/", "");
+                
+                try (InputStream input = getClass().getResourceAsStream("/br/edu/ufersa/Lista1.pdf")){
+                    Path path = Files.createTempFile("Lista 1º Unidade - Estutura de Dados I ", ".pdf");
+                    Files.copy(input, path, StandardCopyOption.REPLACE_EXISTING);
+
                     System.out.println(path);
 
-                    File pdf = new File(path);
                     Desktop desktop = Desktop.getDesktop();
                     if (Desktop.isDesktopSupported()) {
-                        desktop.open(pdf);
+                        desktop.open(path.toFile());
                     }
                 } catch(IOException e) {
                     controller.showPopup("Infelizmente não foi possível abrir o arquivo PDF", false, App.getJanela());

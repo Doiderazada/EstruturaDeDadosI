@@ -33,7 +33,7 @@ public class Questao34Controller extends BaseController{
 
 
     
-    private Questao34 fraseQ34 = new Questao34(" ");
+    private Questao34 fraseQ34;
     
 
     public void initialize() {
@@ -96,11 +96,7 @@ public class Questao34Controller extends BaseController{
         if (validarFrase()) {
             String frase = tfFrase.getText();
             
-            fraseQ34.setFrase(frase);
-            fraseQ34.setPalavras();
-            fraseQ34.setQuantidade();
-
-            fraseQ34.contarPalavras();
+            fraseQ34 = new Questao34(frase, true);
 
             textView.setText("A frase foi cadastrada com sucesso.");
             hBoxOutput.getChildren().add(sPaneView);

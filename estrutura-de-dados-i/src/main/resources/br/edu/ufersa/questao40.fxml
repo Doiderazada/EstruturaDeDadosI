@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -28,7 +27,7 @@
       </AnchorPane>
    </top>
    <center>
-      <Pane stylesheets="@../Estilos.css" BorderPane.alignment="CENTER">
+      <Pane stylesheets="@Estilos.css" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets left="10.0" right="10.0" top="15.0" />
          </BorderPane.margin>
@@ -103,25 +102,6 @@
                         </VBox>
                         <HBox fx:id="hBoxElements" spacing="25.0">
                            <children>
-                              <VBox fx:id="vBoxSave" alignment="CENTER" spacing="20.0">
-                                 <children>
-                                    <VBox minWidth="-Infinity" prefWidth="150.0">
-                                       <children>
-                                          <Label fx:id="labelNomeArquivo" text="Nome do arquivo">
-                                             <font>
-                                                <Font name="Arial" size="15.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField fx:id="tfNomeArquivo" prefHeight="35.0" prefWidth="150.0" />
-                                       </children>
-                                    </VBox>
-                                    <Button fx:id="buttonConfirmarSave" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" stylesheets="@Estilos.css" text="Confirmar">
-                                       <font>
-                                          <Font name="Arial Bold" size="15.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </VBox>
                               <VBox fx:id="vBoxTexto" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" prefWidth="200.0" spacing="25.0">
                                  <children>
                                     <VBox>

@@ -72,12 +72,9 @@ public class Questao32Controller extends BaseController{
     private Questao32[] listaPessoas;
     private boolean cad = false;
     private boolean edit = false;
-    private boolean save = false;
 
     
-    private final String caminho = "/estrutura-de-dados-i/src/main/resources/br/edu/ufersa/";
-    private final String pasta = "arquivos/";
-    private final String caminhoSalvo = App.raizProjeto + caminho + pasta;
+    private String caminhoSalvo;
     private final String tipoArquivo = ".bin";
     private String nomeArquivo = "pessoa";
     private File arquivoSelecionado;
@@ -154,9 +151,7 @@ public class Questao32Controller extends BaseController{
             @Override
             public void handle(MouseEvent arg0) {
                 removerElementos();
-                save = true;
-
-                iniciarSalvamento();
+                realizarSalvamento();
             }
         });
 
@@ -166,7 +161,6 @@ public class Questao32Controller extends BaseController{
             public void handle(MouseEvent arg0) {
                 if(cad) realizarCadastro();
                 if(edit) realizarEdicao();
-                if(save) realizarSalvamento();
             }
         });
         buttonPrincipal.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -207,7 +201,9 @@ public class Questao32Controller extends BaseController{
 
     private void realizarAbertura() {
         if(abrirArquivo()){
-            textView.setText("O arquivo foi aberto com sucesso. Clique no botão \"Visualizar\" para poder acessa-lo.");
+            showPopup("O arquivo foi aberto com sucesso. ", true);
+
+            textView.setText("Clique no botão \"Visualizar\" para poder acessa-lo.");
             buttonCadastrar.setDisable(true);
             buttonEditar.setDisable(false);
             buttonVisualizar.setDisable(false);
@@ -216,34 +212,20 @@ public class Questao32Controller extends BaseController{
         } else showPopup("Ops... Ocorreu um erro ao abrir o arquivo desejado.", false);
     }
 
-
-
-    private void iniciarSalvamento() {
-        labelInicial.setText("Digite um nome para o arquivo, se desejar");
-        buttonInicial.setText("Confirmar");
-        tfInicial.clear();
-        hBoxOutput.getChildren().addAll(vBoxInicial);
-    }
-
     private void realizarSalvamento() {
-        if (!tfInicial.getText().isBlank()) nomeArquivo = tfInicial.getText();
-        
-        tfInicial.clear();
-        hBoxOutput.getChildren().remove(vBoxInicial);
-
         if(salvarArquivo()){
-            textView.setText("O arquivo foi salvo com sucesso! \nSalvo sob o diretório: " + caminhoSalvo);
+            textView.setText("O arquivo foi salvo com sucesso! \nSalvo em: " + caminhoSalvo);
             hBoxOutput.getChildren().addAll(sPaneView);
-            save = false;
-        }
+        } else showPopup("Ops... Ocorreu um erro ao salvar o arquivo, por favor, tente novamente", false);
     }
 
 
 
+    
     private boolean abrirArquivo() {
         selecionador.getExtensionFilters().addAll(new ExtensionFilter("Binary files", "*"+tipoArquivo));
         selecionador.setTitle("Selecione o aquivo binário que deseja abrir");
-        selecionador.setInitialDirectory(new File(App.raizProjeto + caminho + pasta));
+        selecionador.setInitialDirectory(new File(App.raizProjeto));
 
         Stage janela = (Stage) buttonAbrirArquivo.getScene().getWindow();
         arquivoSelecionado = selecionador.showOpenDialog(janela);
@@ -273,7 +255,20 @@ public class Questao32Controller extends BaseController{
     }
     private boolean salvarArquivo() {
         try {
-            FileOutputStream fileOutput = new FileOutputStream(App.raizProjeto + caminho + pasta + nomeArquivo + ".bin");
+            
+            Stage janela = (Stage) buttonSalvarArquivo.getScene().getWindow();
+            selecionador.getExtensionFilters().addAll(new ExtensionFilter("Binary files", "*"+tipoArquivo));
+            selecionador.setInitialFileName(nomeArquivo);
+            selecionador.setInitialDirectory(new File(App.raizProjeto));
+            File arquivoSalvo = selecionador.showSaveDialog(janela);
+            if (arquivoSalvo == null)
+                return false;
+            
+            nomeArquivo = arquivoSalvo.getName();
+            caminhoSalvo = arquivoSalvo.getPath();
+            caminhoSalvo = caminhoSalvo.replace(nomeArquivo, "");
+
+            FileOutputStream fileOutput = new FileOutputStream(arquivoSalvo);
             ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
             objectOutput.writeObject(listaPessoas);
 

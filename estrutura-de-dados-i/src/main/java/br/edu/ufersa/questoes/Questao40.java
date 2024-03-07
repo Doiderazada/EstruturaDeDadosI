@@ -97,6 +97,7 @@ public class Questao40 {
         this.mapLetras.put('8', '4');
         this.mapLetras.put('9', '1');
         this.mapLetras.put('0', '6');
+        this.mapLetras.put('\n', '\n');
     }
 
     public String codificar(final String frase) {

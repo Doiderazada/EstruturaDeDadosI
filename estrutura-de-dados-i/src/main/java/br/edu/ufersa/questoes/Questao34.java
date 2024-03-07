@@ -8,11 +8,16 @@ public class Questao34 {
     private ArrayList<Integer> quantidade;
 
 
-    public Questao34(String frase) {
+    
+    public Questao34(String frase, boolean contar) {
         setFrase(frase);
         setPalavras();
         setQuantidade();
+        if (contar) {
+            contarPalavras();
+        }
     }
+    
 
 
     public String getFrase() {

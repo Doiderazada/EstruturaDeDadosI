@@ -47,17 +47,14 @@ public class Questao35Controller extends BaseController{
 
 
 
-    private final String caminho = "/estrutura-de-dados-i/src/main/resources/br/edu/ufersa/";
-    private final String pastaArquivo = "arquivos/";
-    private final String caminhoSalvo = App.raizProjeto + caminho + pastaArquivo;
+    private String caminhoSalvo;
     private final String tipoArquivo = ".CSV";
     private String nomeArquivo = "frase";
-    private boolean novaFrase = false;
 
     private FileChooser selecionador = new FileChooser();
     private ArrayList<String> linhasLidas = new ArrayList<>(1);
     
-    private Questao35 fraseQ35 = new Questao35(" ");
+    private Questao35 fraseQ35;
     
 
     public void initialize() {
@@ -87,10 +84,8 @@ public class Questao35Controller extends BaseController{
 
             @Override
             public void handle(MouseEvent arg0) {
-                if (hBoxOutput.getChildren().contains(sPaneView)) hBoxOutput.getChildren().remove(sPaneView);
-                if (hBoxOutput.getChildren().contains(vBoxFrase)) hBoxOutput.getChildren().remove(vBoxFrase);
+                removerElementos();
 
-                novaFrase = true;
                 hBoxOutput.getChildren().add(vBoxFrase);
                 tfFrase.clear();
             }
@@ -104,6 +99,7 @@ public class Questao35Controller extends BaseController{
         buttonAbrirCSV.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
+                removerElementos();
                 realizarAbertura();
             }
         });
@@ -111,12 +107,8 @@ public class Questao35Controller extends BaseController{
 
             @Override
             public void handle(MouseEvent arg0) {
-                if (hBoxOutput.getChildren().contains(sPaneView)) hBoxOutput.getChildren().remove(sPaneView);
-                if (hBoxOutput.getChildren().contains(vBoxFrase)) hBoxOutput.getChildren().remove(vBoxFrase);
-
-                labelFrase.setText("Digite um nome para o arquivo, se assim desejar");
-                tfFrase.clear();
-                hBoxOutput.getChildren().addAll(vBoxFrase);
+                removerElementos();
+                realizarSalvamento();
             }
         });
 
@@ -124,17 +116,12 @@ public class Questao35Controller extends BaseController{
 
 			@Override
 			public void handle(MouseEvent arg0) {
-                if(novaFrase){
-                    novaFrase();
-                    
-                    hBoxOutput.getChildren().remove(vBoxFrase);
+                novaFrase();
+                
+                hBoxOutput.getChildren().remove(vBoxFrase);
 
-                    if (buttonVisualizar.isDisable()) buttonVisualizar.setDisable(false);
-                    if (buttonSalvarCSV.isDisable()) buttonSalvarCSV.setDisable(false);
-                } else {
-                    if (validarFrase()) nomeArquivo = tfFrase.getText();
-                    realizarSalvamento();
-                }
+                if (buttonVisualizar.isDisable()) buttonVisualizar.setDisable(false);
+                if (buttonSalvarCSV.isDisable()) buttonSalvarCSV.setDisable(false);
 			}
         });
     }
@@ -144,21 +131,45 @@ public class Questao35Controller extends BaseController{
 
     
 
-    private void realizarSalvamento() {
-        novaFrase = false;
-        if (hBoxOutput.getChildren().contains(vBoxFrase)) hBoxOutput.getChildren().remove(vBoxFrase);
+    private void removerElementos() {
         if (hBoxOutput.getChildren().contains(sPaneView)) hBoxOutput.getChildren().remove(sPaneView);
-
-        if (salvarArquivoCSV()) {
-            textView.setText("O arquivo foi salvo com sucesso! \nSalvo sob o diretório: " + caminhoSalvo);
-            hBoxOutput.getChildren().addAll(sPaneView);
-        }
+        if (hBoxOutput.getChildren().contains(vBoxFrase)) hBoxOutput.getChildren().remove(vBoxFrase);
     }
 
-    private void realizarAbertura() {
-        if (hBoxOutput.getChildren().contains(vBoxFrase)) hBoxOutput.getChildren().remove(vBoxFrase);
-        if (hBoxOutput.getChildren().contains(sPaneView)) hBoxOutput.getChildren().remove(sPaneView);
 
+
+
+
+
+    private void novaFrase(){
+        if (validarFrase()) {
+            String frase = tfFrase.getText();
+            
+            fraseQ35 = new Questao35(frase, true);
+
+            textView.setText("A frase foi cadastrada com sucesso.");
+            hBoxOutput.getChildren().add(sPaneView);
+        }
+    }
+    private boolean validarFrase() {
+        if (tfFrase.getText().isEmpty()) {
+            showPopup("O campo não pode ser vazio, tente novamente", false);
+            return false;
+        } 
+        return true;
+    }
+
+
+    private void visualizarFrase(){
+        textView.setText("Informações sobre a frase \"" + fraseQ35.getFrase() + "\".\n\n" +
+        fraseQ35.exibirConteudo());
+        if(!hBoxOutput.getChildren().contains(sPaneView)) hBoxOutput.getChildren().addAll(sPaneView);
+    }
+    
+    
+
+
+    private void realizarAbertura() {
         if (abrirArquivoCSV()) {
             if (converterConteudoLido()) {
                 showPopup("O arquivo foi aberto com sucesso!", true);
@@ -167,8 +178,15 @@ public class Questao35Controller extends BaseController{
                 buttonVisualizar.setDisable(false);
                 buttonSalvarCSV.setDisable(false);
                 hBoxOutput.getChildren().addAll(sPaneView);
-            } else showPopup("Ops... Ocorreu um erro abrindo o arquivo desejado. :(", false);
+            } else showPopup("Ops... Ocorreu um erro ao ler o arquivo desejado. :(", false);
         }
+    }
+
+    private void realizarSalvamento() {
+        if (salvarArquivoCSV()) {
+            textView.setText("O arquivo foi salvo com sucesso! \nSalvo em: " + caminhoSalvo);
+            hBoxOutput.getChildren().addAll(sPaneView);
+        } else showPopup("Ops... O arquivo não foi salvo, tente novamente", false);
     }
 
 
@@ -177,9 +195,7 @@ public class Questao35Controller extends BaseController{
     private boolean converterConteudoLido() {
         String fraseLida = linhasLidas.get(0);
         fraseLida = fraseLida.replace("\"", "");
-        fraseQ35.setFrase(fraseLida);
-        fraseQ35.setPalavras();
-        fraseQ35.setQuantidade();
+        fraseQ35 = new Questao35(fraseLida, false);
         
         String[] conteudo = new String[2];
         String linha;
@@ -204,13 +220,14 @@ public class Questao35Controller extends BaseController{
         }
         return adicionado;
     }
+    
 
 
 
     private boolean abrirArquivoCSV() {
         selecionador.getExtensionFilters().addAll(new ExtensionFilter("Comma-separated values", "*"+tipoArquivo));
         selecionador.setTitle("Selecione o aquivo CSV que deseja abrir");
-        selecionador.setInitialDirectory(new File(App.raizProjeto + caminho + pastaArquivo));
+        selecionador.setInitialDirectory(new File(App.raizProjeto));
 
         Stage janela = (Stage) buttonAbrirCSV.getScene().getWindow();
 
@@ -238,9 +255,21 @@ public class Questao35Controller extends BaseController{
     }
     private boolean salvarArquivoCSV() {
         try {
-            File arquivo = new File(App.raizProjeto + caminho + pastaArquivo + nomeArquivo + tipoArquivo);
-            PrintWriter escritorCSV = new PrintWriter(arquivo);
+            
+            Stage janela = (Stage) buttonSalvarCSV.getScene().getWindow();
+            selecionador.setInitialFileName(nomeArquivo);
+            selecionador.setInitialDirectory(new File(App.raizProjeto));
+            selecionador.getExtensionFilters().addAll(new ExtensionFilter("Comma-separated values", "*"+tipoArquivo));
+            File arquivoSalvo = selecionador.showSaveDialog(janela);
+            if (arquivoSalvo == null) 
+                return false;
 
+            nomeArquivo = arquivoSalvo.getName();
+            caminhoSalvo = arquivoSalvo.getPath();
+            caminhoSalvo = caminhoSalvo.replace(nomeArquivo, "");
+
+            PrintWriter escritorCSV = new PrintWriter(arquivoSalvo);
+            
             escritorCSV.println("\"" + fraseQ35.getFrase() + "\"");
             
             for (int i = 0; i < fraseQ35.getPalavras().size(); i++) {
@@ -254,39 +283,5 @@ public class Questao35Controller extends BaseController{
             e.printStackTrace();
             return false;
         } 
-    }
-
-
-
-    private void novaFrase(){
-        if (validarFrase()) {
-            String frase = tfFrase.getText();
-            
-            fraseQ35.setFrase(frase);
-            fraseQ35.setPalavras();
-            fraseQ35.setQuantidade();
-            fraseQ35.contarPalavras();
-
-            textView.setText("A frase foi cadastrada com sucesso.");
-            hBoxOutput.getChildren().add(sPaneView);
-
-            novaFrase = false;
-        }
-    }
-
-    private void visualizarFrase(){
-        textView.setText("Informações sobre a frase \"" + fraseQ35.getFrase() + "\".\n\n" +
-        fraseQ35.exibirConteudo());
-    }
-
-
-    
-    
-    private boolean validarFrase() {
-        if (tfFrase.getText().isEmpty()) {
-            showPopup("O campo não pode ser vazio, tente novamente", false);
-            return false;
-        } 
-        return true;
     }
 }
