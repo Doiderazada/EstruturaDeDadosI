@@ -47,15 +47,11 @@ public class Questao40Controller extends BaseController{
     @FXML private VBox vBoxTexto;
 
 
-
-    
     private final String tipoArquivo = ".txt";
     private String nomeArquivo = "mensagem";
     private String caminhoSalvo;
     private File arquivoSelecionado;
     private FileChooser selecionador = new FileChooser();
-
-
     private boolean textoAberto = false;
     private String fraseLida = "";
     private String mensagemCodificada;
@@ -89,11 +85,8 @@ public class Questao40Controller extends BaseController{
 
 
 
-
     private void acaoDosBotoes() {
-
         buttonNovoTexto.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 removerElementos();
@@ -102,7 +95,6 @@ public class Questao40Controller extends BaseController{
             }
         });
         buttonEditarTexto.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 removerElementos();
@@ -111,11 +103,9 @@ public class Questao40Controller extends BaseController{
             }
         });
         buttonVisualizar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 removerElementos();
-                
                 if (textoAberto) {
                     mensagemDecoficicada = coderDecoder.decodificar(mensagem);
                     mensagem = mensagemDecoficicada;
@@ -132,7 +122,6 @@ public class Questao40Controller extends BaseController{
             }
         });
         buttonAbrirTexto.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 removerElementos();
@@ -146,8 +135,6 @@ public class Questao40Controller extends BaseController{
                 realizarSalvamento();
             }
         });
-
-
         buttonConfirmarTexto.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
@@ -155,7 +142,6 @@ public class Questao40Controller extends BaseController{
                 removerElementos();
                 if(validarMensagem()) {
                     mensagem = taMensagem.getText();
-
                     mensagemCodificada = coderDecoder.codificar(mensagem);
                     textView.setText("mensagem codificada com sucesso!");
                     if(buttonVisualizar.isDisable()) buttonVisualizar.setDisable(false);
@@ -166,8 +152,6 @@ public class Questao40Controller extends BaseController{
             }
         });
     }
-
-
 
 
 
@@ -212,16 +196,12 @@ public class Questao40Controller extends BaseController{
 
 
 
-
-
-
     private boolean abrirArquivo() {
         selecionador.getExtensionFilters().addAll(new ExtensionFilter("Text files", "*"+tipoArquivo));
         selecionador.setTitle("Selecione o aquivo binário que deseja abrir");
         selecionador.setInitialDirectory(new File(App.raizProjeto));
 
         Stage janela = (Stage) buttonAbrirTexto.getScene().getWindow();
-
         arquivoSelecionado = selecionador.showOpenDialog(janela);
 
         if(arquivoSelecionado != null){

@@ -73,16 +73,16 @@ public class TelaSobreController {
         Tooltip tTwitter = new Tooltip("Link do perfil do Twitter");
         tTwitter.setShowDelay(Duration.millis(200));
 
-        Tooltip tmensagemSubliminar = new Tooltip("Deus te abençoe");
+        Tooltip tmensagemSubliminar = new Tooltip("Se gostou, favorita lá no GitHub. XD");
         tmensagemSubliminar.setShowDelay(Duration.millis(200));
-        tmensagemSubliminar.setShowDuration(Duration.millis(500));
+        tmensagemSubliminar.setShowDuration(Duration.millis(700));
         Tooltip.install(copyRight, tmensagemSubliminar);
 
         buttonGitHub.setTooltip(tGitHub);
         buttonLinkedIn.setTooltip(tLinkedIn);
         buttonTwitter.setTooltip(tTwitter);
-        
 
+        
         buttonVoltar.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
@@ -91,7 +91,6 @@ public class TelaSobreController {
         });
 
         buttonGitHub.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 try{
@@ -106,9 +105,7 @@ public class TelaSobreController {
                 }
             }
         });
-
         buttonLinkedIn.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 try{
@@ -123,9 +120,7 @@ public class TelaSobreController {
                 }
             }
         });
-
         buttonTwitter.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 try{

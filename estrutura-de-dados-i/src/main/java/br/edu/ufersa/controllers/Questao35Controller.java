@@ -46,14 +46,11 @@ public class Questao35Controller extends BaseController{
     @FXML private VBox vBoxFrase;
 
 
-
     private String caminhoSalvo;
     private final String tipoArquivo = ".CSV";
     private String nomeArquivo = "frase";
-
     private FileChooser selecionador = new FileChooser();
     private ArrayList<String> linhasLidas = new ArrayList<>(1);
-    
     private Questao35 fraseQ35;
     
 
@@ -78,14 +75,11 @@ public class Questao35Controller extends BaseController{
 
 
 
-
     private void acaoDosBotoes() {
         buttonNovaFrase.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 removerElementos();
-
                 hBoxOutput.getChildren().add(vBoxFrase);
                 tfFrase.clear();
             }
@@ -104,16 +98,13 @@ public class Questao35Controller extends BaseController{
             }
         });
         buttonSalvarCSV.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 removerElementos();
                 realizarSalvamento();
             }
         });
-
         buttonConfirmar.setOnMouseClicked(new EventHandler<MouseEvent>(){
-
 			@Override
 			public void handle(MouseEvent arg0) {
                 novaFrase();
@@ -128,9 +119,6 @@ public class Questao35Controller extends BaseController{
 
 
 
-
-    
-
     private void removerElementos() {
         if (hBoxOutput.getChildren().contains(sPaneView)) hBoxOutput.getChildren().remove(sPaneView);
         if (hBoxOutput.getChildren().contains(vBoxFrase)) hBoxOutput.getChildren().remove(vBoxFrase);
@@ -138,15 +126,10 @@ public class Questao35Controller extends BaseController{
 
 
 
-
-
-
     private void novaFrase(){
         if (validarFrase()) {
             String frase = tfFrase.getText();
-            
             fraseQ35 = new Questao35(frase, true);
-
             textView.setText("A frase foi cadastrada com sucesso.");
             hBoxOutput.getChildren().add(sPaneView);
         }
@@ -160,12 +143,12 @@ public class Questao35Controller extends BaseController{
     }
 
 
+
     private void visualizarFrase(){
         textView.setText("Informações sobre a frase \"" + fraseQ35.getFrase() + "\".\n\n" +
         fraseQ35.exibirConteudo());
         if(!hBoxOutput.getChildren().contains(sPaneView)) hBoxOutput.getChildren().addAll(sPaneView);
     }
-    
     
 
 
@@ -181,14 +164,12 @@ public class Questao35Controller extends BaseController{
             } else showPopup("Ops... Ocorreu um erro ao ler o arquivo desejado. :(", false);
         }
     }
-
     private void realizarSalvamento() {
         if (salvarArquivoCSV()) {
             textView.setText("O arquivo foi salvo com sucesso! \nSalvo em: " + caminhoSalvo);
             hBoxOutput.getChildren().addAll(sPaneView);
         } else showPopup("Ops... O arquivo não foi salvo, tente novamente", false);
     }
-
 
 
 
@@ -220,7 +201,6 @@ public class Questao35Controller extends BaseController{
         }
         return adicionado;
     }
-    
 
 
 
@@ -230,7 +210,6 @@ public class Questao35Controller extends BaseController{
         selecionador.setInitialDirectory(new File(App.raizProjeto));
 
         Stage janela = (Stage) buttonAbrirCSV.getScene().getWindow();
-
         File arquivoSelecionado = selecionador.showOpenDialog(janela);
 
         if(arquivoSelecionado != null){
@@ -240,9 +219,7 @@ public class Questao35Controller extends BaseController{
                 while ((linha = leitorCSV.readLine()) != null) {
                     linhasLidas.add(linha);
                 }
-
                 leitorCSV.close();
-
                 return true;
                 
             } catch (IOException e) {
@@ -255,7 +232,6 @@ public class Questao35Controller extends BaseController{
     }
     private boolean salvarArquivoCSV() {
         try {
-            
             Stage janela = (Stage) buttonSalvarCSV.getScene().getWindow();
             selecionador.setInitialFileName(nomeArquivo);
             selecionador.setInitialDirectory(new File(App.raizProjeto));
@@ -269,15 +245,14 @@ public class Questao35Controller extends BaseController{
             caminhoSalvo = caminhoSalvo.replace(nomeArquivo, "");
 
             PrintWriter escritorCSV = new PrintWriter(arquivoSalvo);
-            
             escritorCSV.println("\"" + fraseQ35.getFrase() + "\"");
             
             for (int i = 0; i < fraseQ35.getPalavras().size(); i++) {
                 escritorCSV.printf("%s, %d\n", fraseQ35.getPalavras().get(i), fraseQ35.getQuantidade().get(i));
             }
             escritorCSV.close();
-
             return true;
+
         } catch (FileNotFoundException e) {
             showPopup("Não foi possível criar o arquivo desejado...", false);
             e.printStackTrace();

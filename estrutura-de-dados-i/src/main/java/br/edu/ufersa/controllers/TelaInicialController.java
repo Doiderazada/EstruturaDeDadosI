@@ -12,8 +12,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.util.Duration;
 
 public class TelaInicialController {
     
@@ -41,12 +43,9 @@ public class TelaInicialController {
                 App.trocarDeTela("telaQuestoes");
             }
         });
-
         buttonPDF.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
-                
                 try (InputStream input = getClass().getResourceAsStream("/br/edu/ufersa/Lista1.pdf")){
                     Path path = Files.createTempFile("Lista 1º Unidade - Estutura de Dados I ", ".pdf");
                     Files.copy(input, path, StandardCopyOption.REPLACE_EXISTING);
@@ -72,7 +71,6 @@ public class TelaInicialController {
                 }
             }
         });
-
         buttonSobre.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent arg0) {
@@ -81,7 +79,6 @@ public class TelaInicialController {
         });
 
         buttonDM.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent arg0) {
                 if (App.darkMode) {
@@ -93,6 +90,11 @@ public class TelaInicialController {
                 }
             }
         });
+
+        Tooltip tmensagemSubliminar = new Tooltip("Deus te abençoe");
+        tmensagemSubliminar.setShowDelay(Duration.millis(200));
+        tmensagemSubliminar.setShowDuration(Duration.millis(600));
+        Tooltip.install(copyRight, tmensagemSubliminar);
     }
 
 
