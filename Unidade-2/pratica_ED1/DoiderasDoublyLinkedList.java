@@ -1,48 +1,44 @@
-package pratica_ED1.Classes;
+package pratica_ED1;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import pratica_ED1.Interfaces.DoiderasList;
+import pratica_ED1.DoiderasList;
 
+public class DoiderasDoublyLinkedList<T> implements DoiderasList<T> {
 
-public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
-
+    private int size;
     private DoiderasNode<T> first;
     private DoiderasNode<T> last;
-    private int size;
 
 
 
-    public DoiderasSinglyLinkedList() {
+    
+    public DoiderasDoublyLinkedList() {
         this.size = 0;
-        this.first = null;
-        this.last = first;
+        this.last = this.first = null;
     }
 
 
 
-    @Override
+
     public int size() {
         return this.size;
     }
 
-    @Override
     public boolean isEmpty() {
-        if (size == 0) return true;
+        if (size() == 0) return true;
         return false;
     }
-    
-    
-    
-    @Override
-    public boolean contains(Object o) {
-        return indexOf(o) >= 0;
+
+
+
+    public boolean contains(Object element) {
+        return indexOf(element) >= 0;
     }
-    
-    @SuppressWarnings("unchecked")
-    @Override
+
     public boolean containsAll(Collection<?> c) {
+        @SuppressWarnings("unchecked")
         T[] arrayTs = (T[]) c.toArray();
         int length = arrayTs.length;    
         int index = 0;
@@ -54,9 +50,9 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
         } while (contain);
         return contain;
     }
+    
 
-
-
+    
     public boolean addFirst(T element) {
         DoiderasNode<T> novo = new DoiderasNode<T>(element);
         novo.setNext(this.first);
@@ -73,7 +69,7 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
         this.size = size()+1;
         return true;
     }
-    
+
     public boolean add(T element) {
         if (isEmpty()) return addFirst(element); 
         else return addLast(element);
@@ -82,30 +78,35 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
     public void add(int index, T element) {
         DoiderasNode<T> novo = new DoiderasNode<T>(element);
         if (isEmpty()) {
-            addFirst(element);
+            this.first = novo;
+            this.last = this.first;
+            this.size = size()+1;
             return;
         }
-        if (index >= size() | index < 0) return;
+        if (index > size() | index < 0) return;
         if (index == size()-1) {
             addLast(element);
             return;
         }
-        
+
         DoiderasNode<T> temp = this.first;
         for (int i = 0; i < index; i++) temp = temp.getNext();
+
         DoiderasNode<T> next = temp.getNext();
         temp.setNext(novo);
+        novo.setPrev(temp);
         novo.setNext(next);
-        this.size = size()+1;
+        next.setPrev(novo);
+        this.size = size() + 1;
     }
-
     
-
-    @SuppressWarnings("unchecked")
     public boolean addAll(Collection<? extends T> c) {
+        @SuppressWarnings("unchecked")
         T[] arrayTs = (T[]) c.toArray();
-        int length = arrayTs.length;    int index = 0;
+        int length = arrayTs.length;
+        int index = 0;
         boolean added = false;
+
         do {
             added = add(arrayTs[index++]);
             if (index == length) break;
@@ -130,20 +131,26 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
 
         for (int i = 0; i < length - 1; i++) {
             nodesToAdd[i].setNext(nodesToAdd[i+1]);
+            nodesToAdd[i+1].setPrev(nodesToAdd[i]);
         };
 
         DoiderasNode<T> next = temp.getNext();
         temp.setNext(nodesToAdd[0]);
+        nodesToAdd[0].setPrev(temp);
         nodesToAdd[length-1].setNext(next);
-        size = size() + length;
+        this.size = size() + length;
         return true;
     }
-    
+
+
+
+
     public boolean removeFirst() {
         if (isEmpty()) return false;
-        DoiderasNode<T> next = this.first.getNext();
+        DoiderasNode<T> second = this.first.getNext();
         this.first.setNext(null);
-        this.first = next;
+        second.setPrev(null);
+        this.first = second;
         this.size = size()-1;
         return true;
     }
@@ -151,24 +158,20 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
     public boolean removeLast() {
         if (isEmpty()) return false;
         DoiderasNode<T> temp = this.first;
-        DoiderasNode<T> prev = temp;
-        for (int i = 0; i < size()-1; i++) {
-            prev = temp;
-            temp = temp.getNext();
-        }
-        prev.setNext(null);
-        this.last = prev;
+        for (int i = 0; i < size()-1; i++) temp = temp.getNext();
+        
+        temp.getPrev().setNext(null);
+        this.last = temp.getPrev();
         this.size = size()-1;
         return true;
     }
-    
-    public boolean remove(Object e) {
+
+    public boolean remove(Object element) {
         if (isEmpty()) return false;
-        DoiderasNode<T> temp = new DoiderasNode<T>(null);
-        temp = this.first;
-        DoiderasNode<T> prev = temp;
+        DoiderasNode<T> temp = this.first;
         int index = 0;
-        if (contains(e)) index = lastIndexOf(e);
+
+        if (contains(element)) index = lastIndexOf(element);
         if (index == -1) return false;
         
         if (size() == 1) {
@@ -180,11 +183,9 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
         if (index == (size()-1)) return removeLast();
 
         temp = this.first;
-        for (int i = 0; i < index; i++) {
-            prev = temp;
-            temp = temp.getNext();
-        }
-        prev.setNext(temp.getNext());
+        for (int i = 0; i < index; i++) temp = temp.getNext();
+
+        temp.getPrev().setNext(temp.getNext());
         temp.setNext(null);
         this.size = size()-1;
         return true;
@@ -193,7 +194,6 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
     public T remove(int index) {
         if (isEmpty()) return null;
         DoiderasNode<T> temp = this.first;
-        DoiderasNode<T> prev = temp;
         T dataToReturn;
         
         if (index <= -1) return null;
@@ -210,20 +210,19 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
             return dataToReturn;
         }
         
-        for (int i = 0; i < index; i++) {
-            prev = temp;
-            temp = temp.getNext();
-        }
+        for (int i = 0; i < index; i++) temp = temp.getNext();
+
         dataToReturn = temp.getData();
-        prev.setNext(temp.getNext());
+        temp.getPrev().setNext(temp.getNext());
         temp.setNext(null);
         this.size = size()-1;
         return dataToReturn;
     }
     
-    @SuppressWarnings("unchecked")
     public boolean removeAll(Collection<?> c) {
         if (isEmpty()) return false;
+
+        @SuppressWarnings("unchecked")
         T[] arrayTs = (T[]) c.toArray();
         int length = arrayTs.length;
         boolean removed = false;
@@ -234,6 +233,7 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
         return removed;
     }
     
+
 
 
     public boolean retainAll(Collection<?> c) {
@@ -251,23 +251,19 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
 
 
     public void clear() {
-        this.last = this.first = null;
+        this.first = this.last = null;
         this.size = 0;
     }
     
-
-
     public T get(int index) {
-        DoiderasNode<T> temp = new DoiderasNode<T>(null);
-        temp = this.first;
+        DoiderasNode<T> temp = this.first;
         
         for (int i = 0; i < index; i++) temp = temp.getNext();
         return temp.getData();
     }
     
     public T set(int index, T element) {
-        DoiderasNode<T> temp = new DoiderasNode<T>(null);
-        temp = this.first;
+        DoiderasNode<T> temp = this.first;
         
         for (int i = 0; i < index; i++) temp = temp.getNext();
         T dataReplaced = temp.getData();
@@ -275,59 +271,51 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
         return dataReplaced;
     }
     
-
-
-    public int indexOf(Object element) {
+    public int indexBy(int index, T element) {
         if (isEmpty()) return -1;
-        DoiderasNode<T> temp;
+        DoiderasNode<T> temp = this.first;
+
+        for (int i = 0; i <= index; i++) temp = temp.getNext();
+        index++;
+        
+        while (temp != null) {
+            if (temp.getData().equals(element)) return index; 
+            temp = temp.getNext();      index++;
+        } 
+        return -1;
+    }
+
+    public int indexOf(T element) {
+        if (isEmpty()) return -1;
+        DoiderasNode<T> temp = this.first;
         int index = 0;
-        temp = this.first;
         
         do{    
             if (temp.getData().equals(element)) return index;
             index++;
             temp = temp.getNext();
         } while (temp != null);
-        
         return -1;
     }
     
-    public int lastIndexOf(Object e) {
+    public int lastIndexOf(T element) {
         if (isEmpty()) return -1;
         
-        int index = indexOf(e);
         int temporaryIndex;
+
+        int index = indexOf(element);
         if (index == -1) return index;
         
         do {
-            temporaryIndex = indexBy(index, e);
+            temporaryIndex = indexBy(index, element);
             if (temporaryIndex == -1) break;
             index = temporaryIndex;
         } while (index != -1);
-        
         return index;
     }
     
-    private int indexBy(int index, Object e) {
-        if (isEmpty()) return -1;
-        DoiderasNode<T> temp = new DoiderasNode<T>(null);
-        
-        temp = this.first;
-        for (int i = 0; i <= index; i++) temp = temp.getNext();
-        index++;
-        
-        while (temp != null) {
-            if (temp.getData().equals(e)) return index; 
-            temp = temp.getNext();      index++;
-        } 
-        return -1;
-    }
-    
-
-    
-    
     public DoiderasList<T> subList(int initIndex, int finalIndex) {
-        DoiderasSinglyLinkedList<T> novaLista = new DoiderasSinglyLinkedList<T>();
+        DoiderasList<T> novaLista = new DoiderasDoublyLinkedList<T>();
         DoiderasNode<T> temp = new DoiderasNode<T>(null);
         temp = this.first;
         
@@ -342,13 +330,14 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
         return novaLista;
     }
     
+
     
-    @SuppressWarnings("unchecked")
     public T[] toArray() {
         int index = 0;
         int length = size();
+        @SuppressWarnings("unchecked")
         T[] arrayObjects = (T[]) new Object[length];
-
+        
         for (DoiderasNode<T> temp = this.first; temp != null; temp.getNext()) {
             arrayObjects[index++] = temp.getData();
         }
@@ -361,10 +350,14 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
         throw new UnsupportedOperationException("Unimplemented method 'toArray'");
     }
     
+    
+    
     public Iterator<T> iterator() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'iterator'");
     }
+    
+
 
 
     /**
@@ -375,14 +368,16 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
      * @see DoiderasList
      */
     @SuppressWarnings("hiding")
-    private class DoiderasNode<T> {
+    protected class DoiderasNode<T> {
         
         private T data;
         private DoiderasNode<T> nextNode;
+        private DoiderasNode<T> prevNode;
 
 
         DoiderasNode(T data) {
             setData(data);
+            setPrev(null);
             setNext(null);
         }
 
@@ -401,6 +396,14 @@ public class DoiderasSinglyLinkedList<T> implements DoiderasList<T> {
 
         DoiderasNode<T> getNext() {
             return this.nextNode;
+        }
+        
+        void setPrev(DoiderasNode<T> prev) {
+            this.prevNode = prev;
+        }
+
+        DoiderasNode<T> getPrev() {
+            return this.prevNode;
         }
     }
 }

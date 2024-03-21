@@ -5,11 +5,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import pratica_ED1.ContaPalavras;
 
 public class Questao5 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        File arquivo = new File("pratica_ED1/arquivos/ArquivoEntrada.txt");
+        File arquivo = new File("./pratica_ED1/arquivos/ArquivoEntrada.txt");
 
         System.out.println("Entre com a frase que deseja contar ");
         System.out.print("Sua frase: ");

@@ -1,4 +1,4 @@
-package pratica_ED1.Classes;
+package pratica_ED1;
 
 import java.util.Vector;
 

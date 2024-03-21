@@ -1,6 +1,6 @@
 package pratica_ED1;
 
-import pratica_ED1.Classes.DoiderasSinglyLinkedList;
+import pratica_ED1.DoiderasSinglyLinkedList;
 
 public class FilaComLista<T> {
     

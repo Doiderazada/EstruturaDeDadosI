@@ -1,10 +1,10 @@
-package pratica_ED1.Classes;
+package pratica_ED1;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
-import pratica_ED1.Interfaces.DoiderasQueue;
+import pratica_ED1.DoiderasQueue;
 
 public class DoiderasSimpleQueue<T> implements DoiderasQueue<T>{
     

@@ -11,8 +11,8 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-import pratica_ED1.Classes.DoiderasSinglyLinkedList;
-import pratica_ED1.Interfaces.DoiderasList;
+import pratica_ED1.DoiderasSinglyLinkedList;
+import pratica_ED1.DoiderasList;
 
 public class ContaPalavras {
 
@@ -20,9 +20,9 @@ public class ContaPalavras {
     private DoiderasList<String> listaDePalavras = new DoiderasSinglyLinkedList<>();
     private Map<String, Integer> mapaPalavras = new HashMap<String, Integer>();
 
-    private final File arquivoEntrada = new File("pratica_ED1/arquivos/ArquivoEntrada.txt");
-    private final File arquivoBinario = new File("pratica_ED1/arquivos/BinSaved.bin");
-    private final File arquivoTexto = new File("pratica_ED1/arquivos/TxtSaved.txt");
+    private final File arquivoEntrada = new File("./pratica_ED1/arquivos/ArquivoEntrada.txt");
+    private final File arquivoBinario = new File("./pratica_ED1/arquivos/BinSaved.bin");
+    private final File arquivoTexto = new File("./pratica_ED1/arquivos/TxtSaved.txt");
 
     public ContaPalavras() {
         lerArquivoEntrada();
