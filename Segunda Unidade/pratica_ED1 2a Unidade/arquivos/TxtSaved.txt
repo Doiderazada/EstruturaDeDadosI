@@ -1,0 +1,2 @@
+A palavra: teste aparece 2 vezes.
+A palavra: bla aparece 3 vezes.

@@ -24,7 +24,7 @@ public class App extends Application {
         janela.setTitle("Estrutura de Dados I");
         janela.setResizable(false);
 
-        Image logo = new Image("/br/edu/ufersa/visual-elements/Logo.png");
+        Image logo = new Image("br/edu/ufersa/visual-elements/Logo.png");
         janela.getIcons().add(logo);
 
         Scene tela = gerenciador.carregarTela("telaInicial");
